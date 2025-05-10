@@ -1,0 +1,52 @@
+.headerContainer {
+  max-width: 320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 0 20px;
+  /* transition: all 0.3s ease-in-out; */
+}
+
+.homeHeader {
+  padding: 0;
+}
+
+.headerNav {
+  display: none;
+}
+
+.navWrapper {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .navWrapper {
+    display: flex;
+  }
+
+  .headerContainer {
+    max-width: 768px;
+    padding: 39px 0;
+  }
+
+  .homeHeader {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .headerNav {
+    display: flex;
+  }
+
+  .headerContainer {
+    max-width: 1280px;
+    padding: 32px 0;
+  }
+
+  .homeHeader {
+    padding: 0;
+  }
+}

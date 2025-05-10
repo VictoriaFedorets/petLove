@@ -1,0 +1,23 @@
+.burgerIcon {
+  width: 32px;
+  height: 32px;
+  display: block;
+  stroke: black;
+}
+
+.burgerIconHome {
+  stroke: var(--white);
+}
+
+@media (min-width: 786px) {
+  .burgerIcon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .burgerWrapper {
+    display: none;
+  }
+}

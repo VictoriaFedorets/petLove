@@ -1,0 +1,54 @@
+/* .linkWrapper {
+  display: none;
+} */
+
+.link {
+}
+
+.linkHome {
+}
+
+@media screen and (min-width: 1280px) {
+  .linkWrapper {
+    display: flex;
+    gap: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.03em;
+  }
+
+  .loginBtn {
+    border: 1px solid var(--span);
+    border-radius: 30px;
+    padding: 15px 35px;
+    color: var(--white);
+    background: var(--yellow);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .loginBtn:hover,
+  .loginBtn:focus {
+    background: var(--yellow-hover);
+  }
+
+  .loginBtnHome:hover,
+  .loginBtnHome:focus {
+    color: var(--yellow);
+    background: var(--yellow-light);
+  }
+
+  .registerBtn {
+    border-radius: 30px;
+    padding: 15px 20px;
+    background: var(--yellow-light);
+    color: var(--yellow);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .registerBtn:hover,
+  .registerBtn:focus {
+    background: var(--yellow-dark);
+  }
+}

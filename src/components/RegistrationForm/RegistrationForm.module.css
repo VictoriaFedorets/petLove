@@ -1,0 +1,168 @@
+.formRegister {
+  padding: 20px;
+  border-radius: 30px;
+  background: var(--white);
+  margin-top: 10px;
+}
+
+.description {
+  margin: 12px 0 20px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+/* .label {
+  width: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary-color-black);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  gap: 8px;
+} */
+
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  fill: var(--yellow);
+  stroke: var(--yellow);
+}
+
+.clearIcon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  fill: none;
+  stroke: #ef2447;
+}
+
+.checkIcon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  fill: none;
+  stroke-width: 1.5px;
+  stroke: #08aa83;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 12px;
+  box-sizing: border-box;
+
+  /* margin-bottom: 10px; */
+}
+
+.inputValid {
+  border-color: #08aa83;
+}
+
+.inputError {
+  border-color: #ef2447;
+}
+
+input::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: var(--placeholder);
+}
+
+/* .input:focus-within {
+  border: solid 1px var(--secondary-color-blue-2);
+  outline: none;
+} */
+
+.btn {
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+.link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--yellow);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--yellow-hover);
+}
+
+.error {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+  margin-top: 2px;
+  margin-left: 12px;
+}
+
+.passwordMessage {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #08aa83;
+  margin-top: 2px;
+  margin-left: 12px;
+}
+
+.endLink {
+  text-align: center;
+}
+
+/* @media screen and (min-width: 768px) {
+  .containerForm {
+    flex-wrap: nowrap;
+    width: 336px;
+  }
+
+  .button {
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .containerForm {
+    width: 384px;
+    margin-right: 104px;
+  }
+} */

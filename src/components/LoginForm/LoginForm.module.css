@@ -1,0 +1,90 @@
+.loginForm {
+  padding: 60px 20px;
+  border-radius: 30px;
+  background: var(--white);
+  margin-top: 10px;
+}
+
+.description {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  margin: 12px 0 24px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.loginInput {
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 12px 56px 12px 12px;
+  width: 100%;
+  margin-bottom: 10px;
+  /* background: inherit; */
+}
+
+.errorLogin {
+  border-color: #ef2447;
+}
+
+.errorPassword {
+  border-color: #08aa83;
+}
+
+.loginInput::placeholder {
+  color: var(--placeholder);
+}
+
+.btn {
+  margin-top: 30px;
+}
+
+.errorLogin {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+
+.clearIcon {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  stroke-width: 1.5px;
+  stroke: #ef2447;
+  transition: opacity 0.3s ease;
+}
+
+.iconEye {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 12px;
+  right: 12px;
+  cursor: pointer;
+  stroke-width: 1.5px;
+  fill: none;
+  stroke: #f6b83d;
+  transition: opacity 0.3s ease;
+}
+
+.link {
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: var(--yellow);
+}
+
+.link:hover,
+.link:focus {
+  color: var(--yellow-hover);
+}

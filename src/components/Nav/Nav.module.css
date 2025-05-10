@@ -1,0 +1,38 @@
+@media (min-width: 1280px) {
+  .headerNav {
+    display: flex;
+    gap: 10px;
+  }
+
+  .link {
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 15px 20px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.03em;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .link:hover,
+  .link:focus,
+  .active {
+    border: 1px solid var(--yellow);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .linkHome {
+    border: 1px solid var(--span);
+    color: var(--white);
+    transition: all 0.3s ease-in-out;
+  }
+
+  .linkHome:hover,
+  .linkHome:focus,
+  .active {
+    background: var(--yellow-light);
+    color: var(--yellow);
+    transition: all 0.3s ease-in-out;
+  }
+}
