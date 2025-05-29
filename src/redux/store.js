@@ -17,7 +17,7 @@ import noticesReducer from "./notices/noticesSlice.js";
 const persistConfig = {
   key: "root",
   storage,
-  //   whitelist: ["favourites"], // Тільки favourites буде збережено
+  whitelist: ["auth"],
 };
 
 const rootReducer = combineReducers({

@@ -1,0 +1,75 @@
+.modalWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px 28px;
+  width: 335px;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  margin-bottom: 28px;
+}
+
+.btnBlock {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  /* width: 100%; */
+}
+
+.btnYes,
+.btnCancel {
+  border-radius: 30px;
+  padding: 12px 0;
+  width: 137px;
+
+  height: auto;
+  /* height: 42px; */
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+}
+
+.btnYes {
+  background: #f6b83d;
+  color: #fff;
+}
+
+.btnCancel {
+  background: rgba(38, 38, 38, 0.05);
+  color: #262626;
+}
+
+@media (min-width: 768px) {
+  .modalWrapper {
+    width: 448px;
+    padding: 80px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 117%;
+  }
+
+  .btnYes,
+  .btnCancel {
+    font-size: 16px;
+    line-height: 125%;
+    padding: 14px 0;
+    width: 140px;
+  }
+}
+
+@media (min-width: 1280px) {
+}

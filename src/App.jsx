@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 // import Loader from "./components/Loader/Loader.jsx";
@@ -6,6 +6,9 @@ import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import RestrictedRoute from "./components/Routes/RestrictedRoute.jsx";
 import PrivateRoute from "./components/Routes/PrivateRoute.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUser } from "./redux/auth/authOperations.js";
+import { setAuthToken } from "./services/apiOperations.js";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
@@ -21,6 +24,16 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage.jsx"));
 // const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage.jsx"));
 
 export default function App() {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (token) {
+      setAuthToken(token);
+      dispatch(refreshUser());
+    }
+  }, [token, dispatch]);
+
   return (
     <>
       <ToastContainer

@@ -23,14 +23,15 @@ export const loginUser = createAsyncThunk(
   "/users/login",
   async (credentials, { rejectWithValue }) => {
     try {
-      console.log(
-        "Sending registration request with credentials:",
-        credentials
-      );
+      // console.log(
+      //   "Sending registration request with credentials:",
+      //   credentials
+      // );
       const { data } = await instance.post("/users/signin", credentials);
+      localStorage.setItem("token", data.token);
       setAuthToken(data.token);
       toast.success("Login is successful");
-      console.log("Registration successful:", data);
+      // console.log("Registration successful:", data);
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "Login failed";
@@ -43,9 +44,18 @@ export const loginUser = createAsyncThunk(
 
 export const logoutUser = createAsyncThunk(
   "/users/logout",
-  async (_, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
+    const token = getState().auth.token;
+    // console.log("TOKEN FROM STATE IN logoutUser THUNK:", token);
+
+    if (!token) {
+      throw new Error("No token found");
+    }
+
     try {
+      setAuthToken(token);
       await instance.post("/users/signout");
+      localStorage.removeItem("token");
       setAuthToken(null);
       toast.success("Logout is successful");
       return null;

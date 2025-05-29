@@ -1,5 +1,8 @@
 .newsItem {
   margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .img {
@@ -15,7 +18,7 @@
   line-height: 125%;
   letter-spacing: -0.03em;
   margin-bottom: 12px;
-  height: 52px;
+  /* height: 52px; */
 }
 
 .text {
@@ -29,11 +32,13 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .dateBlock {
   display: flex;
   justify-content: space-between;
+  margin-top: auto;
 }
 
 .date {

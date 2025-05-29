@@ -1,0 +1,60 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--backdrop);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+  overflow-y: auto;
+}
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--white);
+  /* padding: 32px 16px 24px; */
+  border-radius: 30px;
+  position: relative;
+  width: auto;
+  /* width: 90vw; */
+  max-height: 90vh; /* ограничим по высоте */
+  overflow-y: auto; /* скролл внутри */
+  box-sizing: border-box;
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.iconClose {
+  display: block;
+  fill: none;
+  width: 24px;
+  height: 24px;
+  stroke-width: 2px;
+  stroke: var(--black);
+  transition: stroke 0.3s ease, transform 0.2s ease;
+}
+
+.closeButton:hover .iconClose,
+.closeButton:focus .iconClose {
+  stroke: var(--main-accent);
+  transform: scale(0.95);
+}
+/* 
+@media (min-width: 768px) {
+  .modal {
+    padding: 64px;
+    max-width: 473px;
+  }
+} */
