@@ -6,7 +6,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
 
   useEffect(() => {
     const updateVisibleCount = () => {
-      setVisibleCount(window.innerWidth >= 786 ? 3 : 2);
+      setVisibleCount(window.innerWidth >= 768 ? 3 : 2);
     };
 
     updateVisibleCount();

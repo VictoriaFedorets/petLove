@@ -91,147 +91,153 @@ export default function RegistrationForm() {
     >
       {({ errors, touched, setFieldValue, values, isValid }) => (
         <Form className={css.formRegister} autoComplete="off">
-          <Title>Registration</Title>
-          <p className={css.description}>
-            Thank you for your interest in our platform.
-          </p>
+          <div className={css.form}>
+            <Title>Registration</Title>
+            <p className={css.description}>
+              Thank you for your interest in our platform.
+            </p>
 
-          <label className={css.label}>
-            <Field
-              name="name"
-              type="name"
-              placeholder="Name"
-              className={
-                errors.name && touched.name
-                  ? `${css.input} ${css.inputError}`
-                  : css.input
-              }
-            />
-            <ErrorMessage name="name" component="div" className={css.error} />
-          </label>
-
-          <label className={css.label}>
-            <div className={css.inputContainer}>
+            <label className={css.label}>
               <Field
-                name="email"
-                type="email"
-                placeholder="Email"
+                name="name"
+                type="name"
+                placeholder="Name"
                 className={
-                  errors.email && touched.email
+                  errors.name && touched.name
                     ? `${css.input} ${css.inputError}`
                     : css.input
                 }
               />
-              {values.email.length > 0 && (
+              <ErrorMessage name="name" component="div" className={css.error} />
+            </label>
+
+            <label className={css.label}>
+              <div className={css.inputContainer}>
+                <Field
+                  name="email"
+                  type="email"
+                  placeholder="Email"
+                  className={
+                    errors.email && touched.email
+                      ? `${css.input} ${css.inputError}`
+                      : css.input
+                  }
+                />
+                {values.email.length > 0 && (
+                  <svg
+                    className={css.clearIcon}
+                    width={16}
+                    height={16}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setFieldValue("email", "");
+                    }}
+                  >
+                    <use href="#icon-close " />
+                  </svg>
+                )}
+              </div>
+
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={css.error}
+              />
+            </label>
+
+            <label className={css.label}>
+              <div className={css.inputContainer}>
+                <Field
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  className={`${css.input} ${
+                    errors.password && touched.password
+                      ? css.inputError
+                      : !errors.password && touched.password
+                      ? css.inputValid
+                      : ""
+                  }`}
+                />
+                {!errors.password && touched.password && values.password && (
+                  <svg className={css.checkIcon}>
+                    <use href="#icon-check" />
+                  </svg>
+                )}
                 <svg
-                  className={css.clearIcon}
-                  width={16}
-                  height={16}
+                  className={css.icon}
                   onClick={(e) => {
                     e.preventDefault();
-                    setFieldValue("email", "");
+                    toggleShowPassword();
                   }}
                 >
-                  <use href="#icon-close " />
+                  {showPassword ? (
+                    <use href="#icon-eye" />
+                  ) : (
+                    <use href="#icon-eye-hidden" />
+                  )}
                 </svg>
-              )}
-            </div>
-
-            <ErrorMessage name="email" component="div" className={css.error} />
-          </label>
-
-          <label className={css.label}>
-            <div className={css.inputContainer}>
-              <Field
+              </div>
+              <ErrorMessage
                 name="password"
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                className={`${css.input} ${
-                  errors.password && touched.password
-                    ? css.inputError
-                    : !errors.password && touched.password
-                    ? css.inputValid
-                    : ""
-                }`}
+                component="div"
+                className={css.error}
               />
+
               {!errors.password && touched.password && values.password && (
-                <svg className={css.checkIcon}>
-                  <use href="#icon-check" />
-                </svg>
+                <div className={css.passwordMessage}>Password is secure</div>
               )}
-              <svg
-                className={css.icon}
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleShowPassword();
-                }}
-              >
-                {showPassword ? (
-                  <use href="#icon-eye" />
-                ) : (
-                  <use href="#icon-eye-hidden" />
-                )}
-              </svg>
-            </div>
-            <ErrorMessage
-              name="password"
-              component="div"
-              className={css.error}
-            />
+            </label>
 
-            {!errors.password && touched.password && values.password && (
-              <div className={css.passwordMessage}>Password is secure</div>
-            )}
-          </label>
+            <label className={css.label}>
+              <div className={css.inputContainer}>
+                <Field
+                  name="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm password"
+                  className={
+                    errors.confirmPassword && touched.confirmPassword
+                      ? `${css.input} ${css.inputError}`
+                      : css.input
+                  }
+                />
 
-          <label className={css.label}>
-            <div className={css.inputContainer}>
-              <Field
+                <svg
+                  className={css.icon}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleShowConfirmPassword();
+                  }}
+                >
+                  {showConfirmPassword ? (
+                    <use href="#icon-eye " />
+                  ) : (
+                    <use href="#icon-eye-off" />
+                  )}
+                </svg>
+              </div>
+              <ErrorMessage
                 name="confirmPassword"
-                type={showConfirmPassword ? "text" : "password"}
-                placeholder="Confirm password"
-                className={
-                  errors.confirmPassword && touched.confirmPassword
-                    ? `${css.input} ${css.inputError}`
-                    : css.input
-                }
+                component="div"
+                className={css.error}
               />
+            </label>
 
-              <svg
-                className={css.icon}
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleShowConfirmPassword();
-                }}
-              >
-                {showConfirmPassword ? (
-                  <use href="#icon-eye " />
-                ) : (
-                  <use href="#icon-eye-off" />
-                )}
-              </svg>
-            </div>
-            <ErrorMessage
-              name="confirmPassword"
-              component="div"
-              className={css.error}
-            />
-          </label>
+            <Button
+              type="submit"
+              className={css.btn}
+              disabled={isLoading || !isValid}
+            >
+              {isLoading ? "Loading..." : "Registration"}
+            </Button>
 
-          <Button
-            type="submit"
-            className={css.btn}
-            disabled={isLoading || !isValid}
-          >
-            {isLoading ? "Loading..." : "Registration"}
-          </Button>
-
-          <p className={css.endLink}>
-            Already have an account?{" "}
-            <Link className={css.link} to="/login">
-              Login
-            </Link>
-          </p>
+            <p className={css.endLink}>
+              Already have an account?{" "}
+              <Link className={css.link} to="/login">
+                Login
+              </Link>
+            </p>
+          </div>
         </Form>
       )}
     </Formik>

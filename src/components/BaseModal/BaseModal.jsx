@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import ReactDOM from "react-dom";
 import css from "./BaseModal.module.css";
 
 export default function BaseModal({ onClose, children }) {
@@ -21,7 +22,7 @@ export default function BaseModal({ onClose, children }) {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
       <div className={css.modal}>
         <button className={css.closeButton} onClick={onClose}>
@@ -31,6 +32,7 @@ export default function BaseModal({ onClose, children }) {
         </button>
         {children}
       </div>
-    </div>
+    </div>,
+    document.getElementById("modal-root")
   );
 }

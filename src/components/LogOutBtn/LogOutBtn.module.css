@@ -1,15 +1,30 @@
 .btnLogOut {
-  font-family: var(--font-family);
+  border-radius: 30px;
+  padding: 12px 0;
+  width: 100%;
+  background: #fff4df;
+
   font-weight: 700;
-  font-size: 16px;
-  line-height: 125%;
+  font-size: 14px;
+  line-height: 129%;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: var(--white);
+  color: #f6b83d;
+  text-align: center;
+}
 
-  border-radius: 30px;
-  padding: 15px 35px;
-  width: 136px;
-  height: 50px;
-  background: var(--yellow);
+@media screen and (min-width: 768px) {
+  .btnLogOut {
+    padding: 15px 35px;
+    width: 136px;
+    height: 50px;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .btnLogOutHeader {
+    background: #f6b83d;
+    color: #fff;
+  }
 }

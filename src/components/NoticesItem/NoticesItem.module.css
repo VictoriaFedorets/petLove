@@ -133,7 +133,7 @@
   color: #f6b83d;
 }
 
-@media screen and (min-width: 786px) {
+@media screen and (min-width: 768px) {
   .newsItem {
     margin-bottom: 0;
     max-width: 342px;

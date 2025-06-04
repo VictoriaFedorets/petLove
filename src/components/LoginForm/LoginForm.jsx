@@ -73,63 +73,67 @@ export default function LoginForm() {
 
   return (
     <form className={css.loginForm} onSubmit={handleSubmit(onSubmit)}>
-      <Title>Log in</Title>
-      <p className={css.description}>
-        Welcome! Please enter your credentials to login to the platform:
-      </p>
+      <div className={css.loginWrap}>
+        <Title>Log in</Title>
+        <p className={css.description}>
+          Welcome! Please enter your credentials to login to the platform:
+        </p>
 
-      <div className={css.wrapper}>
-        <input
-          className={`${css.loginInput} ${errors.email ? css.errorLogin : ""}`}
-          type="email"
-          placeholder="Email"
-          //   autoComplete="email"
-          {...register("email")}
-        />
-        {emailValue && (
-          <svg className={css.clearIcon} onClick={clearEmail}>
-            <use href="#icon-close" />
+        <div className={css.wrapper}>
+          <input
+            className={`${css.loginInput} ${
+              errors.email ? css.errorLogin : ""
+            }`}
+            type="email"
+            placeholder="Email"
+            //   autoComplete="email"
+            {...register("email")}
+          />
+          {emailValue && (
+            <svg className={css.clearIcon} onClick={clearEmail}>
+              <use href="#icon-close" />
+            </svg>
+          )}
+          {errors.email && (
+            <p className={css.loginError}>{errors.email.message}</p>
+          )}
+        </div>
+
+        <div className={css.wrapper}>
+          <input
+            className={`${css.loginInput} ${
+              errors.email ? css.errorPassword : ""
+            }`}
+            type="password"
+            placeholder="Password"
+            //   autoComplete="current-password"
+            {...register("password")}
+          />
+          <svg
+            className={css.iconEye}
+            onClick={(e) => {
+              e.preventDefault();
+              togglePasswordVisibility();
+            }}
+          >
+            <use href={`#${showPassword ? "icon-eye" : "icon-eye-off"}`}></use>
           </svg>
-        )}
-        {errors.email && (
-          <p className={css.loginError}>{errors.email.message}</p>
-        )}
+          {errors.password && (
+            <p className={css.loginError}>{errors.password.message}</p>
+          )}
+        </div>
+
+        <Button className={css.btn} type="submit" disabled={isLoading}>
+          {isLoading ? "Loading..." : "Log in"}
+        </Button>
+
+        <p className={css.textLink}>
+          Don’t have an account?{" "}
+          <Link className={css.link} to="/register">
+            Register
+          </Link>
+        </p>
       </div>
-
-      <div className={css.wrapper}>
-        <input
-          className={`${css.loginInput} ${
-            errors.email ? css.errorPassword : ""
-          }`}
-          type="password"
-          placeholder="Password"
-          //   autoComplete="current-password"
-          {...register("password")}
-        />
-        <svg
-          className={css.iconEye}
-          onClick={(e) => {
-            e.preventDefault();
-            togglePasswordVisibility();
-          }}
-        >
-          <use href={`#${showPassword ? "icon-eye" : "icon-eye-off"}`}></use>
-        </svg>
-        {errors.password && (
-          <p className={css.loginError}>{errors.password.message}</p>
-        )}
-      </div>
-
-      <Button className={css.btn} type="submit" disabled={isLoading}>
-        {isLoading ? "Loading..." : "Log in"}
-      </Button>
-
-      <p>
-        Don’t have an account?{" "}
-        <Link className={css.link} to="/register">
-          Register
-        </Link>
-      </p>
     </form>
   );
 }

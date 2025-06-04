@@ -7,7 +7,7 @@
   margin-bottom: 44px;
 }
 
-@media screen and (min-width: 786px) {
+@media screen and (min-width: 768px) {
   .noticesList {
     flex-wrap: wrap;
     flex-direction: row;

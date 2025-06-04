@@ -4,7 +4,11 @@ import { NavLink } from "react-router-dom";
 
 export default function Nav({ isHomePage }) {
   const getCombinedClass = ({ isActive }) =>
-    clsx(css.link, isActive && css.active, isHomePage && css.linkHome);
+    clsx(
+      css.link,
+      isHomePage ? css.linkHome : "",
+      isActive && (isHomePage ? css.activeHome : css.active)
+    );
 
   return (
     <nav className={css.headerNav}>

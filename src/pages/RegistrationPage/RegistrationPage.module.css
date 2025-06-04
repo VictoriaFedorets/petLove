@@ -1,0 +1,16 @@
+.registration {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .registration {
+    margin-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .registration {
+    display: flex;
+    gap: 32px;
+  }
+}

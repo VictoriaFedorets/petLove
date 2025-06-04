@@ -4,6 +4,7 @@ import Nav from "../Nav/Nav.jsx";
 import AuthNav from "../AuthNav/AuthNav.jsx";
 import UserNav from "../UserNav/UserNav.jsx";
 import BurgerMenu from "../BurgerMenu/BurgerMenu.jsx";
+import useWindowWidth from "../../hooks/useWindowWidth.js";
 import css from "./Header.module.css";
 
 import { useSelector } from "react-redux";
@@ -19,6 +20,9 @@ const Header = () => {
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
 
+  const width = useWindowWidth();
+  const isMobile = width < 768;
+  const isTablet = width < 1280;
   // const getNavLinkClass = ({ isActive }) =>
   //   clsx(css.link, isActive && css.active);
 
@@ -36,12 +40,20 @@ const Header = () => {
       </div>
       <div className={css.navWrapper}>
         {isLoggedIn ? (
-          <UserNav user={user} isHomePage={isHomePage} />
+          <UserNav
+            isHomePage={isHomePage}
+            showLogout={!(isMobile || (isTablet && isHomePage))}
+            showUserBar={true}
+            user={user}
+          />
         ) : (
-          <AuthNav isHomePage={isHomePage} />
+          <AuthNav isHomePage={isHomePage} showAuthNav={!isMobile} />
         )}
+        <BurgerMenu
+          isHomePage={isHomePage}
+          showLogout={!(isMobile || (isTablet && !isHomePage))}
+        />
       </div>
-      <BurgerMenu isHomePage={isHomePage} />
     </header>
   );
 };

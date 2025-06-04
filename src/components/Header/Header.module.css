@@ -1,11 +1,11 @@
 .headerContainer {
   max-width: 320px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 28px 0 20px;
+  padding: 28px 0;
   /* transition: all 0.3s ease-in-out; */
 }
 
@@ -18,12 +18,15 @@
 }
 
 .navWrapper {
-  display: none;
+  display: flex;
+  gap: 12px;
+  height: 40px;
 }
 
 @media screen and (min-width: 768px) {
   .navWrapper {
-    display: flex;
+    gap: 16px;
+    align-items: center;
   }
 
   .headerContainer {
@@ -43,7 +46,7 @@
 
   .headerContainer {
     max-width: 1280px;
-    padding: 32px 0;
+    padding: 32px;
   }
 
   .homeHeader {

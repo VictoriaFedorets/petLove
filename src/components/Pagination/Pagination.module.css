@@ -67,7 +67,7 @@
   cursor: not-allowed;
 }
 
-@media screen and (min-width: 786px) {
+@media screen and (min-width: 768px) {
   .pagination {
     gap: 24px;
     margin-bottom: 80px;

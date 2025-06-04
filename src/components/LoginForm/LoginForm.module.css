@@ -2,6 +2,7 @@
   padding: 60px 20px;
   border-radius: 30px;
   background: var(--white);
+  margin: 0 auto;
   margin-top: 10px;
 }
 
@@ -35,11 +36,16 @@
 }
 
 .loginInput::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
   color: var(--placeholder);
 }
 
 .btn {
   margin-top: 30px;
+  margin-bottom: 12px;
 }
 
 .errorLogin {
@@ -87,4 +93,66 @@
 .link:hover,
 .link:focus {
   color: var(--yellow-hover);
+}
+
+@media screen and (min-width: 768px) {
+  .loginForm {
+    padding: 71px 0;
+    border-radius: 60px;
+    margin-top: 16px;
+  }
+
+  .loginWrap {
+    margin: 0 auto;
+    width: 424px;
+  }
+
+  .btn {
+    margin-bottom: 16px;
+    margin-top: 54px;
+  }
+
+  .loginInput::placeholder {
+    font-size: 16px;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 122%;
+    margin: 16px 0 32px;
+  }
+
+  .textLink {
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .loginForm {
+    width: 592px;
+    /* height: 654px; */
+    margin-top: 0;
+    padding: 118px 0;
+  }
+
+  .description {
+    font-size: 18px;
+    line-height: 122%;
+    margin: 16px 0 32px;
+  }
+
+  .loginInput {
+    padding: 16px 56px 16px 16px;
+    margin-bottom: 16px;
+  }
+
+  .btn {
+    margin-top: 42px;
+  }
+
+  .clearIcon,
+  .iconEye {
+    width: 22px;
+    height: 22px;
+  }
 }

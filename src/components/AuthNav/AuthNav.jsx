@@ -2,18 +2,20 @@ import { NavLink } from "react-router-dom";
 import css from "./AuthNav.module.css";
 import clsx from "clsx";
 
-export default function AuthNav({ isHomePage }) {
+export default function AuthNav({ isHomePage, showAuthNav = true }) {
   return (
-    <div className={css.linkWrapper}>
-      <NavLink
-        className={clsx(css.loginBtn, isHomePage && css.loginBtnHome)}
-        to="/login"
-      >
-        Log in
-      </NavLink>
-      <NavLink className={css.registerBtn} to="/register">
-        Registration
-      </NavLink>
-    </div>
+    showAuthNav && (
+      <div className={css.linkWrapper}>
+        <NavLink
+          className={clsx(css.loginBtn, isHomePage && css.loginBtnHome)}
+          to="/login"
+        >
+          Log in
+        </NavLink>
+        <NavLink className={css.registerBtn} to="/register">
+          Registration
+        </NavLink>
+      </div>
+    )
   );
 }
