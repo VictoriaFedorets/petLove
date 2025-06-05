@@ -1,3 +1,5 @@
+import { useState } from "react";
+import ModalNotice from "../ModalNotice/ModalNotice";
 import css from "./NoticesItem.module.css";
 
 export default function NoticesItem({ notices }) {
@@ -14,6 +16,10 @@ export default function NoticesItem({ notices }) {
     price,
   } = notices;
   //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   return (
     <li className={css.newsItem}>
@@ -59,7 +65,10 @@ export default function NoticesItem({ notices }) {
       <p className={css.price}>{price ? `$${price}` : "free"}</p>
 
       <div className={css.btnBlock}>
-        <button className={css.btn}>Learn more</button>
+        <button className={css.btn} onClick={toggleModal}>
+          Learn more
+        </button>
+        {isModalOpen && <ModalNotice onClose={toggleModal} notices={notices} />}
         <button className={css.btnHeart}>
           <svg className={css.iconHeart}>
             <use href="#icon-heart"></use>

@@ -14,7 +14,7 @@ const MainPage = lazy(() => import("./pages/MainPage/MainPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage.jsx"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage.jsx"));
-// const FriendsPage = lazy(() => import("./pages/FriendsPage/FriendsPage.jsx"));
+const FriendsPage = lazy(() => import("./pages/FriendsPage/FriendsPage.jsx"));
 const RegistrationPage = lazy(() =>
   import("./pages/RegistrationPage/RegistrationPage.jsx")
 );
@@ -56,6 +56,7 @@ export default function App() {
             <Route path="home" element={<HomePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="notices" element={<NoticesPage />} />
+            <Route path="friends" element={<FriendsPage />} />
 
             <Route
               path="login"

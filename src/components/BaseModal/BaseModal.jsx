@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import ReactDOM from "react-dom";
 import css from "./BaseModal.module.css";
 
-export default function BaseModal({ onClose, children }) {
+export default function BaseModal({ onClose, children, className = "" }) {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.key === "Escape") {
@@ -24,7 +24,7 @@ export default function BaseModal({ onClose, children }) {
 
   return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
-      <div className={css.modal}>
+      <div className={`${css.modal} ${className}`}>
         <button className={css.closeButton} onClick={onClose}>
           <svg className={css.iconClose}>
             <use href="#icon-close"></use>

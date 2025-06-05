@@ -10,7 +10,7 @@ export default function UserBar({ isHomePage, user }) {
         </svg>
       </button>
       <h3 className={clsx(css.userName, isHomePage && css.userNameHome)}>
-        Anna
+        {user.name}
       </h3>
     </div>
   );

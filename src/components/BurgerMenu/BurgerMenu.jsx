@@ -56,7 +56,7 @@ export default function BurgerMenu({ isHomePage, showLogout }) {
   };
 
   return (
-    <>
+    <div className={css.burgerWrapper}>
       <button
         className={clsx(css.burgerBtn, isOpen && css.hidden)}
         onClick={toggleMenu}
@@ -100,6 +100,6 @@ export default function BurgerMenu({ isHomePage, showLogout }) {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 }
