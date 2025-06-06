@@ -52,7 +52,7 @@ export default function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route index element={<MainPage />} />
+            {/* <Route index element={<MainPage />} /> */}
             <Route path="home" element={<HomePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="notices" element={<NoticesPage />} />
@@ -84,6 +84,7 @@ export default function App() {
             />
           </Route>
 
+          <Route index element={<MainPage />} />
           {/* <Route path="/" element={<SharedLayout />}>
             <Route path="news" element={<NewsPage />} />
             

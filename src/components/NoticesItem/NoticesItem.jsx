@@ -20,12 +20,16 @@ export default function NoticesItem({ notices }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-
+  console.log(notices);
   return (
     <li className={css.newsItem}>
-      {/* <img className={css.img} src={imgURL} alt={title} /> */}
       <div className={css.imgContainer}>
-        <img className={css.img} src={imgURL} alt={title} />
+        <img
+          className={css.img}
+          onClick={toggleModal}
+          src={imgURL}
+          alt={title}
+        />
       </div>
 
       <div className={css.titleBlock}>
@@ -39,7 +43,7 @@ export default function NoticesItem({ notices }) {
       </div>
 
       <ul className={css.descriptionBlock}>
-        <li>
+        <li className={css.name}>
           <p>Name</p>
           {name}
         </li>
@@ -62,18 +66,23 @@ export default function NoticesItem({ notices }) {
       </ul>
 
       <p className={css.comment}>{comment}</p>
-      <p className={css.price}>{price ? `$${price}` : "free"}</p>
 
-      <div className={css.btnBlock}>
-        <button className={css.btn} onClick={toggleModal}>
-          Learn more
-        </button>
-        {isModalOpen && <ModalNotice onClose={toggleModal} notices={notices} />}
-        <button className={css.btnHeart}>
-          <svg className={css.iconHeart}>
-            <use href="#icon-heart"></use>
-          </svg>
-        </button>
+      <div className={css.bottomContent}>
+        <p className={css.price}>{price ? `$${price}` : "free"}</p>
+
+        <div className={css.btnBlock}>
+          <button className={css.btn} onClick={toggleModal}>
+            Learn more
+          </button>
+          {isModalOpen && (
+            <ModalNotice onClose={toggleModal} notices={notices} />
+          )}
+          <button className={css.btnHeart}>
+            <svg className={css.iconHeart}>
+              <use href="#icon-heart"></use>
+            </svg>
+          </button>
+        </div>
       </div>
     </li>
   );

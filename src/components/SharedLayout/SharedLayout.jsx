@@ -8,7 +8,7 @@ export default function SharedLayout() {
   const isHomePage = location.pathname === "/home";
 
   return (
-    <div className={clsx(css.containerHome, !isHomePage && css.container)}>
+    <div className={clsx(css.container, isHomePage && css.containerHome)}>
       {!isHomePage && <Header />}
       <main className={css.section}>
         <Outlet />
