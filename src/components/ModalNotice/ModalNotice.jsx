@@ -3,11 +3,18 @@ import BaseModal from "../BaseModal/BaseModal";
 import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 import ModalAttention from "../ModalAttention/ModalAttention.jsx";
 import css from "./ModalNotice.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { selectIsFavoritesId } from "../../redux/favorites/favoritesSelectors.js";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/favorites/favoritesOperations.js";
+import { toast } from "react-toastify";
 
 export default function ModalNotice({ onClose, notices }) {
   const {
+    _id,
     imgURL,
     title,
     popularity,
@@ -22,6 +29,9 @@ export default function ModalNotice({ onClose, notices }) {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isAttentionOpen, setIsAttentionOpen] = useState(false);
+  const isFavorite = useSelector(selectIsFavoritesId(_id));
+
+  const dispatch = useDispatch();
 
   const handleAddToClick = () => {
     if (!isLoggedIn) {
@@ -29,8 +39,11 @@ export default function ModalNotice({ onClose, notices }) {
       return;
     }
 
-    // Якщо авторизований — додаємо до обраного
-    console.log("Додано до улюблених");
+    if (!isFavorite) {
+      dispatch(addToFavorites(_id));
+    } else {
+      toast.info("Already in favorites");
+    }
   };
 
   const handleCloseAll = () => {
@@ -47,6 +60,7 @@ export default function ModalNotice({ onClose, notices }) {
       />
     );
   }
+  console.log("isFavorite:", isFavorite);
   return (
     <>
       <BaseModal onClose={onClose} className={css.modal}>
@@ -83,7 +97,9 @@ export default function ModalNotice({ onClose, notices }) {
           <div className={css.btnBlock}>
             <button className={css.btn} onClick={handleAddToClick}>
               Add to{" "}
-              <svg className={css.iconHeart}>
+              <svg
+                className={clsx(css.iconHeart, isFavorite && css.iconHeartFav)}
+              >
                 <use
                   className={css.iconHeartUse}
                   href="#icon-heart"
@@ -97,10 +113,6 @@ export default function ModalNotice({ onClose, notices }) {
           </div>
         </div>
       </BaseModal>
-
-      {isAttentionOpen && (
-        <ModalAttention onClose={closeAttentionModal} onRedirect={onClose} />
-      )}
     </>
   );
 }

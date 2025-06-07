@@ -20,7 +20,8 @@ export default function NoticesItem({ notices }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-  console.log(notices);
+  // console.log(notices);
+
   return (
     <li className={css.newsItem}>
       <div className={css.imgContainer}>
