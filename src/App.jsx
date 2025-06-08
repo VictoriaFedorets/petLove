@@ -90,7 +90,7 @@ export default function App() {
             
             <Route path="friends" element={<FriendsPage />} />
             
-            <Route path="profile" element={<ProfilePage />} />
+            
             <Route path="add-pet" element={<AddPetPage />} />
             <Route path="not-found" element={<NotFoundPage />} />
           </Route> */}

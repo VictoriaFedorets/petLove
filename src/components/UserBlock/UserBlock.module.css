@@ -1,0 +1,57 @@
+.user {
+  border-radius: 30px;
+  padding: 10px 14px;
+  width: 80px;
+  height: 38px;
+  background: #f6b83d;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.iconUser {
+  margin-left: 4px;
+  width: 18px;
+  height: 18px;
+  /* border-radius: 1px; */
+  fill: #fff;
+  stroke-width: 2px;
+  /* stroke: #fff; */
+}
+
+.iconUserPhoto {
+  border-radius: 100px;
+  padding: 27px;
+  width: 94px;
+  height: 94px;
+  background: #fff4df;
+
+  /* border-radius: 1px; */
+  fill: #f6b83d;
+  stroke-width: 2px;
+  /* stroke: #f6b83d; */
+  color: #f6b83d;
+  margin: 0 auto;
+}
+
+.userPhoto {
+  border-radius: 100px;
+  width: 94px;
+  height: 94px;
+}
+
+.upload {
+  margin: 0 auto;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  color: #262626;
+}

@@ -4,12 +4,17 @@ import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
 import ModalAttention from "../ModalAttention/ModalAttention.jsx";
 import css from "./ModalNotice.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
-import { selectIsFavoritesId } from "../../redux/favorites/favoritesSelectors.js";
+import { useEffect, useState } from "react";
+import {
+  selectFavorites,
+  selectIsFavoritesId,
+} from "../../redux/favorites/favoritesSelectors.js";
 import {
   addToFavorites,
   removeFromFavorites,
 } from "../../redux/favorites/favoritesOperations.js";
+import { fetchFavorites } from "../../redux/favorites/favoritesOperations";
+
 import { toast } from "react-toastify";
 
 export default function ModalNotice({ onClose, notices }) {
@@ -29,9 +34,16 @@ export default function ModalNotice({ onClose, notices }) {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isAttentionOpen, setIsAttentionOpen] = useState(false);
-  const isFavorite = useSelector(selectIsFavoritesId(_id));
-
+  const favorites = useSelector(selectFavorites);
+  const isFavorite = favorites.some((item) => item._id === notices._id);
+  console.log("isFavorite:", isFavorite);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      dispatch(fetchFavorites());
+    }
+  }, [dispatch, isLoggedIn]);
 
   const handleAddToClick = () => {
     if (!isLoggedIn) {
@@ -39,10 +51,11 @@ export default function ModalNotice({ onClose, notices }) {
       return;
     }
 
-    if (!isFavorite) {
-      dispatch(addToFavorites(_id));
+    if (isFavorite) {
+      dispatch(removeFromFavorites(_id));
+      // toast.info("Already in favorites");
     } else {
-      toast.info("Already in favorites");
+      dispatch(addToFavorites(_id));
     }
   };
 
