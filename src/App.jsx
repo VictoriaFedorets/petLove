@@ -7,8 +7,9 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import RestrictedRoute from "./components/Routes/RestrictedRoute.jsx";
 import PrivateRoute from "./components/Routes/PrivateRoute.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { refreshUser } from "./redux/auth/authOperations.js";
+import { refreshUser } from "./redux/user/userOperations.js";
 import { setAuthToken } from "./services/apiOperations.js";
+import { selectToken } from "./redux/user/userSelectors.js";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
@@ -22,10 +23,14 @@ const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage.jsx"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage.jsx"));
 // const AddPetPage = lazy(() => import("./pages/AddPetPage/AddPetPage.jsx"));
 // const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage.jsx"));
+const savedToken = localStorage.getItem("token");
+if (savedToken) {
+  setAuthToken(savedToken);
+}
 
 export default function App() {
   const dispatch = useDispatch();
-  const token = useSelector((state) => state.auth.token);
+  const token = useSelector(selectToken);
 
   useEffect(() => {
     if (token) {

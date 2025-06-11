@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import BaseModal from "../BaseModal/BaseModal";
-import { selectIsLoggedIn } from "../../redux/auth/authSelectors";
+import { selectIsLoggedIn } from "../../redux/user/userSelectors.js";
 import ModalAttention from "../ModalAttention/ModalAttention.jsx";
 import css from "./ModalNotice.module.css";
 import { useDispatch, useSelector } from "react-redux";

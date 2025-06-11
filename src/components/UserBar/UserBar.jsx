@@ -2,6 +2,8 @@ import clsx from "clsx";
 import css from "./UserBar.module.css";
 
 export default function UserBar({ isHomePage, user }) {
+  if (!user) return null;
+
   return (
     <div className={css.userBar}>
       <button className={css.userBtn}>

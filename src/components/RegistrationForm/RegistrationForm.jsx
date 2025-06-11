@@ -2,11 +2,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { registerUser } from "../../redux/auth/authOperations.js";
+import { registerUser } from "../../redux/user/userOperations.js";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import css from "./RegistrationForm.module.css";
-import { selectIsLoading } from "../../redux/auth/authSelectors.js";
+import { selectIsLoading } from "../../redux/user/userSelectors.js";
 import Title from "../Title/Title.jsx";
 import Button from "../Button/Button.jsx";
 // import Loader from "../Loader/Loader.jsx";
@@ -33,16 +33,16 @@ const validationSchema = Yup.object({
   // });
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Confirm password is required")
-    .test(
-      "confirmPassword-test",
-      "Confirm password invalid",
-      (value, context) => {
-        console.log("Confirm password:", value); // Проверка значения confirmPassword
-        console.log("Password field value:", context.parent.password); // Проверка значения password
-        return value === context.parent.password; // Является ли confirmPassword равным password
-      }
-    ),
+    .required("Confirm password is required"),
+  // .test(
+  //   "confirmPassword-test",
+  //   "Confirm password invalid",
+  //   (value, context) => {
+  //     console.log("Confirm password:", value);
+  //     console.log("Password field value:", context.parent.password);
+  //     return value === context.parent.password;
+  //   }
+  // ),
 });
 
 export default function RegistrationForm() {
@@ -60,19 +60,28 @@ export default function RegistrationForm() {
     setShowConfirmPassword((prevState) => !prevState);
   };
 
-  const handleSubmit = async ({ name, email, password }, actions) => {
+  const handleSubmit = async (
+    { name, email, password },
+    { setSubmitting, resetForm, validateForm, setErrors }
+  ) => {
+    await validateForm();
     console.log("Form values:", { name, email, password });
-    console.log("Form errors:", actions.errors); // Вывод ошибок на момент отправки
 
-    if (actions.isValid) {
-      try {
-        const data = await dispatch(registerUser({ name, email, password }));
+    try {
+      const data = await dispatch(registerUser({ name, email, password }));
+      if (!data.error) {
+        resetForm();
         navigate("/profile");
-      } catch (error) {
-        console.error("Registration failed:", error);
+      } else if (
+        data.payload &&
+        data.payload.message === "Such email already exists"
+      ) {
+        setErrors({ email: "This email is already registered" });
       }
-    } else {
-      console.log("Form is invalid, not submitting");
+    } catch (error) {
+      console.error("Registration failed:", error);
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -133,7 +142,7 @@ export default function RegistrationForm() {
                       setFieldValue("email", "");
                     }}
                   >
-                    <use href="#icon-close " />
+                    <use href="#icon-close" />
                   </svg>
                 )}
               </div>
@@ -210,7 +219,7 @@ export default function RegistrationForm() {
                   }}
                 >
                   {showConfirmPassword ? (
-                    <use href="#icon-eye " />
+                    <use href="#icon-eye" />
                   ) : (
                     <use href="#icon-eye-off" />
                   )}

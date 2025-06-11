@@ -7,9 +7,12 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../Button/Button.jsx";
 import Title from "../Title/Title";
-import { selectError, selectIsLoading } from "../../redux/auth/authSelectors";
+import {
+  selectError,
+  selectIsLoading,
+} from "../../redux/user/userSelectors.js";
 import css from "./LoginForm.module.css";
-import { loginUser } from "../../redux/auth/authOperations";
+import { loginUser } from "../../redux/user/userOperations.js";
 
 const schema = yup.object().shape({
   email: yup
@@ -86,7 +89,7 @@ export default function LoginForm() {
             }`}
             type="email"
             placeholder="Email"
-            //   autoComplete="email"
+            autoComplete="email"
             {...register("email")}
           />
           {emailValue && (
@@ -106,7 +109,7 @@ export default function LoginForm() {
             }`}
             type="password"
             placeholder="Password"
-            //   autoComplete="current-password"
+            autoComplete="current-password"
             {...register("password")}
           />
           <svg

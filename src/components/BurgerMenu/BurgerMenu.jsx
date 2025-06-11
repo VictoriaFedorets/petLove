@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectIsLoggedIn, selectUser } from "../../redux/auth/authSelectors";
+import { selectIsLoggedIn, selectUser } from "../../redux/user/userSelectors";
 import clsx from "clsx";
 import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
