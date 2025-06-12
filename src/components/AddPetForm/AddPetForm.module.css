@@ -1,0 +1,53 @@
+.wrapperAddPet {
+  margin-top: 10px;
+  padding: 28px 20px 20px;
+  border-radius: 30px;
+  width: 335px;
+  height: auto;
+  background: #fff;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
+.titleDet {
+  margin-left: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(43, 43, 42, 0.4);
+}
+
+.svgBlock {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.svgBlock svg {
+  width: 32px;
+  height: 32px;
+  border-radius: 30px;
+  padding: 6px;
+  stroke-width: 1.5px;
+}
+
+.iconFemale {
+  color: #f43f5e;
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.iconMale {
+  background: rgba(84, 173, 255, 0.1);
+  color: #54adff;
+}
+
+.iconMultiple {
+  background: #fff4df;
+  fill: #f6b83d;
+}

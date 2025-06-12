@@ -5,8 +5,8 @@ import css from "./EditUserBtn.module.css";
 export default function EditUserBtn() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpen = () => setIsModalOpen(!isModalOpen);
-  const handleClose = () => setIsModalOpen();
+  const handleOpen = () => setIsModalOpen(true);
+  const handleClose = () => setIsModalOpen(false);
 
   return (
     <>

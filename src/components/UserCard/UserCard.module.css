@@ -8,3 +8,9 @@
   background: #fff;
   padding: 18px 20px 40px 20px;
 }
+
+.btnLogOut {
+  text-align: left;
+  padding: 12px 28px;
+  width: 114px;
+}

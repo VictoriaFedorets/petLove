@@ -1,6 +1,6 @@
 .user {
   border-radius: 30px;
-  padding: 10px 14px;
+  /* padding: 10px 14px; */
   width: 80px;
   height: 38px;
   background: #f6b83d;
@@ -11,6 +11,7 @@
   color: #fff;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .iconUser {
@@ -80,16 +81,21 @@
   margin-bottom: 40px;
 }
 
-.userInfo input {
+.filledInput {
   width: 100%;
   height: 42px;
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid #f6b83d;
+  background: transparent;
   border-radius: 30px;
   padding: 12px;
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
+}
+
+.emptyInput {
+  border: 1px solid rgba(38, 38, 38, 0.15);
 }
 
 .userInfo input:not(:last-of-type) {

@@ -6,7 +6,7 @@ import ModalApproveAction from "../ModalApproveAction/ModalApproveAction";
 import { selectToken } from "../../redux/user/userSelectors.js";
 import clsx from "clsx";
 
-export default function LogOutBtn({ isHomePage, onCloseMenu }) {
+export default function LogOutBtn({ isHomePage, onCloseMenu, className = "" }) {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const token = useSelector(selectToken);
@@ -30,7 +30,11 @@ export default function LogOutBtn({ isHomePage, onCloseMenu }) {
   return (
     <>
       <button
-        className={clsx(css.btnLogOut, !isHomePage && css.btnLogOutHeader)}
+        className={clsx(
+          css.btnLogOut,
+          !isHomePage && css.btnLogOutHeader,
+          className
+        )}
         onClick={openModal}
       >
         Log out

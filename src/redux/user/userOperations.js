@@ -33,7 +33,8 @@ export const loginUser = createAsyncThunk(
       setAuthToken(data.token);
       toast.success("Login is successful");
       // console.log("Registration successful:", data);
-      await dispatch(getUserFull());
+      // await dispatch(refreshUser()); // замість getUserFull
+      // await dispatch(getUserFull());
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "Login failed";
@@ -81,7 +82,8 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthToken(token);
-      const { data } = await instance.get("/users/current");
+      const { data } = await instance.get("/users/current/full");
+      // console.log("Fetched full user:", data);
       // toast.success("Refresh is successful");
       return data;
     } catch (error) {
