@@ -6,6 +6,7 @@ import {
   registerUser,
   getUserFull,
   updateUser,
+  addPets,
 } from "./userOperations.js";
 
 const initialState = {
@@ -130,6 +131,23 @@ const userSlice = createSlice({
         state.user = action.payload;
       })
       .addCase(updateUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload || action.error.message;
+      })
+
+      .addCase(addPets.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(addPets.fulfilled, (state, action) => {
+        state.isLoading = false;
+        if (!state.user?.pets) {
+          state.user.pets = [];
+        }
+
+        state.user.pets.push(action.payload);
+      })
+      .addCase(addPets.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || action.error.message;
       });

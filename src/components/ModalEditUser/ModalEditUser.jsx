@@ -17,8 +17,8 @@ const schema = yup.object().shape({
       /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp)$/,
       "Incorrect image link"
     )
-    .required("Avatar isrequired"),
-  name: yup.string().required("Name isrequired"),
+    .required("Avatar is required"),
+  name: yup.string().required("Name is required"),
   email: yup
     .string()
     .matches(/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/, "Invalid email")

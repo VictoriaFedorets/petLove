@@ -123,3 +123,19 @@ export const updateUser = createAsyncThunk(
     }
   }
 );
+
+export const addPets = createAsyncThunk(
+  "/users/current/pets/add",
+  async (petData, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.post("/users/current/pets/add", petData);
+      toast.success("Your pet has been added");
+      return data;
+    } catch (error) {
+      const message =
+        error.response?.data?.message || "Error when adding a pet";
+      toast.error(message);
+      return rejectWithValue(message);
+    }
+  }
+);
