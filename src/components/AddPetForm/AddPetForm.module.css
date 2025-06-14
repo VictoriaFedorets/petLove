@@ -75,14 +75,6 @@
   transition: transform 0.2s;
 }
 
-/* .radioLabel svg {
-  border-radius: 50%;
-  padding: 6px;
-  width: 32px;
-  height: 32px;
-  transition: border 0.2s, box-shadow 0.2s;
-} */
-
 .blockPhoto {
   display: flex;
   flex-direction: column;
@@ -127,7 +119,6 @@
   padding: 13px 13px 13px 12px;
   width: 100%;
   height: 42px;
-  text-transform: capitalize;
   margin-bottom: 10px;
 
   font-weight: 500;
@@ -140,7 +131,6 @@
   padding: 10px 20px 10px 10px;
   width: 170px;
   height: 36px;
-  text-transform: lowercase;
 }
 
 .upload {
@@ -186,7 +176,9 @@
   gap: 8px;
 }
 
-.blockDateType.input {
+.inputDate {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
   width: 143px;
 }
 
@@ -198,7 +190,7 @@
 }
 
 .btnBlock {
-  margin-top: 31px;
+  margin-top: 21px;
   display: flex;
   justify-content: end;
   gap: 8px;
@@ -210,4 +202,88 @@
 
 .btnSave {
   background: #f6b83d;
+}
+
+.custom-select__value-container {
+  border-radius: 30px;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+/* Випадаючий список */
+.custom-select__menu {
+  max-height: 78px;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 15px;
+  width: 143px;
+  height: 78px;
+}
+
+/* Елемент списку */
+.custom-select__option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Наведення */
+.custom-select__option--is-focused {
+  background-color: #f0f0f0;
+}
+
+/* Активний вибраний */
+.custom-select__option--is-selected {
+  background-color: #e0e0e0;
+}
+
+/* Контейнер зі стрілкою */
+.custom-select__indicators {
+  padding-right: 12px;
+}
+
+/* Стрілка */
+.custom-select__dropdown-indicator {
+  transition: transform 0.3s ease;
+}
+
+.input.upload {
+  appearance: none;
+  padding-right: 32px;
+  /* position: relative;
+  display: flex;
+  align-items: center; */
+}
+
+.arrowIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+/* коли select відкритий — перевертаємо стрілку */
+.input.upload.open + .arrowIcon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.input.upload input {
+  flex: 1;
+  width: 144px;
+  padding-right: 30px;
+  border: none;
+}
+
+.iconCalendar {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
 }

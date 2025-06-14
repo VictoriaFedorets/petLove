@@ -1,6 +1,7 @@
 import css from "./AddPetForm.module.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Select from "react-select";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addPets } from "../../redux/user/userOperations";
@@ -10,6 +11,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { uploadToCloudinary } from "../../services/cloudinary.js";
 import { Link } from "react-router-dom";
 import { selectNoticesSpacies } from "../../redux/notices/noticesSelectors.js";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { format } from "date-fns";
+
+import { Controller } from "react-hook-form";
 
 const schema = yup.object().shape({
   title: yup.string().required("Title is required"),
@@ -34,6 +40,8 @@ export default function AddPetForm() {
   const pet = useSelector(selectPets);
   console.log(pet);
   const [isUploading, setIsUploading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const fileInputRef = useRef();
 
   const {
@@ -41,6 +49,7 @@ export default function AddPetForm() {
     handleSubmit,
     setValue,
     watch,
+    control,
     formState: { errors, isSubmitting },
   } = useForm({
     defaultValues: {
@@ -84,7 +93,11 @@ export default function AddPetForm() {
 
   const onSubmit = async (data) => {
     try {
-      await dispatch(addPets(data)).unwrap();
+      const formattedData = {
+        ...data,
+        birthday: format(data.birthday, "yyyy-MM-dd"), // форматируем дату
+      };
+      await dispatch(addPets(formattedData)).unwrap();
       toast.success("Pet added successfully");
     } catch (error) {
       toast.error(error || "Failed to add pet");
@@ -107,6 +120,25 @@ export default function AddPetForm() {
   //     () => getUniqueValues(notices, "species"),
   //     [notices]
   //   );
+
+  const speciesOptions = [
+    ...uniqueSpecies.map((s) => ({ value: s, label: s })),
+    { value: "parrot", label: "Parrot" },
+    { value: "hamster", label: "Hamster" },
+    { value: "rabbit", label: "Rabbit" },
+    { value: "other", label: "Other" },
+  ];
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "";
+    const [year, month, day] = dateStr.split("-");
+    return `${day}.${month}.${year}`;
+  };
+
+  const defaultValues = {
+    // ...
+    birthday: pet?.birthday ? formatDate(pet.birthday) : "",
+  };
 
   return (
     <div className={css.wrapperAddPet}>
@@ -218,34 +250,96 @@ export default function AddPetForm() {
         {errors.name && <p className={css.error}>{errors.name.message}</p>}
 
         <div className={css.blockDateType}>
-          <input
-            className={`${css.input} ${css.upload}`}
-            type="text"
-            placeholder="00.00.0000"
-            {...register("birthday")}
+          <Controller
+            control={control}
+            name="birthday"
+            render={({ field }) => (
+              <DatePicker
+                dateFormat="dd.MM.yyyy"
+                placeholderText="00.00.0000"
+                selected={field.value}
+                onChange={field.onChange}
+                maxDate={new Date()}
+                showYearDropdown
+                scrollableYearDropdown
+                yearDropdownItemNumber={100}
+                customInput={
+                  <div
+                    className={`${css.input} ${css.upload} ${css.inputDate}`}
+                    onClick={field.onBlur}
+                  >
+                    <input
+                      type="text"
+                      value={
+                        field.value instanceof Date
+                          ? format(field.value, "dd.MM.yyyy")
+                          : ""
+                      }
+                      onChange={() => {}} // React-datepicker управляет сам
+                      readOnly
+                      placeholder="00.00.0000"
+                    />
+                    <svg className={css.iconCalendar}>
+                      <use href="#icon-calendar"></use>
+                    </svg>
+                  </div>
+                }
+              />
+            )}
           />
           {errors.birthday && (
             <p className={css.error}>{errors.birthday.message}</p>
           )}
 
-          <select
-            className={`${css.input} ${css.upload}`}
-            {...register("species")}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Type of pet
-            </option>
-            {uniqueSpecies.map((species) => (
-              <option key={species} value={species}>
-                {species}
-              </option>
-            ))}
-            <option value="parrot">Parrot</option>
-            <option value="hamster">Hamster</option>
-            <option value="rabbit">Rabbit</option>
-            <option value="other">Other</option>
-          </select>
+          <Controller
+            name="species"
+            control={control}
+            render={({ field }) => (
+              <Select
+                {...field}
+                options={speciesOptions}
+                placeholder="Type of pet"
+                classNamePrefix="custom-select"
+                menuPortalTarget={null}
+                menuPosition="absolute"
+                menuPlacement="auto"
+                maxMenuHeight={78}
+                styles={{
+                  dropdownIndicator: (base, state) => ({
+                    ...base,
+                    transition: "transform 0.3s ease",
+                    transform: state.selectProps.menuIsOpen
+                      ? "rotate(180deg)"
+                      : null,
+                  }),
+                  indicatorSeparator: () => ({ display: "none" }),
+                  control: (provided) => ({
+                    ...provided,
+                    width: "143px",
+                    borderRadius: "30px",
+                    border: "1px solid rgba(38, 38, 38, 0.15)",
+                    minHeight: "42px",
+                    boxShadow: "none",
+                  }),
+                  menu: (base) => ({
+                    ...base,
+                    maxHeight: "78px",
+                    overflowY: "auto",
+                    borderRadius: "15px",
+                    width: "143px",
+                    marginTop: "-10px",
+                    marginBottom: "0px",
+                    zIndex: 1000,
+                  }),
+                  menuList: (base) => ({
+                    ...base,
+                    overflowY: "auto",
+                    maxHeight: "78px",
+                  }),
+                }}
+              />
+            )}
+          />
           {errors.species && (
             <p className={css.error}>{errors.species.message}</p>
           )}
