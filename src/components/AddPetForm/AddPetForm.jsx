@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPets } from "../../redux/user/userOperations";
 import { selectPets } from "../../redux/user/userSelectors";
 import { toast } from "react-toastify";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { uploadToCloudinary } from "../../services/cloudinary.js";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { selectNoticesSpacies } from "../../redux/notices/noticesSelectors.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -38,7 +38,6 @@ const schema = yup.object().shape({
 export default function AddPetForm() {
   const dispatch = useDispatch();
   const pet = useSelector(selectPets);
-  console.log(pet);
   const [isUploading, setIsUploading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -64,12 +63,7 @@ export default function AddPetForm() {
   });
 
   const imgURL = watch("imgURL");
-
-  useEffect(() => {
-    if (pet?.imgURL) {
-      setValue("avatar", pet.imgURL);
-    }
-  }, [pet?.imgURL, setValue]);
+  const navigate = useNavigate();
 
   const handleUploadClick = () => {
     fileInputRef.current?.click();
@@ -93,39 +87,39 @@ export default function AddPetForm() {
 
   const onSubmit = async (data) => {
     try {
-      const formattedData = {
-        ...data,
-        birthday: format(data.birthday, "yyyy-MM-dd"), // форматируем дату
-      };
-      await dispatch(addPets(formattedData)).unwrap();
+      await dispatch(addPets(data)).unwrap();
       toast.success("Pet added successfully");
+      navigate("/profile");
     } catch (error) {
-      toast.error(error || "Failed to add pet");
+      const errorMessage =
+        (error && error.message) ||
+        (typeof error === "string" && error) ||
+        "Failed to add pet";
+
+      toast.error(errorMessage);
     }
   };
 
   const notices = useSelector(selectNoticesSpacies);
-
   const getUniqueValues = (data, key) => {
     return [...new Set(data.flatMap((item) => item[key]))];
   };
-  //   const fullState = useSelector((state) => state);
-  //   console.log(fullState); весь стейт
-
   const uniqueSpecies = useMemo(() => [...new Set(notices)], [notices]);
-  console.log("All notices", notices);
-  console.log("Unique species", uniqueSpecies);
-
-  //   const uniqueSpecies = useMemo(
-  //     () => getUniqueValues(notices, "species"),
-  //     [notices]
-  //   );
 
   const speciesOptions = [
     ...uniqueSpecies.map((s) => ({ value: s, label: s })),
     { value: "parrot", label: "Parrot" },
     { value: "hamster", label: "Hamster" },
     { value: "rabbit", label: "Rabbit" },
+    { value: "snake", label: "Snake" },
+    { value: "turtle", label: "Turtle" },
+    { value: "lizard", label: "Lizard" },
+    { value: "frog", label: "Frog" },
+    { value: "fish", label: "Fish" },
+    { value: "bees", label: "Bees" },
+    { value: "butterfly", label: "Butterfly" },
+    { value: "spider", label: "Spider" },
+    { value: "scorpion", label: "Scorpion" },
     { value: "other", label: "Other" },
   ];
 
@@ -133,11 +127,6 @@ export default function AddPetForm() {
     if (!dateStr) return "";
     const [year, month, day] = dateStr.split("-");
     return `${day}.${month}.${year}`;
-  };
-
-  const defaultValues = {
-    // ...
-    birthday: pet?.birthday ? formatDate(pet.birthday) : "",
   };
 
   return (
@@ -257,8 +246,10 @@ export default function AddPetForm() {
               <DatePicker
                 dateFormat="dd.MM.yyyy"
                 placeholderText="00.00.0000"
-                selected={field.value}
-                onChange={field.onChange}
+                selected={field.value ? new Date(field.value) : null}
+                onChange={(date) =>
+                  field.onChange(date ? format(date, "yyyy-MM-dd") : "")
+                }
                 maxDate={new Date()}
                 showYearDropdown
                 scrollableYearDropdown
@@ -271,11 +262,11 @@ export default function AddPetForm() {
                     <input
                       type="text"
                       value={
-                        field.value instanceof Date
-                          ? format(field.value, "dd.MM.yyyy")
+                        field.value
+                          ? format(new Date(field.value), "dd.MM.yyyy")
                           : ""
                       }
-                      onChange={() => {}} // React-datepicker управляет сам
+                      onChange={() => {}}
                       readOnly
                       placeholder="00.00.0000"
                     />
@@ -297,6 +288,10 @@ export default function AddPetForm() {
             render={({ field }) => (
               <Select
                 {...field}
+                value={speciesOptions.find((opt) => opt.value === field.value)} // шукаємо об'єкт по значенню
+                onChange={(selectedOption) =>
+                  field.onChange(selectedOption.value)
+                } // передаємо лише рядок
                 options={speciesOptions}
                 placeholder="Type of pet"
                 classNamePrefix="custom-select"
