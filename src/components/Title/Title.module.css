@@ -1,0 +1,19 @@
+.title {
+  /* padding-top: 34px; */
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 54px;
+    letter-spacing: -0.04em;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .title {
+  }
+}

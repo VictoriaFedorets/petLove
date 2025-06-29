@@ -1,0 +1,117 @@
+.containerHome {
+  padding: 10px 0;
+}
+
+.homeBg {
+  border-radius: 30px;
+  background: var(--yellow);
+  padding: 18px 20px 50px;
+}
+
+/* .homeBg > :first-child {
+  padding: 0;
+} */
+
+.wrapper {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 96%;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.title span {
+  color: var(--span);
+}
+
+.text {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.pictureBg {
+  border-radius: 30px;
+  width: 100%;
+  height: 402px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: image-set(
+    url("/images/home/mob/women-mob-1x.jpg") 1x,
+    url("/images/home/mob/women-mob-2x.jpg") 2x,
+    url("/images/home/mob/women-mob-3x.jpg") 3x,
+    url("/images/home/mob/women-mob-4x.jpg") 4x
+  );
+}
+
+@media screen and (min-width: 768px) {
+  .containerHome {
+    padding: 16px 0;
+  }
+
+  .homeBg {
+    padding: 16px 32px 44px;
+  }
+
+  .title {
+    font-size: 80px;
+  }
+
+  .text {
+    font-size: 18px;
+    margin-left: 385px;
+  }
+
+  .pictureBg {
+    height: 496px;
+    background-image: image-set(
+      url("/images/home/tab/women-tab-1x.jpg") 1x,
+      url("/images/home/tab/women-tab-2x.jpg") 2x,
+      url("/images/home/tab/women-tab-3x.jpg") 3x,
+      url("/images/home/tab/women-tab-4x.jpg") 4x
+    );
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .homeBg {
+    padding: 16px 64px 32px 64px;
+  }
+
+  .pictureBg {
+    height: 384px;
+    background-image: image-set(
+      url("/images/home/desk/women-desk-1x.jpg") 1x,
+      url("/images/home/desk/women-desk-2x.jpg") 2x,
+      url("/images/home/desk/women-desk-3x.jpg") 3x,
+      url("/images/home/desk/women-desk-4x.jpg") 4x
+    );
+  }
+
+  .title {
+    width: 760px;
+    margin-top: 0;
+  }
+
+  .text {
+    width: 255px;
+    margin-left: 0;
+  }
+
+  .wrapper {
+    flex-direction: row;
+    align-items: end;
+    gap: 73px;
+    margin-top: 112px;
+  }
+}

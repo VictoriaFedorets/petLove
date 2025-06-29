@@ -1,0 +1,10 @@
+.searchWrapper {
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 768px) {
+  .searchWrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+}

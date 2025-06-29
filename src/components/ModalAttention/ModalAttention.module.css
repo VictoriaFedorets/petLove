@@ -1,0 +1,100 @@
+.modalAttention {
+  border-radius: 30px;
+  width: 335px;
+  height: auto;
+  background: #fff;
+  padding: 40px 20px;
+  flex-direction: column;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background: #fff4df;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: #f6b83d;
+  margin-bottom: 20px;
+}
+
+.message {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.btnBlock {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btnBlock button {
+  border-radius: 30px;
+  padding: 12px 48px;
+  width: 135px;
+  height: 42px;
+  border-radius: 30px;
+  padding: 12px 0;
+  /* height: 42px; */
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+}
+
+.btnLogin {
+  background: #f6b83d;
+  color: #fff;
+  width: 135px;
+}
+
+.btnRegistration {
+  color: #f6b83d;
+  background: #fff4df;
+  width: 129px;
+}
+
+.btnLogin:hover,
+.btnLogin:focus {
+}
+
+.btnRegistration:hover,
+.btnRegistration:focus {
+}
+
+@media screen and (min-width: 768px) {
+  .modalAttention {
+    width: 466px;
+    padding: 60px;
+  }
+
+  .title {
+    font-size: 24px;
+    line-height: 117%;
+  }
+
+  .message {
+    margin-bottom: 28px;
+  }
+
+  .btnBlock button {
+    width: 140px;
+    height: 48px;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 14px 0;
+  }
+}

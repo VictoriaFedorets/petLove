@@ -1,0 +1,135 @@
+.burgerIcon {
+  margin-top: 4px;
+  width: 32px;
+  height: 32px;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.backdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menuContent {
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 218px;
+  height: 100%;
+  background: #fff;
+  padding: 28px 20px 40px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  box-sizing: border-box;
+
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+}
+
+.menuContentHome {
+  background: var(--yellow);
+}
+
+.menuOpen {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.menuClosed {
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 28px;
+  right: 20px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.closeIcon {
+  width: 20px;
+  height: 20px;
+  stroke-width: 3px;
+  color: #262626;
+}
+
+.closeIconHome {
+  color: #fff;
+}
+
+.closeBtn:hover svg,
+.closeBtn:focus svg {
+  color: var(--yellow);
+  transform: scale(0.95);
+}
+
+.closeBtn:hover .closeIconHome,
+.closeBtn:focus .closeIconHome {
+  color: #fbe7c1;
+  transform: scale(0.95);
+}
+
+.burgerIconHome {
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .menuContent {
+    width: 374px;
+    padding: 39px 49px 40px 49px;
+  }
+
+  /* .burgerWrapper {
+    width: 374px;
+    height: 1024px;
+  } */
+
+  .burgerIcon {
+    /* margin-top: 7px; */
+    margin-top: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  .closeBtn {
+    top: 39px;
+    right: 32px;
+  }
+
+  .closeIcon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .burgerWrapper {
+    display: none;
+  }
+}

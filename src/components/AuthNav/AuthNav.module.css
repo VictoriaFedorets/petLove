@@ -1,0 +1,85 @@
+.linkWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.loginBtn {
+  border: 1px solid var(--span);
+  border-radius: 30px;
+  padding: 12px 0;
+
+  color: var(--white);
+  background: var(--yellow);
+  transition: all 0.3s ease-in-out;
+}
+
+.loginBtn:hover,
+.loginBtn:focus {
+  background: var(--yellow-hover);
+}
+
+.loginBtnHome:hover,
+.loginBtnHome:focus {
+  color: var(--yellow);
+  background: var(--yellow-light);
+}
+
+.registerBtn {
+  border-radius: 30px;
+  padding: 12px 0;
+  background: var(--yellow-light);
+  color: var(--yellow);
+  transition: all 0.3s ease-in-out;
+}
+
+.registerBtn:hover,
+.registerBtn:focus {
+  background: var(--yellow-dark);
+}
+
+.link {
+}
+
+.linkHome {
+}
+
+@media screen and (min-width: 768px) {
+  .linkWrapper {
+    flex-direction: row;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .loginBtn {
+    padding: 15px 0;
+    width: 119px;
+    height: 50px;
+  }
+
+  .registerBtn {
+    padding: 15px 0;
+    width: 149px;
+    height: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .linkWrapper {
+  }
+
+  .loginBtn {
+    padding: 15px 0;
+  }
+
+  .registerBtn {
+    padding: 15px 0;
+  }
+}

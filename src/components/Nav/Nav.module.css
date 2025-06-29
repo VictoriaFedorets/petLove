@@ -1,0 +1,52 @@
+.headerNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.link {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 30px;
+  padding: 15px 0;
+  text-align: center;
+  width: 119px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
+  transition: all 0.3s ease-in-out;
+}
+
+.linkHome {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.active,
+.link:hover {
+  border-color: #f6b83d;
+}
+
+.activeHome,
+.linkHome:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+  .headerNav {
+    flex-direction: row;
+  }
+
+  .link {
+    padding: 15px 0;
+    font-size: 16px;
+    line-height: 125%;
+  }
+}

@@ -1,0 +1,212 @@
+.modal {
+  width: 335px;
+  height: auto;
+}
+
+.noticeItem {
+  border-radius: 16px;
+  padding: 40px 28px;
+  width: 100%;
+  /* height: 454px; */
+  background: #fff;
+  text-align: center;
+}
+
+.img {
+  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.category {
+  border-radius: 30px;
+  padding: 8px 14px;
+  background: #fff4df;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+  color: #f6b83d;
+
+  position: absolute;
+  top: 40px;
+  left: 106px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  margin-bottom: 10px;
+}
+
+.iconStar {
+  width: 16px;
+  height: 16px;
+  fill: #ffc531;
+  stroke-width: 1.2px;
+  color: #ffc531;
+  margin-bottom: 26px;
+  /* fill: rgba(38, 38, 38, 0.05);
+border: 1.20px solid #f4f4f4;для серой */
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 27px;
+  margin-bottom: 16px;
+}
+
+.descriptionBlock li {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+}
+
+.descriptionBlock li p {
+  font-size: 10px;
+  margin-bottom: 4px;
+  line-height: 140%;
+  color: rgba(38, 38, 38, 0.5);
+}
+
+.comment {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+
+.price {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  margin-bottom: 20px;
+}
+
+.btnBlock {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.03em;
+  color: #fff;
+  border-radius: 30px;
+  padding: 12px auto;
+  width: 135px;
+  height: 44px;
+  background: #f6b83d;
+  transition: all 0.3s ease-in-out;
+}
+
+.btnContact {
+  background: #fff4df;
+  color: #f6b83d;
+}
+
+.btn:hover,
+.btn:focus {
+  background: var(--yellow-hover);
+}
+
+.btnContact:hover,
+.btnContact:focus {
+  background: var(--yellow-dark);
+}
+/* 
+.btnHeart {
+  border-radius: 30px;
+  width: 46px;
+  height: 46px;
+  background: #fff4df;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+} */
+
+.iconHeart {
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  position: relative;
+  top: 2px;
+}
+
+.iconHeartUse {
+  stroke-width: 1.5px;
+  fill: none;
+}
+
+.iconHeartFav {
+  fill: #fff;
+  stroke: #fff;
+}
+
+.iconHeart:hover {
+  fill: #fff;
+}
+
+.iconHeart:active {
+  fill: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    width: 473px;
+  }
+
+  .noticeItem {
+    border-radius: 30px;
+    padding: 40px 71px;
+  }
+
+  .img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 16px;
+  }
+
+  .category {
+    left: 166px;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .iconStar {
+    margin-bottom: 22px;
+  }
+
+  .price {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .btn {
+    font-size: 16px;
+    line-height: 125%;
+    padding: 14px auto;
+    width: 160px;
+    height: 48px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .iconStar {
+    margin-bottom: 20px;
+  }
+}

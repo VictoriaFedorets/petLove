@@ -1,0 +1,36 @@
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.04em;
+  color: var(--black);
+  display: flex;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.logoHome {
+  color: var(--white);
+}
+
+.heartIcon {
+  color: var(--yellow);
+  width: 17px;
+  height: 17px;
+}
+
+.heartIconHome {
+  color: var(--white);
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    font-weight: 700;
+    font-size: 28px;
+  }
+
+  .heartIcon {
+    width: 23px;
+    height: 23px;
+  }
+}

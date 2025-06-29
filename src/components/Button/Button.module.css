@@ -1,0 +1,37 @@
+.button {
+  border-radius: 30px;
+  padding: 12px 0 12px;
+  width: 100%;
+  background: var(--yellow);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: background-color 250ms;
+}
+
+.button:hover,
+.button:focus {
+  background: var(--yellow-hover);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  fill: var(--white);
+  margin-left: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    padding: 16px 0;
+    font-size: 16px;
+  }
+}

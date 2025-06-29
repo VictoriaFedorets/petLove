@@ -1,0 +1,97 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 11px;
+  margin-bottom: 88px;
+  flex-wrap: wrap;
+}
+
+.arrowBlock {
+  display: flex;
+  gap: 6px;
+}
+
+.numberBlock {
+  display: flex;
+  gap: 10px;
+}
+
+.icon {
+  fill: var(--black);
+  width: 20px;
+  height: 20px;
+}
+
+.page,
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  border: 1px solid var(--border-2);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.page {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--black);
+}
+
+.arrowLeft {
+  /* padding: 0 7px 0 13px; */
+  /* padding-right: 7px;
+  padding-left: 13px; */
+}
+
+/* зміна фону при наведенні, якщо кнопка-сторінка не активна. */
+.page:hover:not(.active),
+.arrow:hover:not(:disabled) {
+  background-color: var(--yellow-hover);
+}
+
+.page.active {
+  background-color: var(--yellow);
+  border-color: var(--yellow);
+  color: var(--white);
+}
+
+.arrow:disabled {
+  border-color: var(--placeholder);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media screen and (min-width: 768px) {
+  .pagination {
+    gap: 24px;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+  }
+
+  .arrowBlock {
+    gap: 8px;
+  }
+
+  .icon {
+    fill: var(--black);
+    width: 24px;
+    height: 24px;
+  }
+
+  .page {
+    font-size: 18px;
+    line-height: 122%;
+  }
+
+  .page,
+  .arrow {
+    width: 44px;
+    height: 44px;
+  }
+}

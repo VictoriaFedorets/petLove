@@ -1,0 +1,414 @@
+.wrapperAddPet {
+  margin-top: 10px;
+  padding: 28px 20px 20px;
+  border-radius: 30px;
+  width: 335px;
+  height: auto;
+  background: #fff;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+}
+
+.titleDet {
+  margin-left: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(43, 43, 42, 0.4);
+}
+
+.svgBlock {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.svgBlock svg {
+  width: 32px;
+  height: 32px;
+  border-radius: 30px;
+  padding: 6px;
+  stroke-width: 1.5px;
+}
+
+.iconFemale {
+  color: #f43f5e;
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.radioInput:checked + .iconFemale {
+  color: #fff;
+  background: #f43f5e;
+}
+
+.iconMale {
+  background: rgba(84, 173, 255, 0.1);
+  color: #54adff;
+}
+.radioInput:checked + .iconMale {
+  color: #fff;
+  background: #54adff;
+}
+
+.iconMultiple {
+  background: #fff4df;
+  fill: #f6b83d;
+}
+
+.radioInput:checked + .iconMultiple {
+  fill: #fff;
+  background: #f6b83d;
+}
+
+.radioInput {
+  display: none; /* ховаємо нативне радіо */
+}
+
+.svgBlock label {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.blockPhoto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.iconUserPhoto {
+  border-radius: 100px;
+  padding: 17px;
+  width: 68px;
+  height: 68px;
+  background: #fff4df;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userPhoto {
+  border-radius: 100px;
+  width: 68px;
+  height: 68px;
+  margin: auto;
+}
+
+.avatarBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 133%;
+  letter-spacing: -0.02em;
+}
+
+.input {
+  /* border: 1px solid #f6b83d; */
+  border-radius: 30px;
+  padding: 13px 13px 13px 12px;
+  width: 100%;
+  height: 42px;
+  margin-bottom: 10px;
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inputUrl {
+  padding: 10px 20px 10px 10px;
+  width: 170px;
+  height: 36px;
+}
+
+/* .upload {
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+
+.btnUpload {
+  border-radius: 30px;
+  padding: 10px;
+  width: 117px;
+  height: 36px;
+  background: #fff4df;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.iconUpload {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1px;
+  color: #f6b83d;
+  stroke: #f6b83d;
+}
+
+.error {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+  margin-left: 12px;
+  margin-top: -6px;
+}
+
+.blockDateType {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  height: 42px;
+}
+
+.blockDateType > * {
+  flex: 1;
+  min-width: 0;
+}
+/* .inputDate {
+  width: 144px;
+} */
+
+.date {
+  flex: 1;
+  padding-right: 30px;
+  border: none;
+}
+
+.btn {
+  width: 100px;
+  border-radius: 30px;
+  padding: 12px 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+}
+
+.btnBlock {
+  margin-top: 31px;
+  display: flex;
+  justify-content: end;
+  gap: 8px;
+}
+
+.btnBack {
+  background: rgba(38, 38, 38, 0.05);
+}
+
+.btnSave {
+  color: #fff;
+  background: #f6b83d;
+}
+
+.custom-select__value-container {
+  border-radius: 30px;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+/* Випадаючий список */
+.custom-select__menu {
+  max-height: 78px;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid rgba(38, 38, 38, 0.15);
+  border-radius: 15px;
+  width: 143px;
+  height: 78px;
+}
+
+/* Елемент списку */
+.custom-select__option {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Наведення */
+.custom-select__option--is-focused {
+  background-color: #f0f0f0;
+}
+
+/* Активний вибраний */
+.custom-select__option--is-selected {
+  background-color: #e0e0e0;
+}
+
+/* Контейнер зі стрілкою */
+.custom-select__indicators {
+  padding-right: 12px;
+}
+
+/* Стрілка */
+.custom-select__dropdown-indicator {
+  transition: transform 0.3s ease;
+}
+
+.input.upload {
+  appearance: none;
+  padding-right: 32px;
+  /* position: relative;
+  display: flex;
+  align-items: center; */
+}
+
+.arrowIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  transition: transform 0.3s ease;
+  pointer-events: none;
+  fill: currentColor;
+}
+
+/* коли select відкритий — перевертаємо стрілку */
+.input.open + .arrowIcon {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.iconCalendar {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapperAddPet {
+    width: 100%;
+    padding: 40px 132px;
+    border-radius: 60px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .titleDet {
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .svgBlock {
+    margin-top: 40px;
+    margin-bottom: -22px;
+  }
+
+  .svgBlock svg {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .blockPhoto {
+    margin-bottom: 12px;
+  }
+
+  .btn {
+    width: 170px;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 14px 0;
+  }
+
+  .iconUserPhoto {
+    padding: 21px;
+    width: 86px;
+    height: 86px;
+  }
+
+  .userPhoto {
+    width: 86px;
+    height: 86px;
+  }
+
+  .input {
+    font-size: 16px;
+    line-height: 125%;
+    padding: 16px;
+  }
+
+  .input {
+    margin-bottom: 18px;
+    padding: 16px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .inputUrl {
+    padding: 12px 20px 12px 12px;
+    height: 42px;
+    width: 278px;
+    font-size: 14px;
+    line-height: 129%;
+  }
+
+  .btnUpload {
+    padding: 12px;
+    width: 146px;
+    height: 42px;
+    gap: 8px;
+  }
+
+  .iconUpload {
+    width: 18px;
+    height: 18px;
+    stroke-width: 1.3px;
+  }
+
+  .blockDateType {
+    height: 52px;
+  }
+
+  .btnBlock {
+    margin-top: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapperAddPet {
+    width: 592px;
+    padding: 60px 80px;
+    margin-top: 0;
+  }
+
+  .svgBlock {
+    margin-bottom: -16px;
+  }
+
+  .avatarBlock {
+    flex-wrap: nowrap;
+  }
+
+  .input {
+  }
+}
