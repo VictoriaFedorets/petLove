@@ -4,13 +4,13 @@
   position: relative;
   background-color: var(--yellow);
   border-radius: 30px;
-  overflow: hidden;
+  /* overflow: hidden; */
 
   background-image: url("../../../public/icons/bg-form-mob.svg");
   background-repeat: no-repeat;
 
-  background-position: bottom left 18px;
-  background-size: 313px 176px;
+  background-position: bottom right 2px;
+  background-size: 313px 243px;
 
   margin: 0 auto;
 }
@@ -42,13 +42,20 @@
   .background {
     background-image: url("../../../public/icons/bg-form-tabl.svg");
     width: 704px;
-    height: 248px;
+    height: 302px;
     border-radius: 60px;
     background-position: bottom left 120px;
-    background-size: 531px 208px;
+    background-size: 531px 249px;
+  }
+
+  .backgroundAddPet {
+    height: 248px;
   }
 
   .image {
+    width: 364px;
+    height: 302px;
+    margin-left: 90px;
   }
 
   .imageAddPet {
@@ -63,11 +70,22 @@
     background-image: url("../../../public/icons/bg-form-desk.svg");
     width: 592px;
     height: 654px;
-    background-position: bottom center;
-    background-size: 531px 601px;
+    background-position: bottom left 26px;
+    background-size: 511px 601px;
+  }
+
+  .backgroundAddPet {
   }
 
   .image {
+    width: 512px;
+    height: 660px;
+    margin-left: 0;
+  }
+
+  .imageRegister {
+    width: 536px;
+    height: 632px;
   }
 
   .imageAddPet {

@@ -46,7 +46,10 @@
 
   .headerContainer {
     max-width: 1280px;
-    /* padding: 32px; */
+  }
+
+  .registerHeader {
+    padding: 32px;
   }
 
   .homeHeader {

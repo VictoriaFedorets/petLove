@@ -1,0 +1,80 @@
+.card {
+  display: none;
+}
+
+@media screen and (min-width: 786px) {
+  .card {
+    position: absolute;
+    top: 149px;
+    left: 32px;
+
+    display: flex;
+    gap: 8px;
+    background-color: white;
+    padding: 16px 16px 18px 16px;
+    border-radius: 20px;
+    width: 294px;
+  }
+
+  .wrapperIcon {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background-color: #fff4df;
+    padding: 12px 14px 16px 14px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .info {
+    flex: 1;
+    margin-top: 3px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.03em;
+    color: #f6b83d;
+  }
+
+  .birthday {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    margin-left: 4px;
+    color: #262626;
+  }
+
+  .birthday b {
+    color: rgba(38, 38, 38, 0.5);
+  }
+
+  .text {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: rgba(38, 38, 38, 0.8);
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .card {
+    top: auto;
+    left: 61px;
+    bottom: 97px;
+  }
+}
