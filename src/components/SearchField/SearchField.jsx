@@ -1,32 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState, useMemo } from "react";
+import { useFormikContext } from "formik";
+import debounce from "lodash.debounce";
 import css from "./SearchField.module.css";
 
-export default function SearchField({ onSearch }) {
-  const [query, setQuery] = useState("");
+export default function SearchField({ name, placeholder = "Search", icon }) {
+  const { setFieldValue, values } = useFormikContext();
+  const [localValue, setLocalValue] = useState(values[name] || "");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (query.trim()) {
-      onSearch(query.trim());
-    }
+  // Дебаунс для оновлення Formik тільки через 2 секунди
+  const debouncedSetFormikValue = useMemo(
+    () =>
+      debounce((value) => {
+        setFieldValue(name, value);
+      }, 2000),
+    [setFieldValue, name]
+  );
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setLocalValue(value); // локальне оновлення поля
+    debouncedSetFormikValue(value); // затримка перед оновленням Formik
   };
 
   const handleClear = () => {
-    setQuery("");
-    onSearch("");
+    setLocalValue("");
+    debouncedSetFormikValue.cancel(); // скасування затриманого оновлення
+    setFieldValue(name, ""); // одразу очищаємо у Formik
   };
 
+  useEffect(() => {
+    return () => {
+      debouncedSetFormikValue.cancel(); // очищення debounce при unmount
+    };
+  }, [debouncedSetFormikValue]);
+
   return (
-    <form className={css.searchWrapper} onSubmit={handleSubmit}>
+    <div className={css.searchWrapper}>
       <input
         className={css.inputSearch}
         type="text"
-        placeholder="Search"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        placeholder={placeholder}
+        value={localValue}
+        onChange={handleChange}
       />
 
-      {query ? (
+      {localValue ? (
         <button
           type="button"
           className={css.clearBtn}
@@ -41,9 +59,9 @@ export default function SearchField({ onSearch }) {
 
       <button type="submit" className={css.searchBtn} aria-label="Search">
         <svg className={css.searchIcon}>
-          <use href="#icon-search" />
+          <use href={`#icon-${icon}`} />
         </svg>
       </button>
-    </form>
+    </div>
   );
 }

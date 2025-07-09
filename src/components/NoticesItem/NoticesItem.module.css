@@ -137,14 +137,15 @@
   width: 18px;
   height: 16px;
   color: #f6b83d;
+  transition: color 0.3s ease;
 }
 
-.iconHeart:hover {
+.iconHeartActive {
   color: var(--yellow-hover);
 }
 
-.iconHeart:active {
-  color: #f6b83d;
+.btnHeart:hover .iconHeart {
+  color: var(--yellow-hover);
 }
 
 @media screen and (min-width: 768px) {

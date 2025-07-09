@@ -1,9 +1,19 @@
 import { useState } from "react";
 import ModalNotice from "../ModalNotice/ModalNotice";
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from "../../redux/favorites/favoritesOperations";
+import {
+  selectFavorites,
+  selectFavoritesLoading,
+} from "../../redux/favorites/favoritesSelectors";
 import css from "./NoticesItem.module.css";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function NoticesItem({ notices }) {
   const {
+    _id,
     imgURL,
     title,
     popularity,
@@ -17,10 +27,26 @@ export default function NoticesItem({ notices }) {
   } = notices;
   //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
 
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+  // console.log("favorites", favorites);
+  const isLoading = useSelector(selectFavoritesLoading);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   // console.log(notices);
+
+  const isFavorite = favorites.includes(_id);
+  const handleToggleFavorite = () => {
+    if (isLoading) return;
+
+    if (isFavorite) {
+      dispatch(removeFromFavorites(_id));
+    } else {
+      dispatch(addToFavorites(_id));
+    }
+  };
 
   return (
     <li className={css.newsItem}>
@@ -50,7 +76,7 @@ export default function NoticesItem({ notices }) {
         </li>
         <li>
           <p>Birthday</p>
-          {birthday}
+          {birthday ? birthday : "unknown"}
         </li>
         <li>
           <p>Sex</p>
@@ -78,9 +104,21 @@ export default function NoticesItem({ notices }) {
           {isModalOpen && (
             <ModalNotice onClose={toggleModal} notices={notices} />
           )}
-          <button className={css.btnHeart}>
-            <svg className={css.iconHeart}>
-              <use href="#icon-heart"></use>
+
+          <button
+            className={css.btnHeart}
+            onClick={handleToggleFavorite}
+            aria-pressed={isFavorite}
+            type="button"
+          >
+            <svg
+              className={`${css.iconHeart} ${
+                isFavorite ? css.iconHeartActive : ""
+              }`}
+            >
+              <use
+                href={isFavorite ? "#icon-heart" : "#icon-heart-outline"}
+              ></use>
             </svg>
           </button>
         </div>

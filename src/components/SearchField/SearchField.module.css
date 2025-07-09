@@ -1,30 +1,28 @@
 .searchWrapper {
   position: relative;
   width: 100%;
-  height: 42px;
-  margin-top: 20px;
-  margin-bottom: 24px;
 }
 
 .inputSearch {
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  height: 42px;
+  border: none;
   border-radius: 30px;
   width: 100%;
-  padding: 12px 50px 12px 12px;
+  padding: 12px 30px 12px 12px;
 
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 125%;
-  letter-spacing: -0.03em;
-  color: #262626;
-}
-
-.inputSearch ::placeholder {
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: rgba(38, 38, 38, 0.5);
+  color: #262626;
+}
+
+.inputSearch::placeholder {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: #262626;
 }
 
 .clearBtn,

@@ -43,13 +43,23 @@
   margin-bottom: 10px;
 }
 
+.popularity {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  margin-bottom: 24px;
+}
+
 .iconStar {
   width: 16px;
   height: 16px;
   fill: #ffc531;
   stroke-width: 1.2px;
   color: #ffc531;
-  margin-bottom: 26px;
+  margin-right: 4px;
+  position: relative;
+  top: 2px;
+
   /* fill: rgba(38, 38, 38, 0.05);
 border: 1.20px solid #f4f4f4;для серой */
 }
@@ -103,11 +113,13 @@ border: 1.20px solid #f4f4f4;для серой */
   letter-spacing: -0.03em;
   color: #fff;
   border-radius: 30px;
-  padding: 12px auto;
   width: 135px;
   height: 44px;
   background: #f6b83d;
   transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btnContact {
@@ -135,29 +147,14 @@ border: 1.20px solid #f4f4f4;для серой */
 } */
 
 .iconHeart {
+  margin-left: 8px;
   width: 18px;
   height: 18px;
-  margin-left: 8px;
-  position: relative;
-  top: 2px;
+  transition: color 0.3s ease;
 }
 
-.iconHeartUse {
-  stroke-width: 1.5px;
-  fill: none;
-}
-
-.iconHeartFav {
-  fill: #fff;
-  stroke: #fff;
-}
-
-.iconHeart:hover {
-  fill: #fff;
-}
-
-.iconHeart:active {
-  fill: #fff;
+.iconHeartActive {
+  color: #fff4df;
 }
 
 @media screen and (min-width: 768px) {
@@ -187,7 +184,8 @@ border: 1.20px solid #f4f4f4;для серой */
     line-height: 133%;
   }
 
-  .iconStar {
+  .popularity {
+    line-height: 143%;
     margin-bottom: 22px;
   }
 
@@ -199,14 +197,13 @@ border: 1.20px solid #f4f4f4;для серой */
   .btn {
     font-size: 16px;
     line-height: 125%;
-    padding: 14px auto;
     width: 160px;
     height: 48px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .iconStar {
+  .popularity {
     margin-bottom: 20px;
   }
 }

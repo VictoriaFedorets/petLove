@@ -35,8 +35,8 @@ export default function ModalNotice({ onClose, notices }) {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isAttentionOpen, setIsAttentionOpen] = useState(false);
   const favorites = useSelector(selectFavorites);
-  const isFavorite = favorites.some((item) => item._id === notices._id);
-  console.log("isFavorite:", isFavorite);
+
+  const isFavorite = favorites.includes(_id);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -73,7 +73,7 @@ export default function ModalNotice({ onClose, notices }) {
       />
     );
   }
-  console.log("isFavorite:", isFavorite);
+
   return (
     <>
       <BaseModal onClose={onClose} className={css.modal}>
@@ -81,9 +81,23 @@ export default function ModalNotice({ onClose, notices }) {
           <img className={css.img} src={imgURL} alt={title} />
           <p className={css.category}>{category}</p>
           <h2 className={css.title}>{title}</h2>
-          <svg className={css.iconStar}>
-            <use href="#icon-star"></use>
-          </svg>
+          <p className={css.popularity}>
+            {[...Array(5)].map((_, index) => (
+              <svg
+                key={index}
+                className={css.iconStar}
+                style={{
+                  fill:
+                    index < Math.min(Math.floor(popularity), 5)
+                      ? "#ffc107"
+                      : "#d3d3d3",
+                }}
+              >
+                <use href="#icon-star" />
+              </svg>
+            ))}
+            <span className={css.popularity}>{popularity}</span>
+          </p>
 
           <ul className={css.descriptionBlock}>
             <li>
@@ -109,16 +123,13 @@ export default function ModalNotice({ onClose, notices }) {
 
           <div className={css.btnBlock}>
             <button className={css.btn} onClick={handleAddToClick}>
-              Add to{" "}
+              {isFavorite ? "Remove from" : "Add to"}
               <svg
-                className={clsx(css.iconHeart, isFavorite && css.iconHeartFav)}
+                className={`${css.iconHeart} ${
+                  isFavorite && css.iconHeartActive
+                }`}
               >
-                <use
-                  className={css.iconHeartUse}
-                  href="#icon-heart"
-                  fill="none"
-                  stroke="#fff"
-                ></use>
+                <use href={`#icon-heart${isFavorite ? "" : "-outline"}`} />
               </svg>
             </button>
 

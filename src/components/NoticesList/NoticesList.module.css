@@ -6,6 +6,13 @@
   margin-bottom: 44px;
 }
 
+.noResults {
+  margin-top: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+}
+
 @media screen and (min-width: 768px) {
   .noticesList {
     flex-wrap: wrap;

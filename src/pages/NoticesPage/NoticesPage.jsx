@@ -1,5 +1,5 @@
 import Title from "../../components/Title/Title";
-// import NoticesFilters from "../../components/NoticesFilters/NoticesFilters.jsx";
+import NoticesFilters from "../../components/NoticesFilters/NoticesFilters.jsx";
 import NoticesList from "../../components/NoticesList/NoticesList.jsx";
 import Paginaton from "../../components/Pagination/Pagination.jsx";
 import css from "./NoticesPage.module.css";
@@ -28,7 +28,7 @@ export default function NoticesPage() {
   return (
     <div className={css.wrapper}>
       <Title>Find your favorite pet</Title>
-      {/* <NoticesFilters /> */}
+      <NoticesFilters />
       <NoticesList />
       <Paginaton
         currentPage={currentPage}

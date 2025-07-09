@@ -9,3 +9,9 @@ export const selectNoticesTotalPages = (state) => state.notices.totalPages;
 export const selectNoticesSpacies = createSelector([selectNotices], (notices) =>
   notices.map((n) => n.species)
 );
+
+export const selectNoticesCategories = (state) => state.notices.categories;
+export const selectNoticesGenders = (state) => state.notices.genders;
+export const selectNoticesSpecies = (state) => state.notices.species;
+export const selectCities = (state) => state.notices.cities;
+export const selectLocations = (state) => state.notices.locations;

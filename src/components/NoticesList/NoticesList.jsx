@@ -1,15 +1,22 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import css from "./NoticesList.module.css";
 import {
   selectNotices,
   selectNoticesIsLoading,
 } from "../../redux/notices/noticesSelectors";
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
+import { useEffect } from "react";
+import { fetchFavorites } from "../../redux/favorites/favoritesOperations.js";
 
 export default function NoticesList() {
   const noticesList = useSelector(selectNotices);
   // console.log(selectNotices);
   const isLoading = useSelector(selectNoticesIsLoading);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchFavorites());
+  }, [dispatch]);
 
   if (isLoading) {
     return <p className={css.loading}>Loading...</p>; // або спінер
