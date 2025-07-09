@@ -12,7 +12,7 @@ export default function LoginPage() {
         srcDesk="/icons/bg-log-dog-desk.svg"
       />
       <PetInfoCard
-        petIcon="../../../public/icons/dog.png"
+        petIcon="../../../icons/dog.png"
         name="Rich"
         birthday="21.09.2020"
         description="Rich would be the perfect addition to an active family that loves to play and go on walks. I bet he would love having a doggy playmate too!"

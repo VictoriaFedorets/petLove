@@ -13,7 +13,7 @@ export default function RegistrationPage() {
       />
       <div className={css.petInfoWrapper}>
         <PetInfoCard
-          petIcon="../../../public/icons/cat.png"
+          petIcon="../../../icons/cat.png"
           name="Jack"
           birthday="18.10.2021"
           description="Jack is a gray Persian cat with green eyes. He loves to be pampered and groomed, and enjoys playing with toys."
