@@ -17,6 +17,7 @@ import {
   getNoticesSpecies,
 } from "../../redux/notices/noticesOperations";
 import AsyncSelect from "react-select/async";
+import CustomSelect from "../CustomComponents/CustomSelect";
 import { CustomClearIndicator } from "../CustomComponents/CustomClearIndicator";
 import { CustomOption } from "../CustomComponents/CustomOption"; // твой кастомный Option
 import { components } from "react-select";
@@ -104,41 +105,16 @@ export default function NoticesFilters() {
 
           <div className={css.selectRow}>
             <label className={css.inputWrapper}>
-              <Field
-                as="select"
+              <CustomSelect
                 name="category"
-                className={clsx(css.search, css.twistField)}
-              >
-                <option value="">Category</option>
-                <option value="all">Show all</option>
-                {categories?.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </Field>
-              <svg className={css.icons}>
-                <use href="#icon-chevron-down"></use>
-              </svg>
-            </label>
-
-            <label className={css.inputWrapper}>
-              <Field
-                as="select"
+                options={categories}
+                placeholder="Category"
+              />
+              <CustomSelect
                 name="sex"
-                className={clsx(css.search, css.twistField)}
-              >
-                <option value="">By gender</option>
-                <option value="all">Show all</option>
-                {genders?.map((gender) => (
-                  <option key={gender} value={gender}>
-                    {gender}
-                  </option>
-                ))}
-              </Field>
-              <svg className={css.icons}>
-                <use href="#icon-chevron-down"></use>
-              </svg>
+                options={genders}
+                placeholder="By gender"
+              />
             </label>
           </div>
 

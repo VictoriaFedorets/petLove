@@ -51,6 +51,15 @@
   color: #262626;
 }
 
+/* .search option {
+  background: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+  color: rgba(38, 38, 38, 0.6);
+} */
+
 .icons {
   position: absolute;
   right: 12px;

@@ -11,8 +11,11 @@ export default function BaseModal({ onClose, children, className = "" }) {
     };
 
     document.addEventListener("keydown", handleEsc);
+    document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
     };
   }, [onClose]);
 
@@ -21,6 +24,9 @@ export default function BaseModal({ onClose, children, className = "" }) {
       onClose();
     }
   };
+
+  const modalRoot = document.getElementById("modal-root");
+  if (!modalRoot) return null;
 
   return ReactDOM.createPortal(
     <div className={css.backdrop} onClick={handleBackdropClick}>
@@ -33,6 +39,6 @@ export default function BaseModal({ onClose, children, className = "" }) {
         {children}
       </div>
     </div>,
-    document.getElementById("modal-root")
+    modalRoot
   );
 }
