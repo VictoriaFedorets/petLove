@@ -12,4 +12,9 @@ export const setAuthToken = (token) => {
   }
 };
 
+const tokenFromLS = localStorage.getItem("token");
+if (tokenFromLS) {
+  setAuthToken(tokenFromLS);
+}
+
 export default instance;

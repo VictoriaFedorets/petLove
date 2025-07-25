@@ -40,14 +40,16 @@ export default function MyNotices() {
 
       return (
         <ul className={css.list}>
-          {favorites.map((notice) => (
-            <NoticesItem
-              key={notice._id}
-              notices={notice}
-              isFavorite={true}
-              onDelete={() => handleRemove(notice._id)}
-            />
-          ))}
+          {favorites.map((notice) =>
+            notice?._id ? (
+              <NoticesItem
+                key={notice._id}
+                notice={notice}
+                isFavorite={true}
+                onDelete={() => handleRemove(notice._id)}
+              />
+            ) : null
+          )}
         </ul>
       );
     }

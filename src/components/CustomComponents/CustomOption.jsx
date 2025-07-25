@@ -1,5 +1,3 @@
-import { components } from "react-select";
-
 export const CustomOption = (props) => {
   const {
     data,

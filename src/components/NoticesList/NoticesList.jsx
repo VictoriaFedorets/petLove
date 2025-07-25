@@ -10,7 +10,6 @@ import { fetchFavorites } from "../../redux/favorites/favoritesOperations.js";
 
 export default function NoticesList() {
   const noticesList = useSelector(selectNotices);
-  // console.log(selectNotices);
   const isLoading = useSelector(selectNoticesIsLoading);
   const dispatch = useDispatch();
 
@@ -19,7 +18,7 @@ export default function NoticesList() {
   }, [dispatch]);
 
   if (isLoading) {
-    return <p className={css.loading}>Loading...</p>; // або спінер
+    return <p className={css.loading}>Loading...</p>;
   }
 
   if (noticesList.length === 0) {
@@ -28,9 +27,9 @@ export default function NoticesList() {
 
   return (
     <ul className={css.noticesList}>
-      {noticesList.map((notices) => (
-        <NoticesItem key={notices._id} notices={notices} />
-      ))}
+      {noticesList.map(
+        (notice) => notice && <NoticesItem key={notice._id} notice={notice} />
+      )}
     </ul>
   );
 }

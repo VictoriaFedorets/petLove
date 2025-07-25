@@ -17,7 +17,7 @@ import { fetchFavorites } from "../../redux/favorites/favoritesOperations";
 
 import { toast } from "react-toastify";
 
-export default function ModalNotice({ onClose, notices }) {
+export default function ModalNotice({ onClose, notice }) {
   const {
     _id,
     imgURL,
@@ -30,7 +30,7 @@ export default function ModalNotice({ onClose, notices }) {
     category,
     comment,
     price,
-  } = notices;
+  } = notice;
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
   const [isAttentionOpen, setIsAttentionOpen] = useState(false);

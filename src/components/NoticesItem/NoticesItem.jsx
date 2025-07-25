@@ -11,7 +11,17 @@ import {
 import css from "./NoticesItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function NoticesItem({ notices }) {
+export default function NoticesItem({ notice }) {
+  //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
+
+  const dispatch = useDispatch();
+  const favorites = useSelector(selectFavorites);
+  // console.log("favorites", favorites);
+  const isLoading = useSelector(selectFavoritesLoading);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  if (!notice) return null;
+
   const {
     _id,
     imgURL,
@@ -24,18 +34,10 @@ export default function NoticesItem({ notices }) {
     category,
     comment,
     price,
-  } = notices;
-  //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
-
-  const dispatch = useDispatch();
-  const favorites = useSelector(selectFavorites);
-  // console.log("favorites", favorites);
-  const isLoading = useSelector(selectFavoritesLoading);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  } = notice;
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
-  // console.log(notices);
+  // console.log(notice);
 
   const isFavorite = favorites.includes(_id);
   const handleToggleFavorite = () => {
@@ -101,9 +103,7 @@ export default function NoticesItem({ notices }) {
           <button className={css.btn} onClick={toggleModal}>
             Learn more
           </button>
-          {isModalOpen && (
-            <ModalNotice onClose={toggleModal} notices={notices} />
-          )}
+          {isModalOpen && <ModalNotice onClose={toggleModal} notice={notice} />}
 
           <button
             className={css.btnHeart}

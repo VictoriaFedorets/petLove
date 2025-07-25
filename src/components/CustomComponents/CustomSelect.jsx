@@ -1,19 +1,29 @@
 import Select from "react-select";
 import { useField, useFormikContext } from "formik";
 
-export default function CustomSelect({ name, options, placeholder }) {
+export function CustomSelect({ name, options, placeholder }) {
   const { setFieldValue } = useFormikContext();
   const [field] = useField(name);
 
   const formattedOptions = [
     { value: "all", label: "Show all", isAlwaysYellow: true },
-    ...options.map((value) => ({
-      value,
-      label: value,
-    })),
+    ...options.map((opt) => {
+      const val =
+        typeof opt === "string" ? opt.toLowerCase() : opt.value.toLowerCase();
+      const label =
+        typeof opt === "string"
+          ? opt.charAt(0).toUpperCase() + opt.slice(1)
+          : opt.label.charAt(0).toUpperCase() + opt.label.slice(1);
+      return { value: val, label };
+    }),
   ];
 
   const customStyles = {
+    container: (provided) => ({
+      ...provided,
+      width: "100%",
+    }),
+
     control: (provided) => ({
       ...provided,
       width: "100%",
@@ -30,32 +40,27 @@ export default function CustomSelect({ name, options, placeholder }) {
       letterSpacing: "-0.03em",
       color: "#262626",
       boxShadow: "none",
+      position: "relative",
     }),
     menu: (provided) => ({
       ...provided,
       borderRadius: "15px",
-      width: "295px",
-      height: "216px",
+      width: "100%",
+      maxHeight: "216px",
       background: "#fff",
       fontWeight: 500,
       fontSize: "14px",
       lineHeight: "129%",
       letterSpacing: "-0.03em",
-      //   color: "rgba(38, 38, 38, 0.6)",
+      marginTop: "4px",
       zIndex: 100,
     }),
-    placeholder: (provided) => ({
-      ...provided,
-      fontWeight: "500",
-      fontSize: "14px",
-      lineHeight: "129%",
-      letterSpacing: "-0.03em",
-      color: "#262626",
-    }),
-
     menuList: (provided) => ({
       ...provided,
       padding: "12px",
+      display: "flex",
+      flexDirection: "column",
+      gap: "8px",
     }),
     option: (provided, state) => {
       const baseStyle = {
@@ -63,6 +68,9 @@ export default function CustomSelect({ name, options, placeholder }) {
         cursor: "pointer",
         backgroundColor: state.isFocused ? "#fff4df" : "#fff",
         color: "#262626",
+        padding: "0px",
+        borderRadius: "8px",
+        transition: "background-color 0.2s ease",
       };
 
       if (state.data.isAlwaysYellow) {
@@ -74,6 +82,15 @@ export default function CustomSelect({ name, options, placeholder }) {
 
       return baseStyle;
     },
+    placeholder: (provided) => ({
+      ...provided,
+      fontWeight: "500",
+      fontSize: "14px",
+      lineHeight: "129%",
+      letterSpacing: "-0.03em",
+      color: "#262626",
+    }),
+
     singleValue: (provided) => ({
       ...provided,
       color: "#262626",
@@ -86,7 +103,15 @@ export default function CustomSelect({ name, options, placeholder }) {
     indicatorSeparator: () => null,
     dropdownIndicator: (provided) => ({
       ...provided,
-      padding: "4px",
+      padding: "0",
+      position: "absolute",
+      top: "50%",
+      transform: "translateY(-50%)",
+      cursor: "pointer",
+      pointerEvents: "none",
+      color: "#262626",
+      width: "18px",
+      height: "18px",
     }),
   };
 
@@ -94,6 +119,7 @@ export default function CustomSelect({ name, options, placeholder }) {
     <Select
       name={name}
       options={formattedOptions}
+      components={{ ClearIndicator: null }}
       placeholder={placeholder}
       styles={customStyles}
       value={formattedOptions.find((opt) => opt.value === field.value)}
