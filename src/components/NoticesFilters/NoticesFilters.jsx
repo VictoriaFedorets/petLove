@@ -1,5 +1,4 @@
 import css from "./NoticesFilters.module.css";
-import { Formik, Form, Field, useFormikContext } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectLocations,
@@ -19,7 +18,9 @@ import SearchField from "../SearchField/SearchField";
 import { CustomSelect } from "../CustomComponents/CustomSelect";
 import { loadCitiesOptions } from "../CustomComponents/LoadCitiesOptions";
 import { AsyncLocationSelect } from "../CustomComponents/AsyncLocationSelect";
-import { selectNotices } from "../../redux/notices/noticesSelectors";
+import { useForm, Controller } from "react-hook-form";
+import { AutoSubmit } from "../CustomComponents/AutoSubmit";
+import { setFilters, setNoticesPage } from "../../redux/notices/noticesSlice";
 
 export default function NoticesFilters() {
   const dispatch = useDispatch();
@@ -27,11 +28,21 @@ export default function NoticesFilters() {
   const genders = useSelector(selectNoticesGenders);
   const species = useSelector(selectNoticesSpecies);
   const locations = useSelector(selectLocations);
-  const notices = useSelector(selectNotices);
-  console.log(notices);
+  const { filters, page, perPage } = useSelector((state) => state.notices);
 
   const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
+
+  const { control, register, reset } = useForm({
+    defaultValues: {
+      title: "",
+      category: "",
+      sex: "",
+      species: "",
+      location: "",
+      sort: "",
+    },
+  });
 
   useEffect(() => {
     dispatch(getNoticesCategories());
@@ -51,93 +62,91 @@ export default function NoticesFilters() {
 
   const loadOptions = loadCitiesOptions(dispatch, selectedRegion);
 
-  const AutoSubmit = () => {
-    const { values } = useFormikContext();
-
-    const mappedValues = {
-      ...(values.title && { keyword: values.title }),
-      ...(values.category &&
-        values.category !== "all" && { category: values.category }),
-      ...(values.sex && values.sex !== "all" && { sex: values.sex }),
-      ...(values.species &&
-        values.species !== "all" && { species: values.species }),
-      ...(values.location && { locationId: values.location }),
-      ...(values.sort && { sort: values.sort }),
-    };
-
-    useEffect(() => {
-      dispatch(getNotices(mappedValues));
-    }, [values, dispatch]);
-
-    return null;
+  const handlePageChange = (newPage) => {
+    dispatch(setNoticesPage(newPage));
+    // dispatch(getNotices({ ...filters, page: newPage, perPage }));
   };
 
   return (
-    <Formik
-      initialValues={{
-        title: "",
-        category: "",
-        sex: "",
-        species: "",
-        location: "",
-        sort: "",
-      }}
-      onSubmit={() => {}}
-    >
-      {({ setFieldValue, resetForm }) => (
-        <Form className={css.filter}>
-          <AutoSubmit />
-          <SearchField name="title" placeholder="Search" icon="search" />
+    <form className={css.filter}>
+      <SearchField
+        name="title"
+        placeholder="Search"
+        icon="search"
+        register={register}
+      />
 
-          <div className={css.selectRow}>
-            <CustomSelect
-              name="category"
-              options={categories}
-              placeholder="Category"
-            />
-            <CustomSelect
-              name="sex"
-              options={genders}
-              placeholder="By gender"
-            />
-          </div>
+      <div className={css.selectRow}>
+        <CustomSelect
+          name="category"
+          options={categories}
+          placeholder="Category"
+          control={control}
+        />
+        <CustomSelect
+          name="sex"
+          options={genders}
+          placeholder="By gender"
+          control={control}
+        />
+      </div>
 
-          <CustomSelect
-            name="species"
-            options={species}
-            placeholder="By type"
-          />
+      <CustomSelect
+        name="species"
+        options={species}
+        placeholder="By type"
+        control={control}
+      />
 
+      <Controller
+        name="location"
+        control={control}
+        render={({ field }) => (
           <AsyncLocationSelect
             loadOptions={loadOptions}
-            onChange={(value) => setFieldValue("location", value)}
+            onChange={(val) => field.onChange(val)}
+            value={field.value}
             className={css.select}
+            placeholder="Location"
           />
+        )}
+      />
 
-          <div className={css.radioGroup}>
-            <label>
-              <Field type="radio" name="sort" value="popular" /> Popular
-            </label>
-            <label>
-              <Field type="radio" name="sort" value="unpopular" /> Unpopular
-            </label>
-            <label>
-              <Field type="radio" name="sort" value="price_asc" /> Cheap
-            </label>
-            <label>
-              <Field type="radio" name="sort" value="price_desc" /> Expensive
-            </label>
-          </div>
+      <div className={css.radioGroup}>
+        <label>
+          <input type="radio" value="byPopularity_true" {...register("sort")} />
+          Popular
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="byPopularity_false"
+            {...register("sort")}
+          />
+          Unpopular
+        </label>
+        <label>
+          <input type="radio" value="byPrice_true" {...register("sort")} />
+          Cheap
+        </label>
+        <label>
+          <input type="radio" value="byPrice_false" {...register("sort")} />
+          Expensive
+        </label>
+      </div>
 
-          <button
-            className={css.resetBtn}
-            type="button"
-            onClick={() => resetForm()}
-          >
-            Reset
-          </button>
-        </Form>
-      )}
-    </Formik>
+      <button
+        className={css.resetBtn}
+        type="button"
+        onClick={() => {
+          reset();
+          dispatch(setFilters({}));
+          dispatch(setNoticesPage(1));
+        }}
+      >
+        Reset
+      </button>
+      <AutoSubmit control={control} />
+    </form>
   );
 }

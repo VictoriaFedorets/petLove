@@ -1,10 +1,7 @@
 import Select from "react-select";
-import { useField, useFormikContext } from "formik";
+import { Controller } from "react-hook-form";
 
-export function CustomSelect({ name, options, placeholder }) {
-  const { setFieldValue } = useFormikContext();
-  const [field] = useField(name);
-
+export function CustomSelect({ name, options, placeholder, control }) {
   const formattedOptions = [
     { value: "all", label: "Show all", isAlwaysYellow: true },
     ...options.map((opt) => {
@@ -19,11 +16,7 @@ export function CustomSelect({ name, options, placeholder }) {
   ];
 
   const customStyles = {
-    container: (provided) => ({
-      ...provided,
-      width: "100%",
-    }),
-
+    container: (provided) => ({ ...provided, width: "100%" }),
     control: (provided) => ({
       ...provided,
       width: "100%",
@@ -90,7 +83,6 @@ export function CustomSelect({ name, options, placeholder }) {
       letterSpacing: "-0.03em",
       color: "#262626",
     }),
-
     singleValue: (provided) => ({
       ...provided,
       color: "#262626",
@@ -116,16 +108,24 @@ export function CustomSelect({ name, options, placeholder }) {
   };
 
   return (
-    <Select
+    <Controller
       name={name}
-      options={formattedOptions}
-      components={{ ClearIndicator: null }}
-      placeholder={placeholder}
-      styles={customStyles}
-      value={formattedOptions.find((opt) => opt.value === field.value)}
-      onChange={(option) => setFieldValue(name, option?.value || "")}
-      isClearable
-      classNamePrefix="react-select"
+      control={control}
+      render={({ field }) => (
+        <Select
+          {...field}
+          options={formattedOptions}
+          placeholder={placeholder}
+          styles={customStyles}
+          components={{ ClearIndicator: null }}
+          classNamePrefix="react-select"
+          isClearable
+          value={
+            formattedOptions.find((opt) => opt.value === field.value) || null
+          }
+          onChange={(option) => field.onChange(option?.value || "")}
+        />
+      )}
     />
   );
 }

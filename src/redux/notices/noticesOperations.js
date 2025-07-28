@@ -7,9 +7,9 @@ export const getNotices = createAsyncThunk(
   async (params = {}, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("/notices", { params });
+      console.log("Fetched notices:", data);
       return data;
     } catch (error) {
-      console.error("Error response:", error.response?.data);
       const message = error.response?.data?.message || "No notices found";
       toast.error(message);
       return rejectWithValue(message);

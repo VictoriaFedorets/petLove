@@ -1,50 +1,66 @@
 import { useEffect, useState, useMemo } from "react";
-import { useFormikContext } from "formik";
 import debounce from "lodash.debounce";
 import css from "./SearchField.module.css";
 
-export default function SearchField({ name, placeholder = "Search", icon }) {
-  const { setFieldValue, values } = useFormikContext();
-  const [localValue, setLocalValue] = useState(values[name] || "");
+export default function SearchField({
+  name,
+  placeholder = "Search",
+  icon = "search",
+  register,
+  onSearch,
+}) {
+  const [localValue, setLocalValue] = useState("");
 
-  // Дебаунс для оновлення Formik тільки через 2 секунди
-  const debouncedSetFormikValue = useMemo(
+  // Debounced callback для передачі значення у useForm
+  const debouncedUpdate = useMemo(
     () =>
       debounce((value) => {
-        setFieldValue(name, value);
-      }, 2000),
-    [setFieldValue, name]
+        const syntheticEvent = { target: { name, value } };
+        if (register) {
+          register(name).onChange(syntheticEvent); // для react-hook-form
+        }
+        if (onSearch) {
+          onSearch(value); // вызываем колбек поиска из пропсов
+        }
+      }, 500),
+    [name, register, onSearch]
   );
 
   const handleChange = (e) => {
     const value = e.target.value;
-    setLocalValue(value); // локальне оновлення поля
-    debouncedSetFormikValue(value); // затримка перед оновленням Formik
+    setLocalValue(value);
+    debouncedUpdate(value);
   };
 
   const handleClear = () => {
     setLocalValue("");
-    debouncedSetFormikValue.cancel(); // скасування затриманого оновлення
-    setFieldValue(name, ""); // одразу очищаємо у Formik
+    debouncedUpdate.cancel(); // скасовуємо відкладене оновлення
+    const syntheticEvent = { target: { name, value: "" } };
+    if (register) {
+      register(name).onChange(syntheticEvent);
+    }
+    if (onSearch) {
+      onSearch("");
+    }
   };
 
   useEffect(() => {
     return () => {
-      debouncedSetFormikValue.cancel(); // очищення debounce при unmount
+      debouncedUpdate.cancel(); // скасовує debounce при розмонтуванні
     };
-  }, [debouncedSetFormikValue]);
+  }, [debouncedUpdate]);
 
   return (
     <div className={css.searchWrapper}>
       <input
-        className={css.inputSearch}
         type="text"
+        className={css.inputSearch}
         placeholder={placeholder}
         value={localValue}
         onChange={handleChange}
       />
 
-      {localValue ? (
+      {localValue && (
         <button
           type="button"
           className={css.clearBtn}
@@ -52,10 +68,10 @@ export default function SearchField({ name, placeholder = "Search", icon }) {
           aria-label="Clear"
         >
           <svg className={css.clearIcon}>
-            <use href="#icon-close"></use>
+            <use href="#icon-close" />
           </svg>
         </button>
-      ) : null}
+      )}
 
       <button type="submit" className={css.searchBtn} aria-label="Search">
         <svg className={css.searchIcon}>

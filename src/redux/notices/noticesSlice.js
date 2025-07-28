@@ -20,6 +20,7 @@ const initialState = {
   page: 1,
   perPage: 6,
   totalPages: 1,
+  filters: {},
 };
 
 const noticesSlice = createSlice({
@@ -28,6 +29,10 @@ const noticesSlice = createSlice({
   reducers: {
     setNoticesPage(state, action) {
       state.page = action.payload;
+    },
+    setFilters(state, action) {
+      state.filters = action.payload;
+      state.page = 1;
     },
   },
   extraReducers: (builder) => {
@@ -40,6 +45,7 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.notices = action.payload.results;
         state.totalPages = action.payload.totalPages;
+        state.sort = state.filters?.sort || "";
       })
       .addCase(getNotices.rejected, (state, action) => {
         state.isLoading = false;
@@ -112,5 +118,5 @@ const noticesSlice = createSlice({
   },
 });
 
-export const { setNoticesPage } = noticesSlice.actions;
+export const { setNoticesPage, setFilters } = noticesSlice.actions;
 export default noticesSlice.reducer;
