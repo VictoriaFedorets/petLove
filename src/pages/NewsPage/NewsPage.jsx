@@ -35,7 +35,7 @@ export default function NewsPage() {
     <>
       <div className={css.searchWrapper}>
         <Title>News</Title>
-        <SearchField onSearch={onSearch} />
+        <SearchField onSearch={onSearch} className={css.search} />
       </div>
       <NewsList />
       <Paginaton

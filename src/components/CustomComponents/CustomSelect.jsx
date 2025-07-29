@@ -1,7 +1,17 @@
 import Select from "react-select";
 import { Controller } from "react-hook-form";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-export function CustomSelect({ name, options, placeholder, control }) {
+export function CustomSelect({
+  name,
+  options,
+  placeholder,
+  control,
+  controlWidth = "100%",
+  containerStyle = {},
+}) {
+  const { isTablet, getControlWidth } = useMediaQuery();
+
   const formattedOptions = [
     { value: "all", label: "Show all", isAlwaysYellow: true },
     ...options.map((opt) => {
@@ -16,20 +26,21 @@ export function CustomSelect({ name, options, placeholder, control }) {
   ];
 
   const customStyles = {
-    container: (provided) => ({ ...provided, width: "100%" }),
+    container: (provided) => ({
+      ...provided,
+      ...containerStyle,
+    }),
     control: (provided) => ({
       ...provided,
-      width: "100%",
+      width: controlWidth,
       border: "none",
       borderRadius: "30px",
       backgroundColor: "#fff",
-      paddingLeft: "12px",
-      paddingRight: "30px",
-      height: "42px",
+      paddingLeft: isTablet ? "14px" : "12px",
+      paddingRight: isTablet ? "32px" : "30px",
+      height: isTablet ? "48px" : "42px",
       minHeight: "unset",
-      fontWeight: 500,
-      fontSize: "14px",
-      lineHeight: "129%",
+
       letterSpacing: "-0.03em",
       color: "#262626",
       boxShadow: "none",
@@ -39,21 +50,22 @@ export function CustomSelect({ name, options, placeholder, control }) {
       ...provided,
       borderRadius: "15px",
       width: "100%",
-      maxHeight: "216px",
+      maxHeight: getControlWidth("296px", "216px", "190px"),
       background: "#fff",
       fontWeight: 500,
-      fontSize: "14px",
-      lineHeight: "129%",
+      fontSize: isTablet ? "16px" : "14px",
+      lineHeight: isTablet ? "125%" : "129%",
       letterSpacing: "-0.03em",
       marginTop: "4px",
       zIndex: 100,
     }),
     menuList: (provided) => ({
       ...provided,
-      padding: "12px",
+      padding: isTablet ? "14px" : "12px",
       display: "flex",
       flexDirection: "column",
       gap: "8px",
+      maxHeight: getControlWidth("296px", "216px", "190px"),
     }),
     option: (provided, state) => {
       const baseStyle = {
@@ -77,9 +89,9 @@ export function CustomSelect({ name, options, placeholder, control }) {
     },
     placeholder: (provided) => ({
       ...provided,
-      fontWeight: "500",
-      fontSize: "14px",
-      lineHeight: "129%",
+      fontWeight: 500,
+      fontSize: isTablet ? "16px" : "14px",
+      lineHeight: isTablet ? "125%" : "129%",
       letterSpacing: "-0.03em",
       color: "#262626",
     }),
@@ -93,17 +105,19 @@ export function CustomSelect({ name, options, placeholder, control }) {
       padding: 0,
     }),
     indicatorSeparator: () => null,
-    dropdownIndicator: (provided) => ({
+    dropdownIndicator: (provided, state) => ({
       ...provided,
       padding: "0",
       position: "absolute",
       top: "50%",
-      transform: "translateY(-50%)",
       cursor: "pointer",
-      pointerEvents: "none",
       color: "#262626",
       width: "18px",
       height: "18px",
+      transition: "transform 0.3s ease",
+      transform: state.selectProps.menuIsOpen
+        ? "translateY(-50%) rotate(180deg)"
+        : "translateY(-50%) rotate(0deg)",
     }),
   };
 

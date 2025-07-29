@@ -1,15 +1,14 @@
 .searchWrapper {
   position: relative;
-  width: 100%;
+  /* width: 100%; */
 }
 
 .inputSearch {
   height: 42px;
   border: none;
   border-radius: 30px;
-  width: 100%;
   padding: 12px 30px 12px 12px;
-
+  width: 100%;
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
@@ -52,8 +51,7 @@
 
 @media screen and (min-width: 768px) {
   .searchWrapper {
-    width: 230px;
-    height: 48px;
+    /* width: 265px; */
     margin-top: 0;
   }
 
@@ -66,10 +64,17 @@
   }
 
   .inputSearch {
+    padding: 14px 32px 14px 14px;
     padding-left: 14px;
+    height: 48px;
   }
 
   .inputSearch ::placeholder {
     font-size: 16px;
+  }
+
+  .inputSearch::placeholder {
+    font-size: 16px;
+    line-height: 125%;
   }
 }

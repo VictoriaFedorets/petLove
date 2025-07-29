@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, Children } from "react";
 import debounce from "lodash.debounce";
 import css from "./SearchField.module.css";
 
@@ -8,6 +8,7 @@ export default function SearchField({
   icon = "search",
   register,
   onSearch,
+  className = "",
 }) {
   const [localValue, setLocalValue] = useState("");
 
@@ -17,10 +18,10 @@ export default function SearchField({
       debounce((value) => {
         const syntheticEvent = { target: { name, value } };
         if (register) {
-          register(name).onChange(syntheticEvent); // для react-hook-form
+          register(name).onChange(syntheticEvent);
         }
         if (onSearch) {
-          onSearch(value); // вызываем колбек поиска из пропсов
+          onSearch(value);
         }
       }, 500),
     [name, register, onSearch]
@@ -51,7 +52,7 @@ export default function SearchField({
   }, [debouncedUpdate]);
 
   return (
-    <div className={css.searchWrapper}>
+    <div className={`${css.searchWrapper} ${className}`}>
       <input
         type="text"
         className={css.inputSearch}

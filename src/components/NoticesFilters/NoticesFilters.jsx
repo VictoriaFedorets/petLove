@@ -8,7 +8,6 @@ import {
 } from "../../redux/notices/noticesSelectors";
 import { useEffect, useState } from "react";
 import {
-  getNotices,
   getNoticesCategories,
   getNoticesGenders,
   getNoticesLocations,
@@ -20,7 +19,10 @@ import { loadCitiesOptions } from "../CustomComponents/LoadCitiesOptions";
 import { AsyncLocationSelect } from "../CustomComponents/AsyncLocationSelect";
 import { useForm, Controller } from "react-hook-form";
 import { AutoSubmit } from "../CustomComponents/AutoSubmit";
-import { setFilters, setNoticesPage } from "../../redux/notices/noticesSlice";
+import { setNoticesPage } from "../../redux/notices/noticesSlice";
+import { useWatch } from "react-hook-form";
+import { SortSelector } from "../CustomComponents/SortSelector/SortSelector";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 
 export default function NoticesFilters() {
   const dispatch = useDispatch();
@@ -33,7 +35,8 @@ export default function NoticesFilters() {
   const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
 
-  const { control, register, reset } = useForm({
+  const { control, register, reset, getValues } = useForm({
+    mode: "onChange",
     defaultValues: {
       title: "",
       category: "",
@@ -43,6 +46,9 @@ export default function NoticesFilters() {
       sort: "",
     },
   });
+
+  const sortValue = useWatch({ control, name: "sort" });
+  const { isTablet, getControlWidth } = useMediaQuery();
 
   useEffect(() => {
     dispatch(getNoticesCategories());
@@ -74,6 +80,7 @@ export default function NoticesFilters() {
         placeholder="Search"
         icon="search"
         register={register}
+        className={css.search}
       />
 
       <div className={css.selectRow}>
@@ -82,12 +89,16 @@ export default function NoticesFilters() {
           options={categories}
           placeholder="Category"
           control={control}
+          controlWidth={getControlWidth("100%", "170px", "200px")}
+          containerStyle={{ width: "100%", flex: 1 }}
         />
         <CustomSelect
           name="sex"
           options={genders}
           placeholder="By gender"
           control={control}
+          controlWidth={getControlWidth("100%", "170px", "190px")}
+          containerStyle={{ width: "100%", flex: 1 }}
         />
       </div>
 
@@ -96,6 +107,7 @@ export default function NoticesFilters() {
         options={species}
         placeholder="By type"
         control={control}
+        controlWidth={isTablet ? "190px" : "100%"}
       />
 
       <Controller
@@ -112,40 +124,10 @@ export default function NoticesFilters() {
         )}
       />
 
-      <div className={css.radioGroup}>
-        <label>
-          <input type="radio" value="byPopularity_true" {...register("sort")} />
-          Popular
-        </label>
-        <label>
-          <input
-            type="radio"
-            value="byPopularity_false"
-            {...register("sort")}
-          />
-          Unpopular
-        </label>
-        <label>
-          <input type="radio" value="byPrice_true" {...register("sort")} />
-          Cheap
-        </label>
-        <label>
-          <input type="radio" value="byPrice_false" {...register("sort")} />
-          Expensive
-        </label>
-      </div>
+      <div className={css.separator}></div>
 
-      <button
-        className={css.resetBtn}
-        type="button"
-        onClick={() => {
-          reset();
-          dispatch(setFilters({}));
-          dispatch(setNoticesPage(1));
-        }}
-      >
-        Reset
-      </button>
+      <SortSelector control={control} name="sort" />
+
       <AutoSubmit control={control} />
     </form>
   );

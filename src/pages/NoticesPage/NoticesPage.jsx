@@ -39,7 +39,7 @@ export default function NoticesPage() {
       behavior: "smooth",
     });
   }, [currentPage]);
-  console.log(notices);
+  // console.log(notices);
 
   return (
     <div className={css.wrapper}>

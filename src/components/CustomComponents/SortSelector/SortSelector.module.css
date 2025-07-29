@@ -1,0 +1,67 @@
+.radioGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.radioGroup label {
+  cursor: pointer;
+}
+
+.radioWrapper {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  letter-spacing: -0.03em;
+
+  /* color: #262626; */
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 30px;
+  padding: 12px;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.radioWrapper[data-selected="true"] {
+  background: #f6b83d;
+  color: #fff;
+}
+
+.radioWrapper[data-selected="true"] button {
+  color: #fff;
+}
+
+.radioInput {
+  display: none;
+}
+
+.clearBtn {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.radioWrapper:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.radioWrapper[data-selected="true"]:hover {
+  background: var(--yellow-hover);
+}
+
+@media screen and (min-width: 768px) {
+  .radioGroup {
+    gap: 8px;
+  }
+
+  .radioWrapper {
+    font-size: 16px;
+    line-height: 125%;
+    gap: 8px;
+  }
+}
