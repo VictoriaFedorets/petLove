@@ -54,7 +54,7 @@ const Header = () => {
         )}
         <BurgerMenu
           isHomePage={isHomePage}
-          showLogout={!(isMobile || (isTablet && !isHomePage))}
+          // showLogout={!(isMobile || (isTablet && !isHomePage))}
         />
       </div>
     </header>

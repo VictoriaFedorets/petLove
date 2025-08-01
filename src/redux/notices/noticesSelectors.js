@@ -25,6 +25,6 @@ export const selectFiltersWithPage = createSelector(
   (filters, page) => ({
     ...filters,
     page,
-    perPage: 6, // ← тут додай
+    perPage: 6,
   })
 );

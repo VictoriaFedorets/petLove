@@ -11,7 +11,11 @@ import {
 import css from "./NoticesItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function NoticesItem({ notice }) {
+export default function NoticesItem({
+  notice,
+  isFavorite = false,
+  onRemoveFavorite,
+}) {
   //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
 
   const dispatch = useDispatch();
@@ -39,12 +43,19 @@ export default function NoticesItem({ notice }) {
   const toggleModal = () => setIsModalOpen(!isModalOpen);
   // console.log(notice);
 
-  const isFavorite = favorites.includes(_id);
-  const handleToggleFavorite = () => {
+  const isFavoriteLocal = isFavorite || favorites.includes(_id);
+
+  // const isFavorite = favorites.some((fav) => fav._id === _id);
+  // console.log("isFavorite", isFavorite);
+  const handleToggleFavorite = async () => {
     if (isLoading) return;
 
-    if (isFavorite) {
-      dispatch(removeFromFavorites(_id));
+    if (isFavoriteLocal) {
+      const result = await dispatch(removeFromFavorites(_id));
+      // якщо видалено — викликаємо колбек для видалення зі сторінки
+      if (result.meta.requestStatus === "fulfilled" && onRemoveFavorite) {
+        onRemoveFavorite(_id);
+      }
     } else {
       dispatch(addToFavorites(_id));
     }
@@ -108,16 +119,16 @@ export default function NoticesItem({ notice }) {
           <button
             className={css.btnHeart}
             onClick={handleToggleFavorite}
-            aria-pressed={isFavorite}
+            aria-pressed={isFavoriteLocal}
             type="button"
           >
             <svg
               className={`${css.iconHeart} ${
-                isFavorite ? css.iconHeartActive : ""
+                isFavoriteLocal ? css.iconHeartActive : ""
               }`}
             >
               <use
-                href={isFavorite ? "#icon-heart" : "#icon-heart-outline"}
+                href={isFavoriteLocal ? "#icon-heart" : "#icon-heart-outline"}
               ></use>
             </svg>
           </button>

@@ -10,19 +10,17 @@ export default function LogOutBtn({ isHomePage, onCloseMenu, className = "" }) {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const token = useSelector(selectToken);
-  // console.log("👀 TOKEN IN COMPONENT:", token);
 
   const openModal = () => {
-    onCloseMenu?.(); // Закрити меню перед відкриттям модалки
+    onCloseMenu?.();
     setTimeout(() => {
       setIsModalOpen(true);
-    }, 300); // Почекати, поки меню сховається (відповідно до transition)
+    }, 300);
   };
 
   const closeModal = () => setIsModalOpen(false);
 
   const confirmLogout = async () => {
-    // console.log("TOKEN IN LOGOUT BTN:", token);
     await dispatch(logoutUser());
     closeModal();
   };

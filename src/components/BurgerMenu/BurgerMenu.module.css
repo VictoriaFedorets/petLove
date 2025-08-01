@@ -24,6 +24,7 @@
 .backdropOpen {
   opacity: 1;
   pointer-events: auto;
+  visibility: visible;
 }
 
 .menuContent {

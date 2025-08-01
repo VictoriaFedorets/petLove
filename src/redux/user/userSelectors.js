@@ -14,3 +14,6 @@ export const selectPets = createSelector(
   (state) => state.user.user?.pets,
   (pets) => pets || []
 );
+
+export const selectUserFavorites = (state) =>
+  state.user.user.noticesFavorites || [];

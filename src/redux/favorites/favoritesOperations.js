@@ -7,7 +7,7 @@ export const fetchFavorites = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await instance.get("/users/current");
-      return data.noticesFavorites?.map((notice) => notice._id) || [];
+      return data.noticesFavorites || [];
     } catch (error) {
       const message = error.response?.data?.message || "No favorites found";
       toast.error(message);
@@ -26,7 +26,9 @@ export const addToFavorites = createAsyncThunk(
       // if (Array.isArray(data)) {
       //   return data[data.length - 1];
       // }
-      return noticeId;
+      const addedId = data?._id || data?.notice?._id || noticeId;
+      console.log("addToFavorites response data:", data);
+      return addedId;
     } catch (error) {
       const message = error.response?.data?.message || "Not added to favorites";
       toast.error(message);

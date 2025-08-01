@@ -23,7 +23,9 @@ const favoritesSlice = createSlice({
       })
       .addCase(fetchFavorites.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.items = action.payload;
+        state.items = action.payload.map((notice) =>
+          typeof notice === "string" ? notice : notice._id
+        );
       })
       .addCase(fetchFavorites.rejected, (state, action) => {
         state.isLoading = false;
@@ -36,10 +38,15 @@ const favoritesSlice = createSlice({
         state.error = null;
       })
       .addCase(addToFavorites.fulfilled, (state, action) => {
-        const newId = action.payload;
-        if (!state.items.includes(newId)) {
-          state.items.push(newId);
+        const id =
+          typeof action.payload === "string"
+            ? action.payload
+            : action.payload._id;
+        if (!state.items.includes(id)) {
+          state.items.push(id);
         }
+        console.log("addToFavorites payload", action.payload);
+
         state.isLoading = false;
         state.error = null;
       })
@@ -54,8 +61,7 @@ const favoritesSlice = createSlice({
         state.error = null;
       })
       .addCase(removeFromFavorites.fulfilled, (state, action) => {
-        const removedId = action.payload;
-        state.items = state.items.filter((id) => id !== removedId);
+        state.items = state.items.filter((id) => id !== action.payload);
         state.isLoading = false;
         state.error = null;
       })

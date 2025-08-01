@@ -6,7 +6,7 @@ export default function UserNav({
   isHomePage,
   onAction,
   showLogout = true,
-  showUserBar = true,
+  showUserBar,
   user,
 }) {
   return (

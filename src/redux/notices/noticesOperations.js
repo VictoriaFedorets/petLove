@@ -17,6 +17,20 @@ export const getNotices = createAsyncThunk(
   }
 );
 
+export const getNoticesById = createAsyncThunk(
+  "notices/getNoticesById",
+  async (id, { rejectWithValue }) => {
+    try {
+      const { data } = await instance.get(`/notices/${id}`);
+      return data;
+    } catch (error) {
+      const message = error.response?.data?.message || "No notices found";
+      toast.error(message);
+      return rejectWithValue(message);
+    }
+  }
+);
+
 export const getNoticesCategories = createAsyncThunk(
   "notices/getNoticesCategories",
   async (_, { rejectWithValue }) => {

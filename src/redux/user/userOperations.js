@@ -99,6 +99,7 @@ export const getUserFull = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("/users/current/full");
+      // console.log(data);
       return data;
     } catch (error) {
       const message =

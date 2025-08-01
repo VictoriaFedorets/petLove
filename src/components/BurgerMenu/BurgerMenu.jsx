@@ -77,7 +77,7 @@ export default function BurgerMenu({ isHomePage, showLogout }) {
             isOpen ? css.menuOpen : css.menuClosed,
             isHomePage && css.menuContentHome
           )}
-          onClick={handleMenuClick}
+          onClick={(e) => e.stopPropagation()}
         >
           <button className={css.closeBtn} onClick={closeMenu}>
             <svg
@@ -91,7 +91,6 @@ export default function BurgerMenu({ isHomePage, showLogout }) {
             <UserNav
               isHomePage={isHomePage}
               showLogout={showLogout}
-              showUserBar={!isMobile && !isTablet}
               user={user}
               onAction={closeMenu}
             />

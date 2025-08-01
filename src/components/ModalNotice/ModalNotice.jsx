@@ -5,17 +5,12 @@ import ModalAttention from "../ModalAttention/ModalAttention.jsx";
 import css from "./ModalNotice.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import {
-  selectFavorites,
-  selectIsFavoritesId,
-} from "../../redux/favorites/favoritesSelectors.js";
+import { selectFavorites } from "../../redux/favorites/favoritesSelectors.js";
 import {
   addToFavorites,
   removeFromFavorites,
 } from "../../redux/favorites/favoritesOperations.js";
 import { fetchFavorites } from "../../redux/favorites/favoritesOperations";
-
-import { toast } from "react-toastify";
 
 export default function ModalNotice({ onClose, notice }) {
   const {

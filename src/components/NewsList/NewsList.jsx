@@ -12,7 +12,7 @@ export default function NewsList() {
   // console.log(newsList);
 
   if (isLoading) {
-    return <p className={css.loading}>Loading...</p>; // або спінер
+    return <p className={css.loading}>Loading...</p>;
   }
 
   if (newsList.length === 0) {

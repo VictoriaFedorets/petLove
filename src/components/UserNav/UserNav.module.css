@@ -1,6 +1,4 @@
-@media screen and (min-width: 768px) {
-  .userNav {
-    display: flex;
-    gap: 8px;
-  }
+.userNav {
+  display: flex;
+  gap: 8px;
 }
