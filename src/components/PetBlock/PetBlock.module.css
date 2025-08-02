@@ -17,8 +17,7 @@
 
 .backgroundAddPet {
   height: 213px;
-  background-position: bottom left 13px;
-  background-size: 313px 176px;
+  background-position: right top 37px;
 }
 
 .image {
@@ -33,9 +32,8 @@
 
 .imageAddPet {
   width: 297px;
-  height: 248px;
-  padding: 0 32px;
-  margin-bottom: -35px;
+  /* padding: 0 32px; */
+  /* margin-bottom: -35px; */
 }
 
 @media screen and (min-width: 768px) {
@@ -50,6 +48,8 @@
 
   .backgroundAddPet {
     height: 248px;
+    background-position: top 52px right 52px;
+    /* background-size: 531px 195px; */
   }
 
   .image {
@@ -62,6 +62,7 @@
     width: 297px;
     height: 248px;
     padding: 0;
+    margin: 0;
   }
 }
 

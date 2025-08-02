@@ -14,7 +14,11 @@ export default function AddPetPage() {
 
   return (
     <div className={css.wrapper}>
-      <PetBlock src="../../../public/icons/add-pet.svg" />
+      <PetBlock
+        srcMob="/icons/bg-add-pet-mob.svg"
+        srcTab="/icons/bg-add-pet-tabl.svg"
+        srcDesk="/icons/bg-add-pet-desk.svg"
+      />
       <AddPetForm />
     </div>
   );
