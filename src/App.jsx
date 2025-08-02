@@ -22,7 +22,9 @@ const RegistrationPage = lazy(() =>
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage.jsx"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage.jsx"));
 const AddPetPage = lazy(() => import("./pages/AddPetPage/AddPetPage.jsx"));
-// const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage.jsx"));
+const NotFoundPage = lazy(() =>
+  import("./pages/NotFoundPage/NotFoundPage.jsx")
+);
 const savedToken = localStorage.getItem("token");
 if (savedToken) {
   setAuthToken(savedToken);
@@ -94,9 +96,12 @@ export default function App() {
                 <PrivateRoute component={<AddPetPage />} redirectTo="/login" />
               }
             />
+
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
 
           <Route index element={<MainPage />} />
+
           {/* <Route path="/" element={<SharedLayout />}>
             <Route path="news" element={<NewsPage />} />
             
