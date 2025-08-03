@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function AddPet() {
   return (
-    <div className={css.addPets}>
+    <div className={css.addPet}>
       <h1 className={css.title}>My pets</h1>
       <Link to="/add-pet" className={css.btnAddPet}>
         Add pet{""}

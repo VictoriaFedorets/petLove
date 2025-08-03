@@ -125,7 +125,7 @@ export const updateUser = createAsyncThunk(
   }
 );
 
-export const addPets = createAsyncThunk(
+export const addPet = createAsyncThunk(
   "/users/current/pets/add",
   async (petData, { rejectWithValue }) => {
     try {
@@ -137,6 +137,21 @@ export const addPets = createAsyncThunk(
         error.response?.data?.message || "Error when adding a pet";
       toast.error(message);
       return rejectWithValue(message);
+    }
+  }
+);
+
+export const removePet = createAsyncThunk(
+  "pets/removePet",
+  async (petId, thunkAPI) => {
+    try {
+      await instance.delete(`/users/current/pets/remove/${petId}`);
+      toast.success("Your pet has been delete");
+      return petId;
+    } catch (error) {
+      const message = error.response?.data?.message || "Failed to remove pet";
+      toast.error(message);
+      return thunkAPI.rejectWithValue(message);
     }
   }
 );

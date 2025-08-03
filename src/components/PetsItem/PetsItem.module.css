@@ -1,0 +1,60 @@
+.petsItem {
+  position: relative;
+  border: 1px solid rgba(38, 38, 38, 0.1);
+  border-radius: 20px;
+  padding: 16px 46px 16px 16px;
+  display: flex;
+  gap: 14px;
+}
+
+.img {
+  border-radius: 100px;
+  padding: 10px;
+  width: 90px;
+  height: 90px;
+}
+
+.btnBasket {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border-radius: 30px;
+  padding: 7px;
+  width: 30px;
+  height: 30px;
+  background: #fff4df;
+}
+
+.iconBasket {
+  width: 16px;
+  height: 16px;
+  color: #f6b83d;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+  margin-bottom: 8px;
+  /* height: 52px; */
+}
+
+.descriptionBlock {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.descriptionBlock li {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+}
+
+.descriptionBlock li p {
+  font-size: 10px;
+  margin-bottom: 4px;
+  line-height: 140%;
+  color: rgba(38, 38, 38, 0.5);
+}

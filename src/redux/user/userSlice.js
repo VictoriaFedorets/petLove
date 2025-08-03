@@ -6,7 +6,8 @@ import {
   registerUser,
   getUserFull,
   updateUser,
-  addPets,
+  addPet,
+  removePet,
 } from "./userOperations.js";
 
 const initialState = {
@@ -135,11 +136,11 @@ const userSlice = createSlice({
         state.error = action.payload || action.error.message;
       })
 
-      .addCase(addPets.pending, (state) => {
+      .addCase(addPet.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(addPets.fulfilled, (state, action) => {
+      .addCase(addPet.fulfilled, (state, action) => {
         state.isLoading = false;
         if (!state.user?.pets) {
           state.user.pets = [];
@@ -147,7 +148,23 @@ const userSlice = createSlice({
 
         state.user.pets.push(action.payload);
       })
-      .addCase(addPets.rejected, (state, action) => {
+      .addCase(addPet.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload || action.error.message;
+      })
+
+      // --- REMOVE ---
+      .addCase(removePet.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(removePet.fulfilled, (state, action) => {
+        state.user.pets = state.user.pets.filter(
+          (pet) => pet._id !== action.payload
+        );
+        state.isLoading = false;
+      })
+      .addCase(removePet.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload || action.error.message;
       });

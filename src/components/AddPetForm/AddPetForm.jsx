@@ -4,7 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import Select from "react-select";
 import * as yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
-import { addPets } from "../../redux/user/userOperations";
+import { addPet } from "../../redux/user/userOperations";
 import { selectPets } from "../../redux/user/userSelectors";
 import { toast } from "react-toastify";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -105,7 +105,7 @@ export default function AddPetForm() {
 
   const onSubmit = async (data) => {
     try {
-      await dispatch(addPets(data)).unwrap();
+      await dispatch(addPet(data)).unwrap();
       toast.success("Pet added successfully");
       navigate("/profile");
     } catch (error) {
@@ -146,6 +146,8 @@ export default function AddPetForm() {
     const [year, month, day] = dateStr.split("-");
     return `${day}.${month}.${year}`;
   };
+
+  console.log(pet);
 
   return (
     <div className={css.wrapperAddPet}>
