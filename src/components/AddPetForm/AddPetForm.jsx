@@ -7,10 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPet } from "../../redux/user/userOperations";
 import { selectPets } from "../../redux/user/userSelectors";
 import { toast } from "react-toastify";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { uploadToCloudinary } from "../../services/cloudinary.js";
 import { Link, useNavigate } from "react-router-dom";
-import { selectNoticesSpacies } from "../../redux/notices/noticesSelectors.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
@@ -35,7 +34,7 @@ const schema = yup.object().shape({
   sex: yup.string().required("Sex is required"),
 });
 
-export default function AddPetForm() {
+export default function AddPetForm({ species }) {
   const dispatch = useDispatch();
   const pet = useSelector(selectPets);
   const [isUploading, setIsUploading] = useState(false);
@@ -118,36 +117,80 @@ export default function AddPetForm() {
     }
   };
 
-  const notices = useSelector(selectNoticesSpacies);
-  const getUniqueValues = (data, key) => {
-    return [...new Set(data.flatMap((item) => item[key]))];
-  };
-  const uniqueSpecies = useMemo(() => [...new Set(notices)], [notices]);
+  const speciesOptions = species.map((s) => ({
+    value: s,
+    label: s.charAt(0).toUpperCase() + s.slice(1),
+  }));
 
-  const speciesOptions = [
-    ...uniqueSpecies.map((s) => ({ value: s, label: s })),
-    { value: "parrot", label: "Parrot" },
-    { value: "hamster", label: "Hamster" },
-    { value: "rabbit", label: "Rabbit" },
-    { value: "snake", label: "Snake" },
-    { value: "turtle", label: "Turtle" },
-    { value: "lizard", label: "Lizard" },
-    { value: "frog", label: "Frog" },
-    { value: "fish", label: "Fish" },
-    { value: "bees", label: "Bees" },
-    { value: "butterfly", label: "Butterfly" },
-    { value: "spider", label: "Spider" },
-    { value: "scorpion", label: "Scorpion" },
-    { value: "other", label: "Other" },
-  ];
+  // const notices = useSelector(selectNoticesSpacies);
+  // console.log(notices);
+  // const getUniqueValues = (data, key) => {
+  //   return [...new Set(data.flatMap((item) => item[key]))];
+  // };
+  // const uniqueSpecies = useMemo(() => [...new Set(notices)], [notices]);
+
+  // const speciesOptions = uniqueSpecies.map((s) => ({
+  //   value: s,
+  //   label: s.charAt(0).toUpperCase() + s.slice(1),
+  // }));
+
+  // const speciesOptions = [
+  //   ...uniqueSpecies.map((s) => ({ value: s, label: s })),
+  //   { value: "parrot", label: "Parrot" },
+  //   { value: "hamster", label: "Hamster" },
+  //   { value: "rabbit", label: "Rabbit" },
+  //   { value: "snake", label: "Snake" },
+  //   { value: "turtle", label: "Turtle" },
+  //   { value: "lizard", label: "Lizard" },
+  //   { value: "frog", label: "Frog" },
+  //   { value: "fish", label: "Fish" },
+  //   { value: "bees", label: "Bees" },
+  //   { value: "butterfly", label: "Butterfly" },
+  //   { value: "spider", label: "Spider" },
+  //   { value: "scorpion", label: "Scorpion" },
+  //   { value: "other", label: "Other" },
+  // ];
 
   const formatDate = (dateStr) => {
     if (!dateStr) return "";
     const [year, month, day] = dateStr.split("-");
     return `${day}.${month}.${year}`;
   };
+  useEffect(() => {
+    const hideDatepickerTabLoops = () => {
+      const start = document.querySelector(
+        ".react-datepicker__tab-loop__start"
+      );
+      const end = document.querySelector(".react-datepicker__tab-loop__end");
 
-  console.log(pet);
+      if (start) start.style.display = "none";
+      if (end) end.style.display = "none";
+    };
+
+    // Випадок: відкриваєш календар
+    document.addEventListener("mousedown", hideDatepickerTabLoops);
+    document.addEventListener("focusin", hideDatepickerTabLoops);
+
+    // При розмонтуванні
+    return () => {
+      document.removeEventListener("mousedown", hideDatepickerTabLoops);
+      document.removeEventListener("focusin", hideDatepickerTabLoops);
+    };
+  }, []);
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.innerHTML = `
+    .react-datepicker__tab-loop__start,
+    .react-datepicker__tab-loop__end {
+      display: none !important;
+    }
+  `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
 
   return (
     <div className={css.wrapperAddPet}>
@@ -274,11 +317,11 @@ export default function AddPetForm() {
                 showYearDropdown
                 scrollableYearDropdown
                 yearDropdownItemNumber={100}
+                popperPlacement="bottom-start"
                 customInput={
                   <div
                     className={`${css.input} ${css.inputDate}`}
                     onClick={field.onBlur}
-                    style={{ flex: 1 }}
                   >
                     <input
                       className={css.date}
@@ -334,8 +377,14 @@ export default function AddPetForm() {
                     color: "#262626",
                   }),
                   indicatorSeparator: () => ({ display: "none" }),
+                  container: (provided) => ({
+                    ...provided,
+                    flex: "1",
+                  }),
                   control: (provided) => ({
                     ...provided,
+                    minWidth: "143px",
+                    marginLeft: "8px",
                     borderRadius: "30px",
                     padding: `0 ${selectPadding}px`,
                     height: `${selectHeight}px`,

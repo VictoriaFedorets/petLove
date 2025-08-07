@@ -1,3 +1,7 @@
+.container {
+  margin-bottom: 56px;
+}
+
 .tabs {
   display: flex;
   gap: 10px;
@@ -41,10 +45,35 @@
     padding: 14px 0;
     flex: none;
   }
+
+  .list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .container {
+    margin-bottom: 60px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .tabs {
     margin: 40px 0 32px;
+  }
+
+  .list {
+    gap: 24px;
+  }
+
+  li.favoriteItem {
+    padding: 14px 14px 24px;
+    max-width: 320px;
+    height: 422px;
+  }
+
+  .container {
+    width: 664px;
+    margin-bottom: 32px;
   }
 }

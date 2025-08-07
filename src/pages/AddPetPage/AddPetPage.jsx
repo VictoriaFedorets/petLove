@@ -1,15 +1,21 @@
 import PetBlock from "../../components/PetBlock/PetBlock";
 import AddPetForm from "../../components/AddPetForm/AddPetForm";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getNotices } from "../../redux/notices/noticesOperations";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getNotices,
+  getNoticesSpecies,
+} from "../../redux/notices/noticesOperations";
 import css from "./AddPetPage.module.css";
+import { selectNoticesSpecies } from "../../redux/notices/noticesSelectors";
 
 export default function AddPetPage() {
   const dispatch = useDispatch();
+  const species = useSelector(selectNoticesSpecies);
 
   useEffect(() => {
     dispatch(getNotices());
+    dispatch(getNoticesSpecies());
   }, [dispatch]);
 
   return (
@@ -19,7 +25,7 @@ export default function AddPetPage() {
         srcTab="/icons/bg-add-pet-tabl.svg"
         srcDesk="/icons/bg-add-pet-desk.svg"
       />
-      <AddPetForm />
+      <AddPetForm species={species} />
     </div>
   );
 }

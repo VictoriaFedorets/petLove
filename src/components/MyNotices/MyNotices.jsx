@@ -57,6 +57,7 @@ export default function MyNotices() {
           <ul className={css.list}>
             {favoriteNotices.map((notice) => (
               <NoticesItem
+                className={css.favoriteItem}
                 key={notice._id}
                 notice={notice}
                 isFavorite={true}

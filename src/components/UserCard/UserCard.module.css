@@ -10,7 +10,28 @@
 }
 
 .btnLogOut {
-  text-align: left;
   padding: 12px 28px;
   width: 114px;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapperCard {
+    padding: 40px;
+  }
+
+  .btnLogOut {
+    width: 136px;
+    background: #fff4df;
+    color: #f6b83d;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .wrapperCard {
+    width: 520px;
+  }
+
+  .btnLogOut {
+  }
 }

@@ -5,6 +5,12 @@
   margin-bottom: 40px;
 }
 
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 125%;
+}
+
 .btnAddPet {
   border-radius: 30px;
   padding: 10px 16px;
@@ -25,4 +31,31 @@
   color: #fff;
   width: 18px;
   height: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 18px;
+    line-height: 133%;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .btnAddPet {
+    padding: 10px 20px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 125%;
+  }
+
+  .iconPlus {
+    stroke-width: 1.5px;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+  }
 }

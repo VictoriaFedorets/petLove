@@ -178,23 +178,21 @@
 
 .blockDateType {
   display: flex;
-  gap: 8px;
   width: 100%;
   height: 42px;
+  flex: 1;
 }
 
-.blockDateType > * {
+.inputDate {
+  position: relative;
   flex: 1;
-  min-width: 0;
 }
-/* .inputDate {
-  width: 144px;
-} */
 
 .date {
-  flex: 1;
-  padding-right: 30px;
+  /* padding-right: 30px; */
   border: none;
+  width: 100%;
+  /* width: 140px; */
 }
 
 .btn {
@@ -391,6 +389,14 @@
 
   .btnBlock {
     margin-top: 40px;
+  }
+
+  .inputDate {
+    width: 210px;
+  }
+
+  .custom-select__control {
+    width: 210px;
   }
 }
 

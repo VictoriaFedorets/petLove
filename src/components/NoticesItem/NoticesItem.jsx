@@ -10,14 +10,18 @@ import {
 } from "../../redux/favorites/favoritesSelectors";
 import css from "./NoticesItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import clsx from "clsx";
+import { useLocation } from "react-router-dom";
 
 export default function NoticesItem({
   notice,
   isFavorite = false,
   onRemoveFavorite,
+  className = "",
 }) {
   //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
-
+  const location = useLocation();
+  const isProfilePage = location.pathname === "/profile";
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
   // console.log("favorites", favorites);
@@ -52,7 +56,7 @@ export default function NoticesItem({
 
     if (isFavoriteLocal) {
       const result = await dispatch(removeFromFavorites(_id));
-      // якщо видалено — викликаємо колбек для видалення зі сторінки
+
       if (result.meta.requestStatus === "fulfilled" && onRemoveFavorite) {
         onRemoveFavorite(_id);
       }
@@ -62,8 +66,10 @@ export default function NoticesItem({
   };
 
   return (
-    <li className={css.newsItem}>
-      <div className={css.imgContainer}>
+    <li className={clsx(css.newsItem, className)}>
+      <div
+        className={clsx(css.imgContainer, isProfilePage ? css.imgProfile : "")}
+      >
         <img
           className={css.img}
           onClick={toggleModal}
@@ -82,7 +88,12 @@ export default function NoticesItem({
         </p>
       </div>
 
-      <ul className={css.descriptionBlock}>
+      <ul
+        className={clsx(
+          css.descriptionBlock,
+          isProfilePage ? css.descrBlockProfile : ""
+        )}
+      >
         <li className={css.name}>
           <p>Name</p>
           {name}
@@ -105,19 +116,27 @@ export default function NoticesItem({
         </li>
       </ul>
 
-      <p className={css.comment}>{comment}</p>
+      <p className={clsx(css.comment, isProfilePage ? css.commentProfile : "")}>
+        {comment}
+      </p>
 
       <div className={css.bottomContent}>
         <p className={css.price}>{price ? `$${price}` : "free"}</p>
 
         <div className={css.btnBlock}>
-          <button className={css.btn} onClick={toggleModal}>
+          <button
+            className={clsx(css.btn, isProfilePage ? css.btnProfile : "")}
+            onClick={toggleModal}
+          >
             Learn more
           </button>
           {isModalOpen && <ModalNotice onClose={toggleModal} notice={notice} />}
 
           <button
-            className={css.btnHeart}
+            className={clsx(
+              css.btnHeart,
+              isProfilePage ? css.btnHeartProfile : ""
+            )}
             onClick={handleToggleFavorite}
             aria-pressed={isFavoriteLocal}
             type="button"

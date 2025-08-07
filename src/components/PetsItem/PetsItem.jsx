@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux";
 import css from "./PetsItem.module.css";
 import { removePet } from "../../redux/user/userOperations";
+import { format } from "date-fns";
+import { DATE_FORMAT_DDMMYYYY } from "../../helpers/constants";
 
 export default function PetsItem({ pet }) {
   const { _id, name, title, imgURL, species, birthday, sex } = pet;
@@ -17,13 +19,13 @@ export default function PetsItem({ pet }) {
       <div className={css.titleBlock}>
         <h2 className={css.title}>{title}</h2>
         <ul className={css.descriptionBlock}>
-          <li>
+          <li className={css.name}>
             <p>Name</p>
-            {name}
+            <span className={css.nameText}>{name}</span>
           </li>
           <li>
             <p>Birthday</p>
-            {birthday}
+            {birthday ? format(new Date(birthday), DATE_FORMAT_DDMMYYYY) : null}
           </li>
 
           <li>
