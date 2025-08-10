@@ -10,12 +10,24 @@ import {
   removePet,
 } from "./userOperations.js";
 
+const LOCAL_KEY = "noticesViewed";
+
+const getLocalViewed = () => {
+  try {
+    const data = localStorage.getItem(LOCAL_KEY);
+    return data ? JSON.parse(data) : [];
+  } catch {
+    return [];
+  }
+};
+
 const initialState = {
   user: null,
   token: localStorage.getItem("token") || null,
   isLoggedIn: !!localStorage.getItem("token"),
   isLoading: false,
   error: false,
+  noticesViewed: getLocalViewed(),
 };
 
 const userSlice = createSlice({
@@ -29,6 +41,29 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
+    addViewedNotice: (state, action) => {
+      const notice = action.payload;
+      if (!notice || !notice._id) return;
+
+      // ensure top-level array exists
+      if (!Array.isArray(state.noticesViewed)) state.noticesViewed = [];
+
+      const existsTop = state.noticesViewed.some((n) => n._id === notice._id);
+      if (!existsTop) {
+        state.noticesViewed.push(notice);
+        localStorage.setItem(LOCAL_KEY, JSON.stringify(state.noticesViewed));
+      }
+
+      if (state.user) {
+        if (!Array.isArray(state.user.noticesViewed))
+          state.user.noticesViewed = [];
+
+        const existsInUser = state.user.noticesViewed.some(
+          (n) => n._id === notice._id
+        );
+        if (!existsInUser) state.user.noticesViewed.push(notice);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -38,13 +73,11 @@ const userSlice = createSlice({
       })
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;
-        // state.isLoggedIn = false;
         state.error = action.payload || action.error.message;
       })
 
@@ -54,14 +87,11 @@ const userSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.isLoading = false;
-        // state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        // console.log(state.token);
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.isLoading = false;
-        // state.isLoggedIn = false;
         state.error = action.payload || action.error.message;
       })
 
@@ -117,6 +147,17 @@ const userSlice = createSlice({
       .addCase(getUserFull.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
+
+        if (Array.isArray(action.payload?.noticesViewed)) {
+          const merged = [
+            ...state.noticesViewed,
+            ...action.payload.noticesViewed.filter(
+              (n) => !state.noticesViewed.some((v) => v._id === n._id)
+            ),
+          ];
+          state.noticesViewed = merged;
+          localStorage.setItem(LOCAL_KEY, JSON.stringify(merged));
+        }
       })
       .addCase(getUserFull.rejected, (state, action) => {
         state.isLoading = false;
@@ -130,6 +171,17 @@ const userSlice = createSlice({
       .addCase(updateUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.user = action.payload;
+
+        if (Array.isArray(action.payload?.noticesViewed)) {
+          const merged = [
+            ...state.noticesViewed,
+            ...action.payload.noticesViewed.filter(
+              (n) => !state.noticesViewed.some((v) => v._id === n._id)
+            ),
+          ];
+          state.noticesViewed = merged;
+          localStorage.setItem(LOCAL_KEY, JSON.stringify(merged));
+        }
       })
       .addCase(updateUser.rejected, (state, action) => {
         state.isLoading = false;
@@ -171,5 +223,5 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearUser } = userSlice.actions;
+export const { clearUser, addViewedNotice } = userSlice.actions;
 export default userSlice.reducer;

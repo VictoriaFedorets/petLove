@@ -12,6 +12,9 @@ import css from "./NoticesItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { useLocation } from "react-router-dom";
+import { updateUser } from "../../redux/user/userOperations";
+import { selectUser, selectUserViewed } from "../../redux/user/userSelectors";
+import { addViewedNotice } from "../../redux/user/userSlice";
 
 export default function NoticesItem({
   notice,
@@ -26,6 +29,9 @@ export default function NoticesItem({
   const favorites = useSelector(selectFavorites);
   // console.log("favorites", favorites);
   const isLoading = useSelector(selectFavoritesLoading);
+  const user = useSelector(selectUser);
+  const viewedNotices = useSelector(selectUserViewed);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   if (!notice) return null;
@@ -44,13 +50,20 @@ export default function NoticesItem({
     price,
   } = notice;
 
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
-  // console.log(notice);
+  const toggleModal = async () => {
+    if (!isModalOpen) {
+      const alreadyViewed =
+        Array.isArray(viewedNotices) &&
+        viewedNotices.some((item) => item._id === _id);
+      if (!alreadyViewed) {
+        dispatch(addViewedNotice(notice));
+      }
+    }
+    setIsModalOpen((prev) => !prev);
+  };
 
   const isFavoriteLocal = isFavorite || favorites.includes(_id);
 
-  // const isFavorite = favorites.some((fav) => fav._id === _id);
-  // console.log("isFavorite", isFavorite);
   const handleToggleFavorite = async () => {
     if (isLoading) return;
 

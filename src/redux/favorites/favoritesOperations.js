@@ -27,7 +27,7 @@ export const addToFavorites = createAsyncThunk(
       //   return data[data.length - 1];
       // }
       const addedId = data?._id || data?.notice?._id || noticeId;
-      console.log("addToFavorites response data:", data);
+      // console.log("addToFavorites response data:", data);
       return addedId;
     } catch (error) {
       const message = error.response?.data?.message || "Not added to favorites";

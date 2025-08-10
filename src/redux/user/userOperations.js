@@ -116,6 +116,8 @@ export const updateUser = createAsyncThunk(
     try {
       const { data } = await instance.patch("/users/current/edit", updatedData);
       toast.success("User updated successfully");
+      // console.log(updatedData);
+      // console.log(data);
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "Failed to update user";

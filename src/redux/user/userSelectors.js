@@ -18,3 +18,11 @@ export const selectPets = (state) => state.user.user?.pets || [];
 
 export const selectUserFavorites = (state) =>
   state.user.user.noticesFavorites || [];
+
+export const selectUserViewed = (state) => {
+  const serverViewed = state.user.user?.noticesViewed;
+  if (Array.isArray(serverViewed) && serverViewed.length > 0) {
+    return serverViewed;
+  }
+  return state.user.noticesViewed || [];
+};

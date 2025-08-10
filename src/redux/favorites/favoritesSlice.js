@@ -45,7 +45,7 @@ const favoritesSlice = createSlice({
         if (!state.items.includes(id)) {
           state.items.push(id);
         }
-        console.log("addToFavorites payload", action.payload);
+        // console.log("addToFavorites payload", action.payload);
 
         state.isLoading = false;
         state.error = null;
