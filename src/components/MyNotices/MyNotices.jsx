@@ -5,6 +5,7 @@ import css from "./MyNotices.module.css";
 import NoticesItem from "../NoticesItem/NoticesItem";
 import { fetchFavorites } from "../../redux/favorites/favoritesOperations";
 import { selectUserViewed } from "../../redux/user/userSelectors";
+import { getUniqueById } from "../../helpers/constants";
 
 const TABS = {
   FAVORITES: "My favorite pets",
@@ -45,6 +46,9 @@ export default function MyNotices() {
     );
   };
 
+  const uniqueFavoriteNotices = getUniqueById(favoriteNotices);
+  const uniqueViewedNotices = getUniqueById(viewedNotices);
+
   return (
     <div className={css.container}>
       <div className={css.tabs}>
@@ -68,9 +72,9 @@ export default function MyNotices() {
           </p>
         )}
 
-        {activeTab === TABS.FAVORITES && favoriteNotices.length > 0 && (
+        {activeTab === TABS.FAVORITES && uniqueFavoriteNotices.length > 0 && (
           <ul className={css.list}>
-            {favoriteNotices.map((notice) => (
+            {uniqueFavoriteNotices.map((notice) => (
               <NoticesItem
                 className={css.favoriteItem}
                 key={notice._id}
@@ -86,9 +90,9 @@ export default function MyNotices() {
           <p className={css.message}>Viewed list is empty.</p>
         )}
 
-        {activeTab === TABS.VIEWED && viewedNotices.length > 0 && (
+        {activeTab === TABS.VIEWED && uniqueViewedNotices.length > 0 && (
           <ul className={css.list}>
-            {viewedNotices.map((notice) => (
+            {uniqueViewedNotices.map((notice) => (
               <NoticesItem
                 className={css.favoriteItem}
                 key={notice._id}

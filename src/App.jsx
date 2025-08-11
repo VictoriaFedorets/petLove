@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 // import Loader from "./components/Loader/Loader.jsx";
 import SharedLayout from "./components/SharedLayout/SharedLayout.jsx";

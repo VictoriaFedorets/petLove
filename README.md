@@ -1,17 +1,17 @@
 # Tittle project
 
-Description.
+PetLove💛 is a modern web application designed to help users browse and find pets available for adoption or purchase. Users can add their favorite pets to a favorites list, easily contact owners via phone or email, and manage their profiles through secure authentication.
 
 ---
 
 ## ✨ Features
 
-- 🔍
-- 📌
-- 📅
-- 🔐
-- 📱
-- 🟨
+- 🔍 Browse a list of available tutors for the language
+- 📌 Add/remove teachers from favorites
+- 📅 Book a trial lesson via a modal form
+- 🔐 Authentication with Firebase (register, log in, log out)
+- 📱 Fully responsive design for mobile and desktop
+- 🟨 Smooth and friendly UI based on Figma design
 
 ---
 
@@ -47,13 +47,13 @@ Description.
 
 ## 🚀 How to Run the Project Locally
 
-To run **Title** on your local machine, follow these steps:
+To run **petLove** on your local machine, follow these steps:
 
 ### 1. Clone the repository:
 
 ```bash
-git clone https://link.vercel.app/
-cd title
+git clone https://github.com/VictoriaFedorets/petLove.git
+cd petLove
 ```
 
 ### 2. Install dependencies:
@@ -118,7 +118,7 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 💡 Inspiration
 
-The project design is based on a Figma concept you can view [here](https://www.figma.com/design...).
+The project design is based on a Figma concept you can view [here](https://www.figma.com/file/puMNfZVg4YI8UZoJ1QiLLi/Petl%F0%9F%92%9Bve?type=design&node-id=55838-750&mode=design&t=Xg1IwIcKebTl5xGs-0).
 
 ---
 
