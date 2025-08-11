@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getCitiesByKeyword,
   getNotices,
+  getNoticesById,
   getNoticesCategories,
   getNoticesGenders,
   getNoticesLocations,
@@ -10,6 +11,7 @@ import {
 
 const initialState = {
   notices: [],
+  currentNotice: null,
   categories: [],
   genders: [],
   species: [],
@@ -51,6 +53,19 @@ const noticesSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload || action.error.message;
       })
+
+      // .addCase(getNoticesById.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.error = null;
+      // })
+      .addCase(getNoticesById.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.currentNotice = action.payload;
+      })
+      // .addCase(getNoticesById.rejected, (state, action) => {
+      //   state.isLoading = false;
+      //   state.error = action.payload || action.error.message;
+      // })
 
       .addCase(getNoticesCategories.pending, (state) => {
         state.isLoading = true;

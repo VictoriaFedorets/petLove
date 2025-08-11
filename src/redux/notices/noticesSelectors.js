@@ -28,3 +28,6 @@ export const selectFiltersWithPage = createSelector(
     perPage: 6,
   })
 );
+
+export const selectPhone = (state) => state.notices.currentNotice?.user?.phone;
+export const selectEmail = (state) => state.notices.currentNotice?.user?.email;

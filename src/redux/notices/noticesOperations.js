@@ -22,6 +22,7 @@ export const getNoticesById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.get(`/notices/${id}`);
+      // console.log(data);
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "No notices found";

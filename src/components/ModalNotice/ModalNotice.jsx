@@ -11,6 +11,12 @@ import {
   removeFromFavorites,
 } from "../../redux/favorites/favoritesOperations.js";
 import { fetchFavorites } from "../../redux/favorites/favoritesOperations";
+import {
+  selectEmail,
+  selectPhone,
+} from "../../redux/notices/noticesSelectors.js";
+import { getNoticesById } from "../../redux/notices/noticesOperations.js";
+import { toast } from "react-toastify";
 
 export default function ModalNotice({ onClose, notice }) {
   const {
@@ -33,6 +39,33 @@ export default function ModalNotice({ onClose, notice }) {
 
   const isFavorite = favorites.includes(_id);
   const dispatch = useDispatch();
+
+  const phone = useSelector(selectPhone);
+  const email = useSelector(selectEmail);
+
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleContactClick = () => {
+    if (!isLoggedIn) {
+      setIsAttentionOpen(true);
+      return;
+    }
+    if (phone && email) {
+      setIsContactModalOpen(true);
+    } else if (phone) {
+      window.location.href = `tel:${phone}`;
+    } else if (email) {
+      window.location.href = `mailto:${email}`;
+    } else {
+      toast("Contact information is not available.");
+    }
+  };
+
+  useEffect(() => {
+    if (notice?._id) {
+      dispatch(getNoticesById(notice._id));
+    }
+  }, [dispatch, notice?._id]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -127,8 +160,29 @@ export default function ModalNotice({ onClose, notice }) {
                 <use href={`#icon-heart${isFavorite ? "" : "-outline"}`} />
               </svg>
             </button>
-
-            <button className={clsx(css.btn, css.btnContact)}>Contact</button>
+            <button
+              className={clsx(css.btn, css.btnContact)}
+              onClick={handleContactClick}
+            >
+              Contact
+            </button>
+            {/* 
+            {isContactModalOpen && (
+              <BaseModal onClose={() => setIsContactModalOpen(false)}>
+                <div className={css.contactOptions}>
+                  <button
+                    onClick={() => (window.location.href = `tel:${phone}`)}
+                  >
+                    📞 Call
+                  </button>
+                  <button
+                    onClick={() => (window.location.href = `mailto:${email}`)}
+                  >
+                    ✉️ Email
+                  </button>
+                </div>
+              </BaseModal>
+            )} */}
           </div>
         </div>
       </BaseModal>
