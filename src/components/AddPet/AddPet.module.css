@@ -16,19 +16,19 @@
   padding: 10px 16px;
   /* width: 103px; */
   height: 38px;
-  background: #f6b83d;
+  background: var(--yellow);
   display: flex;
   gap: 4px;
   font-weight: 500;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: var(--white);
 }
 
 .iconPlus {
   stroke-width: 1.5px;
-  color: #fff;
+  color: var(--white);
   width: 18px;
   height: 18px;
 }
@@ -54,7 +54,7 @@
 
   .iconPlus {
     stroke-width: 1.5px;
-    color: #fff;
+    color: var(--white);
     width: 18px;
     height: 18px;
   }

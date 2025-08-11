@@ -20,7 +20,7 @@
     width: 60px;
     height: 60px;
     border-radius: 100%;
-    background-color: #fff4df;
+    background-color: var(--white2);
     padding: 12px 14px 16px 14px;
   }
 
@@ -46,7 +46,7 @@
     font-size: 16px;
     line-height: 125%;
     letter-spacing: -0.03em;
-    color: #f6b83d;
+    color: var(--yellow);
   }
 
   .birthday {
@@ -55,11 +55,11 @@
     line-height: 117%;
     letter-spacing: -0.02em;
     margin-left: 4px;
-    color: #262626;
+    color: var(--black);
   }
 
   .birthday b {
-    color: rgba(38, 38, 38, 0.5);
+    color: var(--placeholder);
   }
 
   .text {

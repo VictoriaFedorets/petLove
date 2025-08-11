@@ -35,14 +35,14 @@ export function CustomSelect({
       width: controlWidth,
       border: "none",
       borderRadius: "30px",
-      backgroundColor: "#fff",
+      backgroundColor: "var(--white)",
       paddingLeft: isTablet ? "14px" : "12px",
       paddingRight: isTablet ? "32px" : "30px",
       height: isTablet ? "48px" : "42px",
       minHeight: "unset",
 
       letterSpacing: "-0.03em",
-      color: "#262626",
+      color: "var(--black)",
       boxShadow: "none",
       position: "relative",
     }),
@@ -51,7 +51,7 @@ export function CustomSelect({
       borderRadius: "15px",
       width: "100%",
       maxHeight: getControlWidth("296px", "216px", "190px"),
-      background: "#fff",
+      background: "var(--white)",
       fontWeight: 500,
       fontSize: isTablet ? "16px" : "14px",
       lineHeight: isTablet ? "125%" : "129%",
@@ -71,8 +71,8 @@ export function CustomSelect({
       const baseStyle = {
         ...provided,
         cursor: "pointer",
-        backgroundColor: state.isFocused ? "#fff4df" : "#fff",
-        color: "#262626",
+        backgroundColor: state.isFocused ? "var(--white)4df" : "var(--white)",
+        color: "var(--black)",
         padding: "0px",
         borderRadius: "8px",
         transition: "background-color 0.2s ease",
@@ -81,7 +81,7 @@ export function CustomSelect({
       if (state.data.isAlwaysYellow) {
         return {
           ...baseStyle,
-          color: "#f6b83d",
+          color: "var(--yellow)",
         };
       }
 
@@ -93,11 +93,11 @@ export function CustomSelect({
       fontSize: isTablet ? "16px" : "14px",
       lineHeight: isTablet ? "125%" : "129%",
       letterSpacing: "-0.03em",
-      color: "#262626",
+      color: "var(--black)",
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: "#262626",
+      color: "var(--black)",
       fontWeight: 500,
     }),
     valueContainer: (provided) => ({
@@ -111,7 +111,7 @@ export function CustomSelect({
       position: "absolute",
       top: "50%",
       cursor: "pointer",
-      color: "#262626",
+      color: "var(--black)",
       width: "18px",
       height: "18px",
       transition: "transform 0.3s ease",

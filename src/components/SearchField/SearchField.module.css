@@ -13,7 +13,7 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #262626;
+  color: var(--black);
 }
 
 .inputSearch::placeholder {
@@ -21,7 +21,7 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #262626;
+  color: var(--black);
 }
 
 .clearBtn,
@@ -45,8 +45,8 @@
   width: 18px;
   height: 18px;
   stroke-width: 2px;
-  stroke: #262626;
-  color: #262626;
+  stroke: var(--black);
+  color: var(--black);
 }
 
 @media screen and (min-width: 768px) {

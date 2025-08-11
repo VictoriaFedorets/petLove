@@ -8,7 +8,7 @@
   padding: 40px 28px;
   width: 100%;
   /* height: 454px; */
-  background: #fff;
+  background: var(--white);
   text-align: center;
 }
 
@@ -23,13 +23,13 @@
 .category {
   border-radius: 30px;
   padding: 8px 14px;
-  background: #fff4df;
+  background: var(--white2);
 
   font-weight: 500;
   font-size: 12px;
   line-height: 133%;
   letter-spacing: -0.02em;
-  color: #f6b83d;
+  color: var(--yellow);
 
   position: absolute;
   top: 40px;
@@ -83,7 +83,7 @@ border: 1.20px solid #f4f4f4;для серой */
   font-size: 10px;
   margin-bottom: 4px;
   line-height: 140%;
-  color: rgba(38, 38, 38, 0.5);
+  color: var(--placeholder);
 }
 
 .comment {
@@ -111,11 +111,11 @@ border: 1.20px solid #f4f4f4;для серой */
   font-size: 16px;
   line-height: 125%;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: var(--white);
   border-radius: 30px;
   width: 135px;
   height: 44px;
-  background: #f6b83d;
+  background: var(--yellow);
   transition: all 0.3s ease-in-out;
   display: flex;
   align-items: center;
@@ -123,8 +123,8 @@ border: 1.20px solid #f4f4f4;для серой */
 }
 
 .btnContact {
-  background: #fff4df;
-  color: #f6b83d;
+  background: var(--white2);
+  color: var(--yellow);
 }
 
 .btn:hover,
@@ -141,7 +141,7 @@ border: 1.20px solid #f4f4f4;для серой */
   border-radius: 30px;
   width: 46px;
   height: 46px;
-  background: #fff4df;
+  background: var(--white)4df;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 } */
@@ -154,7 +154,7 @@ border: 1.20px solid #f4f4f4;для серой */
 }
 
 .iconHeartActive {
-  color: #fff4df;
+  color: var(--white2);
 }
 
 @media screen and (min-width: 768px) {

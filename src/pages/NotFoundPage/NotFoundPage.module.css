@@ -1,6 +1,6 @@
 .wrapper {
   height: calc(100vh - 134px);
-  background-color: #f6b83d;
+  background-color: var(--yellow);
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -44,14 +44,14 @@
   margin: 0 auto;
   height: 42px;
   width: 150px;
-  background-color: #fff4df;
+  background-color: var(--white2);
   border-radius: 30px;
   padding: 12px 30px;
   font-size: 14px;
   font-weight: bold;
   line-height: 1.29;
   letter-spacing: -0.03em;
-  color: #f6b83d;
+  color: var(--yellow);
   text-align: center;
 }
 

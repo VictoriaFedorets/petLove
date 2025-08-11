@@ -39,7 +39,7 @@ export function AsyncLocationSelect({
           width: isTablet ? "227px" : "100%",
           border: "none",
           borderRadius: "30px",
-          backgroundColor: "#fff",
+          backgroundColor: "var(--white)",
           paddingLeft: isTablet ? "14px" : "12px",
           paddingRight: isTablet ? "55px" : "52px",
           height: "42px",
@@ -49,22 +49,22 @@ export function AsyncLocationSelect({
           fontSize: isTablet ? "16px" : "14px",
           lineHeight: isTablet ? "125%" : "129%",
           letterSpacing: "-0.03em",
-          color: "#262626",
+          color: "var(--black)",
           boxShadow: "none",
         }),
         input: (provided) => ({
           ...provided,
           margin: 0,
           padding: 0,
-          color: "#262626",
+          color: "var(--black)",
         }),
         placeholder: (provided) => ({
           ...provided,
-          color: "#262626",
+          color: "var(--black)",
         }),
         singleValue: (provided) => ({
           ...provided,
-          color: "#262626",
+          color: "var(--black)",
           fontWeight: 500,
         }),
         menu: (provided) => ({
@@ -72,7 +72,7 @@ export function AsyncLocationSelect({
           borderRadius: "15px",
           width: "100%",
           maxHeight: isTablet ? "104px" : "94px",
-          background: "#fff",
+          background: "var(--white)",
           zIndex: 100,
           marginTop: "4px",
         }),
@@ -91,8 +91,10 @@ export function AsyncLocationSelect({
           const baseStyle = {
             ...provided,
             cursor: "pointer",
-            backgroundColor: state.isFocused ? "#fff4df" : "#fff",
-            color: "#262626",
+            backgroundColor: state.isFocused
+              ? "var(--white)4df"
+              : "var(--white)",
+            color: "var(--black)",
             padding: "0px",
             borderRadius: "8px",
             transition: "background-color 0.2s ease",
@@ -101,7 +103,7 @@ export function AsyncLocationSelect({
           if (state.data.isAlwaysYellow) {
             return {
               ...baseStyle,
-              color: "#f6b83d",
+              color: "var(--yellow)",
             };
           }
 
@@ -114,7 +116,7 @@ export function AsyncLocationSelect({
         clearIndicator: (provided) => ({
           ...provided,
           padding: "0",
-          color: "#262626",
+          color: "var(--black)",
         }),
       }}
     />

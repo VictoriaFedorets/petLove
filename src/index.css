@@ -1,17 +1,30 @@
 :root {
   --white: #fff;
+  --white2: #fff4df;
   --black: #262626;
   --yellow: #f6b83d;
   --yellow-hover: #f9b020;
   --yellow-light: #fff4df;
   --yellow-dark: #fbe7c1;
   --background: #f9f9f9;
+  --background2: #e0e0e0;
+  --pink: #f43f5e;
+  --red: #ef2447;
+  --male: #54adff;
+  --green: #08aa83;
 
   --border: rgba(38, 38, 38, 0.15);
   --border-2: rgba(38, 38, 38, 0.2);
+  --border-3: rgba(255, 255, 255, 0.15);
+  --border-4: rgba(255, 255, 255, 0.5);
   --span: rgba(255, 255, 255, 0.4);
   --placeholder: rgba(38, 38, 38, 0.5);
+  --btn-background: rgba(38, 38, 38, 0.05);
+  --male-background: rgba(84, 173, 255, 0.1);
+  --gray: rgba(38, 38, 38, 0.4);
+  --gray2: rgba(43, 43, 42, 0.4);
   --backdrop: rgba(38, 38, 38, 0.3);
+  --female: rgba(244, 63, 94, 0.1);
 
   font-family: "Manrope", sans-serif;
   line-height: 1.5;
@@ -25,8 +38,6 @@
 
 body {
   margin: 0 auto;
-  /* display: flex; */
-  /* place-items: center; */
   min-height: 100vh;
   color: var(--black);
   background-color: var(--background);

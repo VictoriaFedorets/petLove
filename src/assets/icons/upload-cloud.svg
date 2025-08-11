@@ -2,7 +2,7 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
 <g id="icomoon-ignore">
 </g>
-<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="73.9556" stroke="#f6b83d" d="M512 512v384"></path>
-<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="73.9556" stroke="#f6b83d" d="M869.979 784.64c41.614-22.687 74.49-58.59 93.434-102.030 18.944-43.446 22.881-91.967 11.19-137.899s-38.343-86.663-75.753-115.765c-37.41-29.102-83.45-44.915-130.844-44.947h-53.76c-12.914-49.952-36.983-96.327-70.406-135.638-33.417-39.31-75.308-70.534-122.53-91.323s-98.541-30.602-150.1-28.703c-51.56 1.9-102.018 15.463-147.582 39.671s-85.046 58.429-115.479 100.092c-30.434 41.663-51.026 89.684-60.23 140.451s-6.779 102.96 7.093 152.656c13.871 49.696 38.828 95.6 72.993 134.262"></path>
-<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="73.9556" stroke="#f6b83d" d="M682.667 682.667l-170.667-170.667-170.667 170.667"></path>
+<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="73.9556" stroke="var(--yellow)" d="M512 512v384"></path>
+<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="73.9556" stroke="var(--yellow)" d="M869.979 784.64c41.614-22.687 74.49-58.59 93.434-102.030 18.944-43.446 22.881-91.967 11.19-137.899s-38.343-86.663-75.753-115.765c-37.41-29.102-83.45-44.915-130.844-44.947h-53.76c-12.914-49.952-36.983-96.327-70.406-135.638-33.417-39.31-75.308-70.534-122.53-91.323s-98.541-30.602-150.1-28.703c-51.56 1.9-102.018 15.463-147.582 39.671s-85.046 58.429-115.479 100.092c-30.434 41.663-51.026 89.684-60.23 140.451s-6.779 102.96 7.093 152.656c13.871 49.696 38.828 95.6 72.993 134.262"></path>
+<path fill="none" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="73.9556" stroke="var(--yellow)" d="M682.667 682.667l-170.667-170.667-170.667 170.667"></path>
 </svg>

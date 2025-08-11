@@ -2,14 +2,14 @@
   border-radius: 30px;
   padding: 12px 0;
   width: 100%;
-  background: #fff4df;
+  background: var(--white2);
 
   font-weight: 700;
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
   text-transform: uppercase;
-  color: #f6b83d;
+  color: var(--yellow);
   text-align: center;
 }
 
@@ -24,7 +24,7 @@
   }
 
   .btnLogOutHeader {
-    background: #f6b83d;
-    color: #fff;
+    background: var(--yellow);
+    color: var(--white);
   }
 }

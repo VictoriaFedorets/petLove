@@ -58,7 +58,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   fill: none;
-  stroke: #ef2447;
+  stroke: var(--red);
 }
 
 .checkIcon {
@@ -71,12 +71,12 @@
   cursor: pointer;
   fill: none;
   stroke-width: 1.5px;
-  stroke: #08aa83;
+  stroke: var(--green);
 }
 
 .input {
   width: 100%;
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid var(--border);
   border-radius: 30px;
   padding: 12px 30px 12px 12px;
   box-sizing: border-box;
@@ -85,11 +85,11 @@
 }
 
 .inputValid {
-  border-color: #08aa83;
+  border-color: var(--green);
 }
 
 .inputError {
-  border-color: #ef2447;
+  border-color: var(--red);
 }
 
 input::placeholder {
@@ -128,7 +128,7 @@ input::placeholder {
   font-size: 10px;
   line-height: 120%;
   letter-spacing: -0.03em;
-  color: #ef2447;
+  color: var(--red);
   margin-top: 2px;
   margin-left: 12px;
 }
@@ -139,7 +139,7 @@ input::placeholder {
   font-size: 10px;
   line-height: 120%;
   letter-spacing: -0.03em;
-  color: #08aa83;
+  color: var(--green);
   margin-top: 2px;
   margin-left: 12px;
 }

@@ -2,7 +2,7 @@
   border-radius: 30px;
   width: 335px;
   height: auto;
-  background: #fff;
+  background: var(--white);
   padding: 40px 20px;
   flex-direction: column;
 }
@@ -11,7 +11,7 @@
   width: 80px;
   height: 80px;
   border-radius: 100%;
-  background: #fff4df;
+  background: var(--white2);
   padding: 18px;
   margin-bottom: 20px;
 }
@@ -21,7 +21,7 @@
   font-size: 20px;
   line-height: 100%;
   letter-spacing: -0.03em;
-  color: #f6b83d;
+  color: var(--yellow);
   margin-bottom: 20px;
 }
 
@@ -56,14 +56,14 @@
 }
 
 .btnLogin {
-  background: #f6b83d;
-  color: #fff;
+  background: var(--yellow);
+  color: var(--white);
   width: 135px;
 }
 
 .btnRegistration {
-  color: #f6b83d;
-  background: #fff4df;
+  color: var(--yellow);
+  background: var(--white2);
   width: 129px;
 }
 

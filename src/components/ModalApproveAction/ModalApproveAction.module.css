@@ -42,13 +42,13 @@
 }
 
 .btnYes {
-  background: #f6b83d;
-  color: #fff;
+  background: var(--yellow);
+  color: var(--white);
 }
 
 .btnCancel {
   background: rgba(38, 38, 38, 0.05);
-  color: #262626;
+  color: var(--black);
 }
 
 @media (min-width: 768px) {

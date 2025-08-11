@@ -14,25 +14,25 @@
   line-height: 129%;
   letter-spacing: -0.03em;
 
-  /* color: #262626; */
+  /* color: var(--black); */
 
   display: flex;
   align-items: center;
   gap: 6px;
   border-radius: 30px;
   padding: 12px;
-  background: #fff;
+  background: var(--white);
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
 }
 
 .radioWrapper[data-selected="true"] {
-  background: #f6b83d;
-  color: #fff;
+  background: var(--yellow);
+  color: var(--white);
 }
 
 .radioWrapper[data-selected="true"] button {
-  color: #fff;
+  color: var(--white);
 }
 
 .radioInput {
@@ -42,7 +42,7 @@
 .clearBtn {
   width: 18px;
   height: 18px;
-  color: #fff;
+  color: var(--white);
   transition: opacity 0.2s ease;
 }
 

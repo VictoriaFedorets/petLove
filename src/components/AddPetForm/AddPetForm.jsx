@@ -374,7 +374,7 @@ export default function AddPetForm({ species }) {
                       ? "rotate(180deg)"
                       : null,
                     strokeWidth: "2px",
-                    color: "#262626",
+                    color: "var(--black)",
                   }),
                   indicatorSeparator: () => ({ display: "none" }),
                   container: (provided) => ({
@@ -390,7 +390,7 @@ export default function AddPetForm({ species }) {
                     height: `${selectHeight}px`,
                     minHeight: `${selectHeight}px`,
                     boxShadow: "none",
-                    border: "1px solid rgba(38, 38, 38, 0.15)",
+                    border: "1px solid var(--border)",
                   }),
                   valueContainer: (base) => ({
                     ...base,

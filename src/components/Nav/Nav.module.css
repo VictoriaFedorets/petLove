@@ -8,7 +8,7 @@
 }
 
 .link {
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid var(--border);
   border-radius: 30px;
   padding: 15px 0;
   text-align: center;
@@ -17,23 +17,23 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #262626;
+  color: var(--black);
   transition: all 0.3s ease-in-out;
 }
 
 .linkHome {
-  border-color: rgba(255, 255, 255, 0.15);
-  color: #fff;
+  border-color: var(--border-3);
+  color: var(--white);
 }
 
 .active,
 .link:hover {
-  border-color: #f6b83d;
+  border-color: var(--yellow);
 }
 
 .activeHome,
 .linkHome:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--border-4);
 }
 
 @media screen and (min-width: 768px) {

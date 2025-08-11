@@ -10,7 +10,7 @@ export const SearchIcon = (props) => (
         transform: "translateY(-50%)",
         cursor: "pointer",
         pointerEvents: "none",
-        color: "#262626",
+        color: "var(--black)",
         width: "18px",
         height: "18px",
       }}

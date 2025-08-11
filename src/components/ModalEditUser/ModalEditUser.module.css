@@ -24,17 +24,17 @@
   padding: 27px;
   width: 94px;
   height: 94px;
-  background: #fff4df;
+  background: var(--white2);
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 
   /* border-radius: 1px; */
-  fill: #f6b83d;
+  fill: var(--yellow);
   stroke-width: 2px;
-  /* stroke: #f6b83d; */
-  color: #f6b83d;
+  /* stroke: var(--yellow); */
+  color: var(--yellow);
 }
 
 .userPhoto {
@@ -58,7 +58,7 @@
 }
 
 .input {
-  border: 1px solid #f6b83d;
+  border: 1px solid var(--yellow);
   border-radius: 30px;
   padding: 13px 39px 13px 12px;
   width: 100%;
@@ -77,7 +77,7 @@
   padding: 12px;
   width: 126px;
   height: 42px;
-  background: #fff4df;
+  background: var(--white2);
 
   font-weight: 500;
   font-size: 12px;
@@ -92,8 +92,8 @@
   width: 18px;
   height: 18px;
   stroke-width: 1.3px;
-  color: #f6b83d;
-  stroke: #f6b83d;
+  color: var(--yellow);
+  stroke: var(--yellow);
 }
 
 .saveBtn {
@@ -102,7 +102,7 @@
   padding: 12px 0;
   width: 100%;
   height: 42px;
-  background: #f6b83d;
+  background: var(--yellow);
 }
 
 .error {
@@ -110,7 +110,7 @@
   font-size: 10px;
   line-height: 120%;
   letter-spacing: -0.03em;
-  color: #ef2447;
+  color: var(--red);
   margin-left: 12px;
   margin-top: -6px;
 }

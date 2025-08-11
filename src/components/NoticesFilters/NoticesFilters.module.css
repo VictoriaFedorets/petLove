@@ -1,6 +1,6 @@
 .filter {
   width: 100%;
-  background: #fff4df;
+  background: var(--white2);
   border-radius: 30px;
   margin-top: 40px;
   padding: 20px;
@@ -39,7 +39,7 @@
   transform: translateY(-50%);
   cursor: pointer;
   pointer-events: none;
-  color: #262626;
+  color: var(--black);
   width: 18px;
   height: 18px;
 }

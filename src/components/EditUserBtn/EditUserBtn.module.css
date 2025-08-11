@@ -7,7 +7,7 @@
   padding: 10px;
   width: 38px;
   height: 38px;
-  background: #fff4df;
+  background: var(--white2);
 }
 
 .iconEdit {
@@ -16,7 +16,7 @@
   width: 18px;
   height: 18px;
   stroke-width: 1.5px;
-  color: #f6b83d;
+  color: var(--yellow);
 }
 
 @media screen and (min-width: 768px) {

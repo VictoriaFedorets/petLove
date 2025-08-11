@@ -9,8 +9,8 @@
 }
 
 .tab {
-  background: #fff;
-  color: #262626;
+  background: var(--white);
+  color: var(--black);
   border-radius: 30px;
   padding: 12px 0;
 
@@ -28,8 +28,8 @@
 }
 
 .active {
-  color: #fff;
-  background: #f6b83d;
+  color: var(--white);
+  background: var(--yellow);
 }
 
 @media screen and (min-width: 768px) {

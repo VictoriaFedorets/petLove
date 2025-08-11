@@ -34,7 +34,7 @@
   right: 0;
   width: 218px;
   height: 100%;
-  background: #fff;
+  background: var(--white);
   padding: 28px 20px 40px 20px;
 
   display: flex;
@@ -77,11 +77,11 @@
   width: 20px;
   height: 20px;
   stroke-width: 3px;
-  color: #262626;
+  color: var(--black);
 }
 
 .closeIconHome {
-  color: #fff;
+  color: var(--white);
 }
 
 .closeBtn:hover svg,
@@ -92,12 +92,12 @@
 
 .closeBtn:hover .closeIconHome,
 .closeBtn:focus .closeIconHome {
-  color: #fbe7c1;
+  color: var(--yellow-dark);
   transform: scale(0.95);
 }
 
 .burgerIconHome {
-  color: #fff;
+  color: var(--white);
 }
 
 @media (min-width: 768px) {

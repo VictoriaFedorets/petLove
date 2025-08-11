@@ -6,7 +6,7 @@
   max-width: 335px;
   height: auto;
   /* height: 454px; */
-  background: #fff;
+  background: var(--white);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -74,7 +74,7 @@
   font-size: 10px;
   margin-bottom: 2px;
   line-height: 140%;
-  color: rgba(38, 38, 38, 0.5);
+  color: var(--placeholder);
 }
 
 .name {
@@ -110,12 +110,12 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.03em;
-  color: #fff;
+  color: var(--white);
   border-radius: 30px;
   padding: 14px auto;
   width: 231px;
   /* height: 46px; */
-  background: #f6b83d;
+  background: var(--yellow);
   transition: all 0.3s ease-in-out;
 }
 
@@ -129,7 +129,7 @@
   /* padding: 14px; */
   width: 46px;
   height: 46px;
-  background: #fff4df;
+  background: var(--white2);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -137,7 +137,7 @@
 .iconHeart {
   width: 18px;
   height: 16px;
-  color: #f6b83d;
+  color: var(--yellow);
   transition: color 0.3s ease;
 }
 
@@ -153,7 +153,7 @@
   .newsItem {
     margin-bottom: 0;
     max-width: 342px;
-    background: #fff;
+    background: var(--white);
   }
 
   .titleBlock {

@@ -4,7 +4,7 @@
   border-radius: 30px;
   width: 100%;
   height: auto;
-  background: #fff;
+  background: var(--white);
 }
 
 .title {
@@ -19,7 +19,7 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 129%;
-  color: rgba(43, 43, 42, 0.4);
+  color: var(--gray2);
 }
 
 .svgBlock {
@@ -38,32 +38,32 @@
 }
 
 .iconFemale {
-  color: #f43f5e;
-  background: rgba(244, 63, 94, 0.1);
+  color: var(--pink);
+  background: var(--female);
 }
 
 .radioInput:checked + .iconFemale {
-  color: #fff;
-  background: #f43f5e;
+  color: var(--white);
+  background: var(--pink);
 }
 
 .iconMale {
-  background: rgba(84, 173, 255, 0.1);
-  color: #54adff;
+  background: var(--male-background);
+  color: var(--male);
 }
 .radioInput:checked + .iconMale {
-  color: #fff;
-  background: #54adff;
+  color: var(--white);
+  background: var(--male);
 }
 
 .iconMultiple {
-  background: #fff4df;
-  fill: #f6b83d;
+  background: var(--white2);
+  fill: var(--yellow);
 }
 
 .radioInput:checked + .iconMultiple {
-  fill: #fff;
-  background: #f6b83d;
+  fill: var(--white);
+  background: var(--yellow);
 }
 
 .radioInput {
@@ -88,7 +88,7 @@
   padding: 17px;
   width: 68px;
   height: 68px;
-  background: #fff4df;
+  background: var(--white2);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -114,7 +114,7 @@
 }
 
 .input {
-  /* border: 1px solid #f6b83d; */
+  /* border: 1px solid var(--yellow); */
   border-radius: 30px;
   padding: 13px 13px 13px 12px;
   width: 100%;
@@ -126,7 +126,7 @@
   line-height: 129%;
   letter-spacing: -0.03em;
 
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid var(--border);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -139,7 +139,7 @@
 }
 
 /* .upload {
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid var(--border);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -150,7 +150,7 @@
   padding: 10px;
   width: 117px;
   height: 36px;
-  background: #fff4df;
+  background: var(--white2);
 
   display: flex;
   justify-content: center;
@@ -162,8 +162,8 @@
   width: 16px;
   height: 16px;
   stroke-width: 1px;
-  color: #f6b83d;
-  stroke: #f6b83d;
+  color: var(--yellow);
+  stroke: var(--yellow);
 }
 
 .error {
@@ -171,7 +171,7 @@
   font-size: 10px;
   line-height: 120%;
   letter-spacing: -0.03em;
-  color: #ef2447;
+  color: var(--red);
   margin-left: 12px;
   margin-top: -6px;
 }
@@ -214,12 +214,12 @@
 }
 
 .btnBack {
-  background: rgba(38, 38, 38, 0.05);
+  background: var(--btn-background);
 }
 
 .btnSave {
-  color: #fff;
-  background: #f6b83d;
+  color: var(--white);
+  background: var(--yellow);
 }
 
 .custom-select__value-container {
@@ -234,7 +234,7 @@
   max-height: 78px;
   overflow-y: auto;
   z-index: 1000;
-  border: 1px solid rgba(38, 38, 38, 0.15);
+  border: 1px solid var(--border);
   border-radius: 15px;
   width: 143px;
   height: 78px;
@@ -248,12 +248,12 @@
 
 /* Наведення */
 .custom-select__option--is-focused {
-  background-color: #f0f0f0;
+  background-color: var(--background2);
 }
 
 /* Активний вибраний */
 .custom-select__option--is-selected {
-  background-color: #e0e0e0;
+  background-color: var(--background2);
 }
 
 /* Контейнер зі стрілкою */

@@ -1,7 +1,7 @@
 :root {
-  --background: #fff;
+  --background: var(--white);
   --main-text: #121417;
-  
+
   --backdrop: rgba(0, 0, 0, 0.5);
 
   text-align: left;
@@ -10,7 +10,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 body {
   margin: 0;

@@ -46,7 +46,7 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.02em;
-  color: rgba(38, 38, 38, 0.5);
+  color: var(--placeholder);
 }
 
 .url {

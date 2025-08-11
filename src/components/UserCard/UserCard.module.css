@@ -5,7 +5,7 @@
   border-radius: 30px;
   width: 100%;
   height: auto;
-  background: #fff;
+  background: var(--white);
   padding: 18px 20px 40px 20px;
 }
 
@@ -21,8 +21,8 @@
 
   .btnLogOut {
     width: 136px;
-    background: #fff4df;
-    color: #f6b83d;
+    background: var(--white2);
+    color: var(--yellow);
     margin: 0;
   }
 }

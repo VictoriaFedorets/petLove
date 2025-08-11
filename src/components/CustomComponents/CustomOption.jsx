@@ -19,7 +19,7 @@ export const CustomOption = (props) => {
 
     return parts.map((part, i) =>
       part.toLowerCase() === safeInput ? (
-        <strong key={i} style={{ color: "#262626", fontWeight: 500 }}>
+        <strong key={i} style={{ color: "var(--black)", fontWeight: 500 }}>
           {part}
         </strong>
       ) : (
@@ -36,8 +36,8 @@ export const CustomOption = (props) => {
         padding: "4px 0",
         cursor: "pointer",
         // borderRadius: isFocused ? "5px" : "",
-        backgroundColor: isFocused ? "#fff4df" : "#fff",
-        color: "rgba(38, 38, 38, 0.4)",
+        backgroundColor: isFocused ? "var(--white2)" : "var(--white)",
+        color: "var(--gray)",
         fontWeight: 500,
         fontSize: "14px",
         lineHeight: "129%",
