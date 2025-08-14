@@ -95,9 +95,7 @@ export default function LoginForm() {
               <use href="#icon-close" />
             </svg>
           )}
-          {errors.email && (
-            <p className={css.loginError}>{errors.email.message}</p>
-          )}
+          {errors.email && <p className={css.error}>{errors.email.message}</p>}
         </div>
 
         <div className={css.wrapper}>
@@ -120,7 +118,9 @@ export default function LoginForm() {
             <use href={`#${showPassword ? "icon-eye" : "icon-eye-off"}`}></use>
           </svg>
           {errors.password && (
-            <p className={css.loginError}>{errors.password.message}</p>
+            <p className={`${css.error} ${css.errorPass}`}>
+              {errors.password.message}
+            </p>
           )}
         </div>
 

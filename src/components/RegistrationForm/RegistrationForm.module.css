@@ -87,7 +87,7 @@ input::placeholder {
 }
 
 .btn {
-  margin-top: 14px;
+  margin-top: 24px;
   margin-bottom: 12px;
 }
 
@@ -169,6 +169,10 @@ input::placeholder {
     margin-top: 4px;
     margin-left: 16px;
   }
+
+  .btn {
+    margin-bottom: 16px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -183,6 +187,6 @@ input::placeholder {
   }
 
   .btn {
-    margin-top: 64px;
+    margin-top: 34px;
   }
 }

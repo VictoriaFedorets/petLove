@@ -5,14 +5,19 @@ import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import { useEffect, useMemo } from "react";
 import { fetchFavorites } from "../../redux/favorites/favoritesOperations.js";
 import Loader from "../Loader/Loader.jsx";
+import { selectIsLoggedIn } from "../../redux/user/userSelectors.js";
 
 export default function NoticesList({ notices = [], sort }) {
   const isLoading = useSelector(selectNoticesIsLoading);
   const dispatch = useDispatch();
 
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+
   useEffect(() => {
-    dispatch(fetchFavorites());
-  }, [dispatch]);
+    if (isLoggedIn) {
+      dispatch(fetchFavorites());
+    }
+  }, [dispatch, isLoggedIn]);
 
   const parsePrice = (notice) => {
     if (notice.category === "free") return 0;

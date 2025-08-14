@@ -73,7 +73,7 @@ export default function AddPetForm({ species }) {
   useEffect(() => {
     const handleResize = () => {
       const isTablet = window.innerWidth >= 768;
-      setSelectHeight(isTablet ? 56 : 42);
+      setSelectHeight(isTablet ? 52 : 42);
       setSelectPadding(isTablet ? 16 : 12);
     };
 
@@ -206,6 +206,9 @@ export default function AddPetForm({ species }) {
             </svg>
           </label>
         </div>
+        {errors.sex && (
+          <p className={`${css.error} ${css.errorSex}`}>{errors.sex.message}</p>
+        )}
         {/* Прихований input для вибору файлу */}
         <input
           type="file"
@@ -311,9 +314,6 @@ export default function AddPetForm({ species }) {
               />
             )}
           />
-          {errors.birthday && (
-            <p className={css.error}>{errors.birthday.message}</p>
-          )}
 
           <Controller
             name="species"
@@ -404,6 +404,11 @@ export default function AddPetForm({ species }) {
               />
             )}
           />
+        </div>
+        <div className={css.errorBlock}>
+          {errors.birthday && (
+            <p className={css.error}>{errors.birthday.message}</p>
+          )}
           {errors.species && (
             <p className={css.error}>{errors.species.message}</p>
           )}

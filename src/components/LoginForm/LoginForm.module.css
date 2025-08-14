@@ -94,6 +94,23 @@
   color: var(--yellow-hover);
 }
 
+.error {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+  color: #ef2447;
+
+  margin-top: -4px;
+  margin-bottom: 6px;
+  margin-left: 12px;
+}
+
+.errorPass {
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 768px) {
   .loginForm {
     padding: 71px 0;
@@ -124,6 +141,19 @@
   .textLink {
     text-align: center;
   }
+
+  .error {
+    font-size: 12px;
+    line-height: 117%;
+
+    margin-top: -2px;
+    margin-bottom: 12px;
+    margin-left: 16px;
+  }
+
+  .errorPass {
+    margin-bottom: 0;
+  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -152,5 +182,13 @@
   .iconEye {
     width: 22px;
     height: 22px;
+  }
+
+  .error {
+    margin-top: -12px;
+  }
+
+  .errorPass {
+    margin-bottom: 0;
   }
 }
