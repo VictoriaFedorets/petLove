@@ -30,7 +30,7 @@ export default function NotFoundPage() {
 
         <p className={css.message}>Ooops! This page not found :(</p>
 
-        <Link to="/home" className={css.link}>
+        <Link to="/" className={css.link}>
           To home page
         </Link>
       </div>

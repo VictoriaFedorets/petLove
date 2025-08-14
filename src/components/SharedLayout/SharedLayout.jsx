@@ -5,15 +5,15 @@ import clsx from "clsx";
 
 export default function SharedLayout() {
   const location = useLocation();
-  const isHomePage = location.pathname === "/home";
+  const isHomePage = location.pathname === "/";
   const isAddPetPage = location.pathname === "/add-pet";
-  const isRegiterPage = location.pathname === "/register";
+  const isRegisterPage = location.pathname === "/register";
 
   return (
     <div
       className={clsx(
         css.container,
-        (isHomePage || isAddPetPage || isRegiterPage) && css.containerHome
+        (isHomePage || isAddPetPage || isRegisterPage) && css.containerHome
       )}
     >
       {!isHomePage && <Header />}

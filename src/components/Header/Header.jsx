@@ -18,7 +18,7 @@ const Header = () => {
   const user = useSelector(selectUser);
 
   const location = useLocation();
-  const isHomePage = location.pathname === "/home";
+  const isHomePage = location.pathname === "/";
   const isRegiterPage = location.pathname === "/register";
 
   const width = useWindowWidth();

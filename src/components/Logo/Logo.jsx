@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Logo({ isHomePage }) {
   return (
-    <NavLink className={clsx(css.logo, isHomePage && css.logoHome)} to="/home">
+    <NavLink className={clsx(css.logo, isHomePage && css.logoHome)} to="/">
       petl
       <svg className={clsx(css.heartIcon, isHomePage && css.heartIconHome)}>
         <use href="#icon-heart" />

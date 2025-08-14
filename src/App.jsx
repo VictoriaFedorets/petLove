@@ -11,7 +11,7 @@ import { refreshUser } from "./redux/user/userOperations.js";
 import { setAuthToken } from "./services/apiOperations.js";
 import { selectToken } from "./redux/user/userSelectors.js";
 
-const MainPage = lazy(() => import("./pages/MainPage/MainPage.jsx"));
+// const MainPage = lazy(() => import("./pages/MainPage/MainPage.jsx"));
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
 const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage.jsx"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage.jsx"));
@@ -60,7 +60,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             {/* <Route index element={<MainPage />} /> */}
-            <Route path="home" element={<HomePage />} />
+            <Route index element={<HomePage />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="notices" element={<NoticesPage />} />
             <Route path="friends" element={<FriendsPage />} />
@@ -99,18 +99,6 @@ export default function App() {
 
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-
-          <Route index element={<MainPage />} />
-
-          {/* <Route path="/" element={<SharedLayout />}>
-            <Route path="news" element={<NewsPage />} />
-            
-            <Route path="friends" element={<FriendsPage />} />
-            
-            
-            <Route path="add-pet" element={<AddPetPage />} />
-            <Route path="not-found" element={<NotFoundPage />} />
-          </Route> */}
         </Routes>
       </Suspense>
     </>
