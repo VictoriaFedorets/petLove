@@ -1,3 +1,4 @@
+import css from "./NoticesItem.module.css";
 import { useState } from "react";
 import ModalNotice from "../ModalNotice/ModalNotice";
 import {
@@ -8,12 +9,10 @@ import {
   selectFavorites,
   selectFavoritesLoading,
 } from "../../redux/favorites/favoritesSelectors";
-import css from "./NoticesItem.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import clsx from "clsx";
 import { useLocation } from "react-router-dom";
-import { updateUser } from "../../redux/user/userOperations";
-import { selectUser, selectUserViewed } from "../../redux/user/userSelectors";
+import { selectUserViewed } from "../../redux/user/userSelectors";
 import { addViewedNotice } from "../../redux/user/userSlice";
 
 export default function NoticesItem({
@@ -22,14 +21,11 @@ export default function NoticesItem({
   onRemoveFavorite,
   className = "",
 }) {
-  //   const formattedDate = new Date(date).toLocaleDateString("en-GB");
   const location = useLocation();
   const isProfilePage = location.pathname === "/profile";
   const dispatch = useDispatch();
   const favorites = useSelector(selectFavorites);
-  // console.log("favorites", favorites);
   const isLoading = useSelector(selectFavoritesLoading);
-  const user = useSelector(selectUser);
   const viewedNotices = useSelector(selectUserViewed);
 
   const [isModalOpen, setIsModalOpen] = useState(false);

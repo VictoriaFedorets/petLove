@@ -1,6 +1,6 @@
+import css from "./PetBlock.module.css";
 import { useLocation } from "react-router-dom";
 import clsx from "clsx";
-import css from "./PetBlock.module.css";
 
 export default function PetBlock({ srcMob, srcTab, srcDesk }) {
   const location = useLocation();

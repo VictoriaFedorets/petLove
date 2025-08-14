@@ -32,7 +32,6 @@ const schema = yup.object().shape({
 export default function ModalEditUser({ onClose }) {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  // console.log(user);
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef();
 
@@ -81,7 +80,7 @@ export default function ModalEditUser({ onClose }) {
     try {
       await dispatch(updateUser(data)).unwrap();
       toast.success("Profile updated");
-      onClose(); // Закриваємо модалку
+      onClose();
     } catch (error) {
       toast.error(error || "Failed to update profile");
     }

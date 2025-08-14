@@ -67,7 +67,7 @@
 }
 
 .radioInput {
-  display: none; /* ховаємо нативне радіо */
+  display: none;
 }
 
 .svgBlock label {
@@ -114,7 +114,6 @@
 }
 
 .input {
-  /* border: 1px solid var(--yellow); */
   border-radius: 30px;
   padding: 13px 13px 13px 12px;
   width: 100%;
@@ -137,13 +136,6 @@
   width: 170px;
   height: 36px;
 }
-
-/* .upload {
-  border: 1px solid var(--border);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-} */
 
 .btnUpload {
   border-radius: 30px;
@@ -189,10 +181,8 @@
 }
 
 .date {
-  /* padding-right: 30px; */
   border: none;
   width: 100%;
-  /* width: 140px; */
 }
 
 .btn {
@@ -222,14 +212,14 @@
   background: var(--yellow);
 }
 
-.custom-select__value-container {
+/* .custom-select__value-container {
   border-radius: 30px;
   padding: 0;
   height: 100%;
   display: flex;
   align-items: center;
 }
-/* Випадаючий список */
+
 .custom-select__menu {
   max-height: 78px;
   overflow-y: auto;
@@ -240,38 +230,30 @@
   height: 78px;
 }
 
-/* Елемент списку */
 .custom-select__option {
   padding: 8px 12px;
   cursor: pointer;
 }
 
-/* Наведення */
 .custom-select__option--is-focused {
   background-color: var(--background2);
 }
 
-/* Активний вибраний */
 .custom-select__option--is-selected {
   background-color: var(--background2);
 }
 
-/* Контейнер зі стрілкою */
 .custom-select__indicators {
   padding-right: 12px;
 }
 
-/* Стрілка */
 .custom-select__dropdown-indicator {
   transition: transform 0.3s ease;
-}
+} */
 
 .input.upload {
   appearance: none;
   padding-right: 32px;
-  /* position: relative;
-  display: flex;
-  align-items: center; */
 }
 
 .arrowIcon {
@@ -286,7 +268,6 @@
   fill: currentColor;
 }
 
-/* коли select відкритий — перевертаємо стрілку */
 .input.open + .arrowIcon {
   transform: translateY(-50%) rotate(180deg);
 }
@@ -413,8 +394,5 @@
 
   .avatarBlock {
     flex-wrap: nowrap;
-  }
-
-  .input {
   }
 }

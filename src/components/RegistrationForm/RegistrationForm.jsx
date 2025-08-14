@@ -1,3 +1,4 @@
+import css from "./RegistrationForm.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
@@ -5,11 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../redux/user/userOperations.js";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
-import css from "./RegistrationForm.module.css";
 import { selectIsLoading } from "../../redux/user/userSelectors.js";
 import Title from "../Title/Title.jsx";
 import Button from "../Button/Button.jsx";
-// import Loader from "../Loader/Loader.jsx";
 
 const emailRegEx = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
 

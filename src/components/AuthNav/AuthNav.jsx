@@ -1,5 +1,5 @@
-import { NavLink } from "react-router-dom";
 import css from "./AuthNav.module.css";
+import { NavLink } from "react-router-dom";
 import clsx from "clsx";
 
 export default function AuthNav({ isHomePage, showAuthNav = true }) {

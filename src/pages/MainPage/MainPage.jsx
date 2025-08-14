@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import css from "./MainPage.module.css";
+import { Link } from "react-router-dom";
 import Header from "../../components/Header/Header";
 
 export default function MainPage() {

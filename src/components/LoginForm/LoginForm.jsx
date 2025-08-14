@@ -30,7 +30,6 @@ export default function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isLoading = useSelector(selectIsLoading);
-  //   const error = useSelector(selectError);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,7 +43,7 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  const emailValue = watch("email"); // Слідкуємо за полем email
+  const emailValue = watch("email");
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -67,7 +66,6 @@ export default function LoginForm() {
     }
   };
   useEffect(() => {
-    // Сохраняем иконку видимости пароля в зависимости от состояния showPassword
     const passwordInput = document.querySelector("input[type='password']");
     if (passwordInput) {
       passwordInput.type = showPassword ? "text" : "password";

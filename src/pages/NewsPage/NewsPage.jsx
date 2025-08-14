@@ -1,8 +1,8 @@
+import css from "./NewsPage.module.css";
 import Title from "../../components/Title/Title";
 import SearchField from "../../components/SearchField/SearchField.jsx";
 import NewsList from "../../components/NewsList/NewsList.jsx";
 import Paginaton from "../../components/Pagination/Pagination.jsx";
-import css from "./NewsPage.module.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNews } from "../../redux/news/newsOperations";
@@ -28,7 +28,7 @@ export default function NewsPage() {
 
   const onSearch = (query) => {
     setSearchQuery(query);
-    dispatch(setNewsPage(1)); // повертаємось на першу сторінку при новому пошуку
+    dispatch(setNewsPage(1));
   };
 
   return (

@@ -1,5 +1,5 @@
-import BaseModal from "../BaseModal/BaseModal";
 import css from "./ModalApproveAction.module.css";
+import BaseModal from "../BaseModal/BaseModal";
 
 export default function ModalApproveAction({ onApprove, onClose }) {
   return (

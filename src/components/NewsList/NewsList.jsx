@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
 import css from "./NewsList.module.css";
+import { useSelector } from "react-redux";
 import {
   selectNews,
   selectNewsIsLoading,

@@ -22,19 +22,12 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser = createAsyncThunk(
   "/users/login",
-  async (credentials, { rejectWithValue, dispatch }) => {
+  async (credentials, { rejectWithValue}) => {
     try {
-      // console.log(
-      //   "Sending registration request with credentials:",
-      //   credentials
-      // );
       const { data } = await instance.post("/users/signin", credentials);
       localStorage.setItem("token", data.token);
       setAuthToken(data.token);
       toast.success("Login is successful");
-      // console.log("Registration successful:", data);
-      // await dispatch(refreshUser()); // замість getUserFull
-      // await dispatch(getUserFull());
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "Login failed";
@@ -49,7 +42,6 @@ export const logoutUser = createAsyncThunk(
   "/users/logout",
   async (_, { getState, rejectWithValue }) => {
     const token = getState().user.token;
-    // console.log("TOKEN FROM STATE IN logoutUser THUNK:", token);
 
     if (!token) {
       throw new Error("No token found");
@@ -83,8 +75,6 @@ export const refreshUser = createAsyncThunk(
     try {
       setAuthToken(token);
       const { data } = await instance.get("/users/current/full");
-      // console.log("Fetched full user:", data);
-      // toast.success("Refresh is successful");
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "Failed to fetch user";
@@ -99,7 +89,6 @@ export const getUserFull = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("/users/current/full");
-      // console.log(data);
       return data;
     } catch (error) {
       const message =
@@ -116,8 +105,6 @@ export const updateUser = createAsyncThunk(
     try {
       const { data } = await instance.patch("/users/current/edit", updatedData);
       toast.success("User updated successfully");
-      // console.log(updatedData);
-      // console.log(data);
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "Failed to update user";

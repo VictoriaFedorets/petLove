@@ -1,6 +1,5 @@
 .user {
   border-radius: 30px;
-  /* padding: 10px 14px; */
   width: 80px;
   height: 38px;
   background: var(--yellow);
@@ -18,10 +17,8 @@
   margin-left: 4px;
   width: 18px;
   height: 18px;
-  /* border-radius: 1px; */
   fill: var(--white);
   stroke-width: 2px;
-  /* stroke: var(--white); */
 }
 
 .blockPhoto {
@@ -43,10 +40,8 @@
   justify-content: center;
   align-items: center;
 
-  /* border-radius: 1px; */
   fill: var(--yellow);
   stroke-width: 2px;
-  /* stroke: var(--yellow); */
   color: var(--yellow);
 }
 

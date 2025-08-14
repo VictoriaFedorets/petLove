@@ -37,5 +37,5 @@ export const loadCitiesOptions =
       value: city._id,
     }));
 
-    return options; // ВАЖНО — вернуть опции, а не callback
+    return options;
   };

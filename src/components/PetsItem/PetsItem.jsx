@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
 import css from "./PetsItem.module.css";
+import { useDispatch } from "react-redux";
 import { removePet } from "../../redux/user/userOperations";
 import { format } from "date-fns";
 import { DATE_FORMAT_DDMMYYYY } from "../../helpers/constants";

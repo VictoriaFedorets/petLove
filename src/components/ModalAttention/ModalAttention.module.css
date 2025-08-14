@@ -67,14 +67,6 @@
   width: 129px;
 }
 
-.btnLogin:hover,
-.btnLogin:focus {
-}
-
-.btnRegistration:hover,
-.btnRegistration:focus {
-}
-
 @media screen and (min-width: 768px) {
   .modalAttention {
     width: 466px;

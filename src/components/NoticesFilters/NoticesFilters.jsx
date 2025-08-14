@@ -19,8 +19,6 @@ import { loadCitiesOptions } from "../CustomComponents/LoadCitiesOptions";
 import { AsyncLocationSelect } from "../CustomComponents/AsyncLocationSelect";
 import { useForm, Controller } from "react-hook-form";
 import { AutoSubmit } from "../CustomComponents/AutoSubmit";
-import { setNoticesPage } from "../../redux/notices/noticesSlice";
-import { useWatch } from "react-hook-form";
 import { SortSelector } from "../CustomComponents/SortSelector/SortSelector";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
@@ -30,12 +28,11 @@ export default function NoticesFilters() {
   const genders = useSelector(selectNoticesGenders);
   const species = useSelector(selectNoticesSpecies);
   const locations = useSelector(selectLocations);
-  const { filters, page, perPage } = useSelector((state) => state.notices);
 
   const [regions, setRegions] = useState([]);
   const [selectedRegion, setSelectedRegion] = useState("");
 
-  const { control, register, reset, getValues } = useForm({
+  const { control, register } = useForm({
     mode: "onChange",
     defaultValues: {
       title: "",
@@ -47,7 +44,6 @@ export default function NoticesFilters() {
     },
   });
 
-  const sortValue = useWatch({ control, name: "sort" });
   const { isTablet, getControlWidth } = useMediaQuery();
 
   useEffect(() => {
@@ -67,11 +63,6 @@ export default function NoticesFilters() {
   }, [locations]);
 
   const loadOptions = loadCitiesOptions(dispatch, selectedRegion);
-
-  const handlePageChange = (newPage) => {
-    dispatch(setNoticesPage(newPage));
-    // dispatch(getNotices({ ...filters, page: newPage, perPage }));
-  };
 
   return (
     <form className={css.filter}>

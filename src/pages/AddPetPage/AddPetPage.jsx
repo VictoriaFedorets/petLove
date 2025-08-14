@@ -1,3 +1,4 @@
+import css from "./AddPetPage.module.css";
 import PetBlock from "../../components/PetBlock/PetBlock";
 import AddPetForm from "../../components/AddPetForm/AddPetForm";
 import { useEffect } from "react";
@@ -6,7 +7,6 @@ import {
   getNotices,
   getNoticesSpecies,
 } from "../../redux/notices/noticesOperations";
-import css from "./AddPetPage.module.css";
 import { selectNoticesSpecies } from "../../redux/notices/noticesSelectors";
 
 export default function AddPetPage() {

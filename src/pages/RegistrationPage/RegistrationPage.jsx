@@ -1,6 +1,6 @@
+import css from "./RegistrationPage.module.css";
 import RegistrationForm from "../../components/RegistrationForm/RegistrationForm.jsx";
 import PetBlock from "../../components/PetBlock/PetBlock.jsx";
-import css from "./RegistrationPage.module.css";
 import PetInfoCard from "../../components/PetInfoCard/PetInfoCard.jsx";
 
 export default function RegistrationPage() {

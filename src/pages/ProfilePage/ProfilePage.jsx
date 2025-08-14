@@ -1,6 +1,6 @@
+import css from "./ProfilePage.module.css";
 import UserCard from "../../components/UserCard/UserCard";
 import MyNotices from "../../components/MyNotices/MyNotices";
-import css from "./ProfilePage.module.css";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { updateUser } from "../../redux/user/userOperations";

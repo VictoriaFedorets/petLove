@@ -1,6 +1,5 @@
 .searchWrapper {
   position: relative;
-  /* width: 100%; */
 }
 
 .inputSearch {
@@ -51,7 +50,6 @@
 
 @media screen and (min-width: 768px) {
   .searchWrapper {
-    /* width: 265px; */
     margin-top: 0;
   }
 

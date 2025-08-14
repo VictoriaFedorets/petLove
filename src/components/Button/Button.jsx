@@ -5,15 +5,13 @@ export default function Button({
   type = "button",
   onClick,
   className = "",
-  // disabled = false,
-  icon = null, // назва іконки в спрайті, наприклад: "icon-plus"
+  icon = null,
   iconPosition = "right",
 }) {
   return (
     <button
       type={type}
       onClick={onClick}
-      // disabled={disabled}
       className={`${css.button} ${className}`}
     >
       {children}

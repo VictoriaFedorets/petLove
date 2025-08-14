@@ -1,3 +1,4 @@
+import css from "./BurgerMenu.module.css";
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { selectIsLoggedIn, selectUser } from "../../redux/user/userSelectors";
@@ -5,7 +6,6 @@ import clsx from "clsx";
 import Nav from "../Nav/Nav";
 import AuthNav from "../AuthNav/AuthNav";
 import UserNav from "../UserNav/UserNav";
-import css from "./BurgerMenu.module.css";
 import useWindowWidth from "../../hooks/useWindowWidth";
 
 export default function BurgerMenu({ isHomePage, showLogout }) {
@@ -22,7 +22,6 @@ export default function BurgerMenu({ isHomePage, showLogout }) {
   const isMobile = width < 768;
   const isTablet = width < 1280;
 
-  // Закриття по Escape
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {

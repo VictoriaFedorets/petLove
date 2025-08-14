@@ -5,13 +5,7 @@ import { CustomOption } from "./CustomOption";
 import { SearchIcon } from "./SearchIcon";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 
-export function AsyncLocationSelect({
-  loadOptions,
-  onChange,
-  value,
-  placeholder = "Location",
-  className,
-}) {
+export function AsyncLocationSelect({ loadOptions, onChange }) {
   const { isTablet } = useMediaQuery();
 
   return (

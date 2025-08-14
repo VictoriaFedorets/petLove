@@ -7,7 +7,6 @@ export const getNotices = createAsyncThunk(
   async (params = {}, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("/notices", { params });
-      // console.log("Fetched notices:", data);
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "No notices found";
@@ -22,7 +21,6 @@ export const getNoticesById = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
       const { data } = await instance.get(`/notices/${id}`);
-      // console.log(data);
       return data;
     } catch (error) {
       const message = error.response?.data?.message || "No notices found";

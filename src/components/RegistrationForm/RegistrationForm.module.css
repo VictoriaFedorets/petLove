@@ -20,18 +20,6 @@
   margin-bottom: 10px;
 }
 
-/* .label {
-  width: 100%;
-  font-weight: 400;
-  font-size: 18px;
-  color: var(--primary-color-black);
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: start;
-  gap: 8px;
-} */
-
 .inputContainer {
   position: relative;
   width: 100%;
@@ -80,8 +68,6 @@
   border-radius: 30px;
   padding: 12px 30px 12px 12px;
   box-sizing: border-box;
-
-  /* margin-bottom: 10px; */
 }
 
 .inputValid {
@@ -99,11 +85,6 @@ input::placeholder {
   letter-spacing: -0.03em;
   color: var(--placeholder);
 }
-
-/* .input:focus-within {
-  border: solid 1px var(--secondary-color-blue-2);
-  outline: none;
-} */
 
 .btn {
   margin-top: 14px;

@@ -1,4 +1,4 @@
-# Tittle project
+# Pet💛ove
 
 PetLove💛 is a modern web application designed to help users browse and find pets available for adoption or purchase. Users can add their favorite pets to a favorites list, easily contact owners via phone or email, and manage their profiles through secure authentication.
 

@@ -6,7 +6,7 @@ export function CustomClearIndicator(props) {
       <svg
         width="18"
         height="18"
-        className="custom-clear-icon" // опційно: стилізація через CSS
+        className="custom-clear-icon"
         aria-hidden="true"
         focusable="false"
         cursor="pointer"

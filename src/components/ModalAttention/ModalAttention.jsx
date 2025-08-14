@@ -1,18 +1,18 @@
+import css from "./ModalAttention.module.css";
 import { useNavigate } from "react-router-dom";
 import BaseModal from "../BaseModal/BaseModal";
 import dogImg from "../../assets/dog.png";
-import css from "./ModalAttention.module.css";
 
 export default function ModalAttention({ onClose, onRedirect }) {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    if (onRedirect) onRedirect(); // Закриваємо ModalNotice
+    if (onRedirect) onRedirect();
     navigate("/login");
   };
 
   const handleRegisterClick = () => {
-    if (onRedirect) onRedirect(); // Закриваємо ModalNotice
+    if (onRedirect) onRedirect();
     navigate("/register");
   };
 

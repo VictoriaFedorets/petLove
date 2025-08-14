@@ -3,7 +3,6 @@ import css from "./FriendsItem.module.css";
 export default function FriendsItem({ friend }) {
   const { title, imageUrl, email, url, addressUrl, address, phone, workDays } =
     friend;
-  //   console.log(friend);
 
   const isOpen = workDays?.find((day) => day.isOpen);
 
@@ -63,18 +62,6 @@ export default function FriendsItem({ friend }) {
           </li>
         </ul>
       </div>
-
-      {/* <div className={css.dateBlock}>
-        <p className={css.date}>{formattedDate}</p>
-        <a
-          className={css.url}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Read more
-        </a>
-      </div> */}
     </li>
   );
 }

@@ -1,5 +1,5 @@
-import clsx from "clsx";
 import css from "./Nav.module.css";
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 
 export default function Nav({ isHomePage }) {

@@ -1,7 +1,7 @@
+import css from "./LoginPage.module.css";
 import LoginForm from "../../components/LoginForm/LoginForm.jsx";
 import PetBlock from "../../components/PetBlock/PetBlock.jsx";
 import PetInfoCard from "../../components/PetInfoCard/PetInfoCard.jsx";
-import css from "./LoginPage.module.css";
 
 export default function LoginPage() {
   return (

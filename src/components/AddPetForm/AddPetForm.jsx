@@ -13,7 +13,6 @@ import { Link, useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { format } from "date-fns";
-
 import { Controller } from "react-hook-form";
 
 const schema = yup.object().shape({
@@ -122,35 +121,6 @@ export default function AddPetForm({ species }) {
     label: s.charAt(0).toUpperCase() + s.slice(1),
   }));
 
-  // const notices = useSelector(selectNoticesSpacies);
-  // console.log(notices);
-  // const getUniqueValues = (data, key) => {
-  //   return [...new Set(data.flatMap((item) => item[key]))];
-  // };
-  // const uniqueSpecies = useMemo(() => [...new Set(notices)], [notices]);
-
-  // const speciesOptions = uniqueSpecies.map((s) => ({
-  //   value: s,
-  //   label: s.charAt(0).toUpperCase() + s.slice(1),
-  // }));
-
-  // const speciesOptions = [
-  //   ...uniqueSpecies.map((s) => ({ value: s, label: s })),
-  //   { value: "parrot", label: "Parrot" },
-  //   { value: "hamster", label: "Hamster" },
-  //   { value: "rabbit", label: "Rabbit" },
-  //   { value: "snake", label: "Snake" },
-  //   { value: "turtle", label: "Turtle" },
-  //   { value: "lizard", label: "Lizard" },
-  //   { value: "frog", label: "Frog" },
-  //   { value: "fish", label: "Fish" },
-  //   { value: "bees", label: "Bees" },
-  //   { value: "butterfly", label: "Butterfly" },
-  //   { value: "spider", label: "Spider" },
-  //   { value: "scorpion", label: "Scorpion" },
-  //   { value: "other", label: "Other" },
-  // ];
-
   const formatDate = (dateStr) => {
     if (!dateStr) return "";
     const [year, month, day] = dateStr.split("-");
@@ -167,11 +137,9 @@ export default function AddPetForm({ species }) {
       if (end) end.style.display = "none";
     };
 
-    // Випадок: відкриваєш календар
     document.addEventListener("mousedown", hideDatepickerTabLoops);
     document.addEventListener("focusin", hideDatepickerTabLoops);
 
-    // При розмонтуванні
     return () => {
       document.removeEventListener("mousedown", hideDatepickerTabLoops);
       document.removeEventListener("focusin", hideDatepickerTabLoops);
@@ -356,7 +324,7 @@ export default function AddPetForm({ species }) {
                 value={speciesOptions.find((opt) => opt.value === field.value)} // шукаємо об'єкт по значенню
                 onChange={(selectedOption) =>
                   field.onChange(selectedOption.value)
-                } // передаємо лише рядок
+                }
                 options={speciesOptions}
                 placeholder="Type of pet"
                 isSearchable={false}

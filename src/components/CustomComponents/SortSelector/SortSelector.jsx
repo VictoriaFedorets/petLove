@@ -1,7 +1,7 @@
+import css from "./SortSelector.module.css";
 import { useController } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { setNoticesPage } from "../../../redux/notices/noticesSlice";
-import css from "./SortSelector.module.css";
 
 const options = [
   { label: "Popular", value: "byPopularity_true" },

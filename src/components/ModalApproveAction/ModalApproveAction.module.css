@@ -24,7 +24,6 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  /* width: 100%; */
 }
 
 .btnYes,
@@ -34,7 +33,6 @@
   width: 137px;
 
   height: auto;
-  /* height: 42px; */
   font-weight: 700;
   font-size: 14px;
   line-height: 129%;
@@ -69,7 +67,4 @@
     padding: 14px 0;
     width: 140px;
   }
-}
-
-@media (min-width: 1280px) {
 }

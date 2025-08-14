@@ -1,6 +1,6 @@
+import css from "./EditUserBtn.module.css";
 import { useState } from "react";
 import ModalEditUser from "../ModalEditUser/ModalEditUser.jsx";
-import css from "./EditUserBtn.module.css";
 
 export default function EditUserBtn() {
   const [isModalOpen, setIsModalOpen] = useState(false);

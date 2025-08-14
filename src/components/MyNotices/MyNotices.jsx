@@ -1,7 +1,7 @@
+import css from "./MyNotices.module.css";
 import { useState, useEffect } from "react";
 import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
-import css from "./MyNotices.module.css";
 import NoticesItem from "../NoticesItem/NoticesItem";
 import { fetchFavorites } from "../../redux/favorites/favoritesOperations";
 import { selectUserViewed } from "../../redux/user/userSelectors";
@@ -18,8 +18,6 @@ export default function MyNotices() {
 
   const viewedNotices = useSelector(selectUserViewed);
   const [viewedLocal, setViewedLocal] = useState(viewedNotices);
-  // console.log(selectUserViewed);
-  // console.log(favoriteNotices);
 
   const dispatch = useDispatch();
 

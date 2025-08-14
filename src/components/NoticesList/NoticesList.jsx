@@ -1,9 +1,10 @@
-import { useDispatch, useSelector } from "react-redux";
 import css from "./NoticesList.module.css";
+import { useDispatch, useSelector } from "react-redux";
 import { selectNoticesIsLoading } from "../../redux/notices/noticesSelectors";
 import NoticesItem from "../NoticesItem/NoticesItem.jsx";
 import { useEffect, useMemo } from "react";
 import { fetchFavorites } from "../../redux/favorites/favoritesOperations.js";
+import Loader from "../Loader/Loader.jsx";
 
 export default function NoticesList({ notices = [], sort }) {
   const isLoading = useSelector(selectNoticesIsLoading);
@@ -14,7 +15,6 @@ export default function NoticesList({ notices = [], sort }) {
   }, [dispatch]);
 
   const parsePrice = (notice) => {
-    // Якщо категорія free - ціна = 0
     if (notice.category === "free") return 0;
 
     const price = notice.price;
@@ -57,7 +57,7 @@ export default function NoticesList({ notices = [], sort }) {
   }, [notices, sort]);
 
   if (isLoading) {
-    return <p className={css.loading}>Loading...</p>;
+    return <Loader />;
   }
 
   if (!sortedNotices.length) {

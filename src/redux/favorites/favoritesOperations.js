@@ -23,11 +23,7 @@ export const addToFavorites = createAsyncThunk(
       const { data } = await instance.post(
         `/notices/favorites/add/${noticeId}`
       );
-      // if (Array.isArray(data)) {
-      //   return data[data.length - 1];
-      // }
       const addedId = data?._id || data?.notice?._id || noticeId;
-      // console.log("addToFavorites response data:", data);
       return addedId;
     } catch (error) {
       const message = error.response?.data?.message || "Not added to favorites";

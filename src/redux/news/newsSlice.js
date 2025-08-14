@@ -28,7 +28,6 @@ const newsSlice = createSlice({
         state.isLoading = false;
         state.news = action.payload.results;
         state.totalPages = action.payload.totalPages;
-        // console.log(action.payload.results);
       })
       .addCase(getNews.rejected, (state, action) => {
         state.isLoading = false;

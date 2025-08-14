@@ -5,7 +5,6 @@
   width: 100%;
   max-width: 335px;
   height: auto;
-  /* height: 454px; */
   background: var(--white);
   display: flex;
   flex-direction: column;
@@ -36,7 +35,6 @@
   font-size: 16px;
   line-height: 125%;
   margin-bottom: 8px;
-  /* height: 52px; */
 }
 
 .iconStar {
@@ -114,7 +112,6 @@
   border-radius: 30px;
   padding: 14px auto;
   width: 231px;
-  /* height: 46px; */
   background: var(--yellow);
   transition: all 0.3s ease-in-out;
 }
@@ -126,7 +123,6 @@
 
 .btnHeart {
   border-radius: 30px;
-  /* padding: 14px; */
   width: 46px;
   height: 46px;
   background: var(--white2);
@@ -226,7 +222,6 @@
     margin-bottom: 14px;
     height: 178px;
     flex-shrink: 0;
-    /* overflow: hidden; */
   }
 
   .imgProfile img {

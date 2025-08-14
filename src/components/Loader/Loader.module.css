@@ -1,16 +1,24 @@
 .loaderContainer {
   width: 100%;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
   background-color: var(--backdrop);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  pointer-events: auto; /* дозволяє блокувати кліки */
+  pointer-events: auto;
+
+  background-image: image-set(
+    url("/images/bg/mob/bg-mob-1x.webp") 1x,
+    url("/images/bg/mob/bg-mob-2x.webp") 2x,
+    url("/images/bg/mob/bg-mob-3x.webp") 3x,
+    url("/images/bg/mob/bg-mob-4x.webp") 4x
+  );
+  background-size: cover;
+  background-position: center;
 }
 
 .loader {
@@ -19,4 +27,34 @@
   align-items: center;
   height: 80vh;
   width: 100vw;
+}
+
+.btnLogo {
+  height: 50px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 768px) {
+  .loaderContainer {
+    background-image: image-set(
+      url("/images/bg/tab/bg-tab-1x.webp") 1x,
+      url("/images/bg/tab/bg-tab-2x.webp") 2x,
+      url("/images/bg/tab/bg-tab-3x.webp") 3x,
+      url("/images/bg/tab/bg-tab-4x.webp") 4x
+    );
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .loaderContainer {
+    background-image: image-set(
+      url("/images/bg/desk/bg-desk-1x.webp") 1x,
+      url("/images/bg/desk/bg-desk-2x.webp") 2x,
+      url("/images/bg/desk/bg-desk-3x.webp") 3x,
+      url("/images/bg/desk/bg-desk-4x.webp") 4x
+    );
+  }
 }

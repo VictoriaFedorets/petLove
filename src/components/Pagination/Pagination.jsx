@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import css from "./Pagination.module.css";
+import { useEffect, useState } from "react";
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
   const [visibleCount, setVisibleCount] = useState(2);
@@ -20,7 +20,6 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     const pages = [];
     let startPage = currentPage;
 
-    // Забезпечуємо, щоб не вийти за межі totalPages
     for (let i = 0; i < visibleCount && startPage + i <= totalPages; i++) {
       pages.push(startPage + i);
     }

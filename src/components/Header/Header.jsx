@@ -24,8 +24,6 @@ const Header = () => {
   const width = useWindowWidth();
   const isMobile = width < 768;
   const isTablet = width < 1280;
-  // const getNavLinkClass = ({ isActive }) =>
-  //   clsx(css.link, isActive && css.active);
 
   return (
     <header
@@ -33,10 +31,7 @@ const Header = () => {
         isRegiterPage && css.registerHeader
       }`}
     >
-      <Logo
-        isHomePage={isHomePage}
-        //   isAuthenticated={isLoggedIn}
-      />
+      <Logo isHomePage={isHomePage} />
 
       <div className={css.headerNav}>
         <Nav isHomePage={isHomePage} />
@@ -52,10 +47,7 @@ const Header = () => {
         ) : (
           <AuthNav isHomePage={isHomePage} showAuthNav={!isMobile} />
         )}
-        <BurgerMenu
-          isHomePage={isHomePage}
-          // showLogout={!(isMobile || (isTablet && !isHomePage))}
-        />
+        <BurgerMenu isHomePage={isHomePage} />
       </div>
     </header>
   );

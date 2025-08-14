@@ -1,6 +1,6 @@
+import css from "./SharedLayout.module.css";
 import { useLocation, Outlet } from "react-router-dom";
 import Header from "../Header/Header.jsx";
-import css from "./SharedLayout.module.css";
 import clsx from "clsx";
 
 export default function SharedLayout() {

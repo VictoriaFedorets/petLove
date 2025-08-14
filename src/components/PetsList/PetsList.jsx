@@ -1,6 +1,6 @@
+import css from "./PetsList.module.css";
 import { useSelector } from "react-redux";
 import PetsItem from "../PetsItem/PetsItem";
-import css from "./PetsList.module.css";
 import { selectPets } from "../../redux/user/userSelectors";
 
 export default function PetsList() {

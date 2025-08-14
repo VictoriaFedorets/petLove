@@ -8,7 +8,7 @@ import {
 const favoritesSlice = createSlice({
   name: "favorites",
   initialState: {
-    items: [], // ID избранных notice
+    items: [],
     isLoading: false,
     error: null,
   },
@@ -45,7 +45,6 @@ const favoritesSlice = createSlice({
         if (!state.items.includes(id)) {
           state.items.push(id);
         }
-        // console.log("addToFavorites payload", action.payload);
 
         state.isLoading = false;
         state.error = null;

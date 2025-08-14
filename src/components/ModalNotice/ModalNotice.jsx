@@ -1,8 +1,8 @@
+import css from "./ModalNotice.module.css";
 import clsx from "clsx";
 import BaseModal from "../BaseModal/BaseModal";
 import { selectIsLoggedIn } from "../../redux/user/userSelectors.js";
 import ModalAttention from "../ModalAttention/ModalAttention.jsx";
-import css from "./ModalNotice.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { selectFavorites } from "../../redux/favorites/favoritesSelectors.js";
@@ -81,7 +81,6 @@ export default function ModalNotice({ onClose, notice }) {
 
     if (isFavorite) {
       dispatch(removeFromFavorites(_id));
-      // toast.info("Already in favorites");
     } else {
       dispatch(addToFavorites(_id));
     }
@@ -92,7 +91,6 @@ export default function ModalNotice({ onClose, notice }) {
     onClose();
   };
 
-  // якщо відкритий Attention — рендеримо тільки його
   if (isAttentionOpen) {
     return (
       <ModalAttention
@@ -117,8 +115,8 @@ export default function ModalNotice({ onClose, notice }) {
                 style={{
                   fill:
                     index < Math.min(Math.floor(popularity), 5)
-                      ? "#ffc107"
-                      : "#d3d3d3",
+                      ? "var(--yellow-bg-star)"
+                      : "var(--btn-background)",
                 }}
               >
                 <use href="#icon-star" />

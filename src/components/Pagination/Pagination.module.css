@@ -43,13 +43,6 @@
   color: var(--black);
 }
 
-.arrowLeft {
-  /* padding: 0 7px 0 13px; */
-  /* padding-right: 7px;
-  padding-left: 13px; */
-}
-
-/* зміна фону при наведенні, якщо кнопка-сторінка не активна. */
 .page:hover:not(.active),
 .arrow:hover:not(:disabled) {
   background-color: var(--yellow-hover);

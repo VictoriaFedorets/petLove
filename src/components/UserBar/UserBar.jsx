@@ -1,6 +1,6 @@
+import css from "./UserBar.module.css";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
-import css from "./UserBar.module.css";
 
 export default function UserBar({ isHomePage, user }) {
   if (!user) return null;

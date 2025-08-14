@@ -24,7 +24,6 @@
   padding: 12px 56px 12px 12px;
   width: 100%;
   margin-bottom: 10px;
-  /* background: inherit; */
 }
 
 .errorLogin {
@@ -130,7 +129,6 @@
 @media screen and (min-width: 1280px) {
   .loginForm {
     width: 592px;
-    /* height: 654px; */
     margin-top: 0;
     padding: 118px 0;
   }

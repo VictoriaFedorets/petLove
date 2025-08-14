@@ -44,8 +44,6 @@ const userSlice = createSlice({
     addViewedNotice: (state, action) => {
       const notice = action.payload;
       if (!notice || !notice._id) return;
-
-      // ensure top-level array exists
       if (!Array.isArray(state.noticesViewed)) state.noticesViewed = [];
 
       const existsTop = state.noticesViewed.some((n) => n._id === notice._id);
@@ -126,19 +124,6 @@ const userSlice = createSlice({
         state.isLoggedIn = false;
         state.error = action.payload || action.error.message;
       })
-
-      // .addCase(getUser.pending, (state) => {
-      //   state.isLoading = true;
-      //   state.error = null;
-      // })
-      // .addCase(getUser.fulfilled, (state, action) => {
-      //   state.isLoading = false;
-      //   state.user = action.payload;
-      // })
-      // .addCase(getUser.rejected, (state, action) => {
-      //   state.isLoading = false;
-      //   state.error = action.payload || action.error.message;
-      // })
 
       .addCase(getUserFull.pending, (state) => {
         state.isLoading = true;

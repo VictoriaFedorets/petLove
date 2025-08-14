@@ -17,7 +17,6 @@
 .inputWrapper {
   position: relative;
   flex: 1;
-  /* margin-bottom: 12px; */
 }
 
 .inputWrapper select {

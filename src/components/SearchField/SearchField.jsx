@@ -1,6 +1,6 @@
+import css from "./SearchField.module.css";
 import { useEffect, useState, useMemo, Children } from "react";
 import debounce from "lodash.debounce";
-import css from "./SearchField.module.css";
 
 export default function SearchField({
   name,

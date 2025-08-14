@@ -45,12 +45,6 @@
   background: var(--yellow-dark);
 }
 
-.link {
-}
-
-.linkHome {
-}
-
 @media screen and (min-width: 768px) {
   .linkWrapper {
     flex-direction: row;
@@ -72,9 +66,6 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .linkWrapper {
-  }
-
   .loginBtn {
     padding: 15px 0;
   }

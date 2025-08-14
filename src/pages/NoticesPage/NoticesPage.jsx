@@ -1,8 +1,8 @@
+import css from "./NoticesPage.module.css";
 import Title from "../../components/Title/Title";
 import NoticesFilters from "../../components/NoticesFilters/NoticesFilters.jsx";
 import NoticesList from "../../components/NoticesList/NoticesList.jsx";
 import Pagination from "../../components/Pagination/Pagination.jsx";
-import css from "./NoticesPage.module.css";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNotices } from "../../redux/notices/noticesOperations";
@@ -13,7 +13,6 @@ import {
   selectNoticesTotalPages,
   selectNotices,
 } from "../../redux/notices/noticesSelectors.js";
-
 import { setNoticesPage } from "../../redux/notices/noticesSlice.js";
 
 export default function NoticesPage() {
@@ -39,7 +38,6 @@ export default function NoticesPage() {
       behavior: "smooth",
     });
   }, [currentPage]);
-  // console.log(notices);
 
   return (
     <div className={css.wrapper}>

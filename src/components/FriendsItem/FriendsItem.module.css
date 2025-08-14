@@ -3,7 +3,6 @@
   width: 100%;
   position: relative;
   border-radius: 15px;
-  /* width: 335px; */
   height: 184px;
   background: var(--white);
 
@@ -30,7 +29,6 @@
   border-radius: 100%;
   width: 80px;
   height: 80px;
-  /* border-radius: 15px; */
 }
 
 .title {
@@ -65,8 +63,6 @@
 .link {
   color: var(--black);
 }
-
-/* transition: all 0.3s ease-in-out; */
 
 @media screen and (min-width: 768px) {
   .friendsItem {

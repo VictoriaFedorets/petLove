@@ -35,7 +35,6 @@ export const CustomOption = (props) => {
       style={{
         padding: "4px 0",
         cursor: "pointer",
-        // borderRadius: isFocused ? "5px" : "",
         backgroundColor: isFocused ? "var(--white2)" : "var(--white)",
         color: "var(--gray)",
         fontWeight: 500,
