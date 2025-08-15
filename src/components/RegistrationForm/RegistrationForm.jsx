@@ -182,9 +182,15 @@ export default function RegistrationForm() {
                   {showPassword ? (
                     <use href="#icon-eye" />
                   ) : (
-                    <use href="#icon-eye-hidden" />
+                    <use href="#icon-eye-off" />
                   )}
                 </svg>
+
+                {!errors.password && touched.password && values.password && (
+                  <svg className={css.checkIcon}>
+                    <use href="#icon-check" />
+                  </svg>
+                )}
               </div>
               <ErrorMessage
                 name="password"

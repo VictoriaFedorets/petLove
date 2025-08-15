@@ -33,8 +33,7 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  fill: var(--yellow);
-  stroke: var(--yellow);
+  color: var(--yellow);
 }
 
 .clearIcon {
@@ -46,20 +45,20 @@
   transform: translateY(-50%);
   cursor: pointer;
   fill: none;
-  stroke: var(--red);
+  color: var(--red);
 }
 
 .checkIcon {
   width: 18px;
   height: 18px;
   position: absolute;
-  right: 12px;
+  right: 38px;
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
   fill: none;
   stroke-width: 1.5px;
-  stroke: var(--green);
+  color: var(--green);
 }
 
 .input {
@@ -160,6 +159,10 @@ input::placeholder {
   .checkIcon,
   .clearIcon {
     width: 22px;
+  }
+
+  .checkIcon {
+    right: 50px;
   }
 
   .error,

@@ -41,7 +41,7 @@ export default function NoticesPage() {
 
   return (
     <div className={css.wrapper}>
-      <Title>Find your favorite pet</Title>
+      <Title className={css.title}>Find your favorite pet</Title>
       <NoticesFilters />
       <NoticesList notices={notices} sort={filters.sort} />
       {totalPages > 1 && (

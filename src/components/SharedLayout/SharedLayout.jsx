@@ -8,12 +8,14 @@ export default function SharedLayout() {
   const isHomePage = location.pathname === "/";
   const isAddPetPage = location.pathname === "/add-pet";
   const isRegisterPage = location.pathname === "/register";
+  const isNoticesPage = location.pathname === "/notices";
 
   return (
     <div
       className={clsx(
         css.container,
-        (isHomePage || isAddPetPage || isRegisterPage) && css.containerHome
+        (isHomePage || isAddPetPage || isRegisterPage || isNoticesPage) &&
+          css.containerHome
       )}
     >
       {!isHomePage && <Header />}

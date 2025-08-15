@@ -16,6 +16,7 @@
 
 .wrapper {
   position: relative;
+  margin-bottom: 10px;
 }
 
 .loginInput {
@@ -23,7 +24,6 @@
   border-radius: 30px;
   padding: 12px 56px 12px 12px;
   width: 100%;
-  margin-bottom: 10px;
 }
 
 .errorLogin {
@@ -61,11 +61,12 @@
   width: 18px;
   height: 18px;
   position: absolute;
-  top: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 12px;
   cursor: pointer;
   stroke-width: 1.5px;
-  stroke: var(--red);
+  color: var(--red);
   transition: opacity 0.3s ease;
 }
 
@@ -73,12 +74,13 @@
   position: absolute;
   width: 18px;
   height: 18px;
-  top: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 12px;
   cursor: pointer;
   stroke-width: 1.5px;
   fill: none;
-  stroke: var(--yellow);
+  color: var(--yellow);
   transition: opacity 0.3s ease;
 }
 
@@ -169,9 +171,12 @@
     margin: 16px 0 32px;
   }
 
+  .wrapper {
+    margin-bottom: 16px;
+  }
+
   .loginInput {
     padding: 16px 56px 16px 16px;
-    margin-bottom: 16px;
   }
 
   .btn {

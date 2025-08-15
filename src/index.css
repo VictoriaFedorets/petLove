@@ -86,3 +86,13 @@ input {
   padding: 0;
   box-sizing: border-box;
 }
+
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+input[type="password"]::-ms-clear {
+  display: none;
+}
+input[type="password"]::-webkit-textfield-decoration-container {
+  display: none;
+}

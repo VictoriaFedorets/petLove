@@ -19,7 +19,8 @@ const Header = () => {
 
   const location = useLocation();
   const isHomePage = location.pathname === "/";
-  const isRegiterPage = location.pathname === "/register";
+  const isRegisterPage = location.pathname === "/register";
+  const isNoticesPage = location.pathname === "/notices";
 
   const width = useWindowWidth();
   const isMobile = width < 768;
@@ -28,8 +29,8 @@ const Header = () => {
   return (
     <header
       className={`${css.headerContainer} ${isHomePage ? css.homeHeader : ""} ${
-        isRegiterPage && css.registerHeader
-      }`}
+        isRegisterPage && css.registerHeader
+      } ${isNoticesPage ? css.noticesHeader : ""}`}
     >
       <Logo isHomePage={isHomePage} />
 

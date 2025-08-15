@@ -76,7 +76,8 @@ export default function BurgerMenu({ isHomePage, showLogout }) {
             isOpen ? css.menuOpen : css.menuClosed,
             isHomePage && css.menuContentHome
           )}
-          onClick={(e) => e.stopPropagation()}
+          onClick={handleMenuClick}
+          // onClick={(e) => e.stopPropagation()}
         >
           <button className={css.closeBtn} onClick={closeMenu}>
             <svg
